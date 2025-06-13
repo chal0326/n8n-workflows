@@ -4,23 +4,23 @@
       "name": "Mock Data",
       "type": "n8n-nodes-base.function",
       "position": [
-        550,
-        300
+        802,
+        307
       ],
       "parameters": {
-        "functionCode": "return [{json:[\"item-1\", \"item-2\", \"item-3\", \"item-4\"]}];"
+        "functionCode": "return [\n  {\n    json: {\n      id: 1,\n      name: \"Jim\"\n    }\n  },\n  {\n    json: {\n      id: 2,\n      name: \"Stefan\"\n    }\n  },\n  {\n    json: {\n      id: 3,\n      name: \"Hans\"\n    }\n  }\n];"
       },
       "typeVersion": 1
     },
     {
-      "name": "Function",
+      "name": "Create an array of objects",
       "type": "n8n-nodes-base.function",
       "position": [
-        750,
-        300
+        1052,
+        307
       ],
       "parameters": {
-        "functionCode": "return items[0].json.map(item => {\n  return {\n    json: {\n      data:item\n    },\n  }\n});\n"
+        "functionCode": "return [\n  {\n    json: {\n      data_object: items.map(item => item.json),\n    },\n  }\n];\n"
       },
       "typeVersion": 1
     }
@@ -30,7 +30,7 @@
       "main": [
         [
           {
-            "node": "Function",
+            "node": "Create an array of objects",
             "type": "main",
             "index": 0
           }

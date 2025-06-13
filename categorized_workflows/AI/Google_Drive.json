@@ -80,7 +80,7 @@
         "color": 4,
         "width": 876.5116990000852,
         "height": 821.787041589866,
-        "content": "# PREPARATION (in Supabase)\n\n- your database needs the extension 'pgvector' enabled -> select Database > Extension > Search for 'vector'\n- make sure you have a table that has the following columns (if not, use the query below in the Supabase SQL Editor)\n\n```\nALTER TABLE \"YOUR TABLE NAME\"\nADD COLUMN embedding VECTOR(1536), // check which number of dimensions you need (depends on the embed model)\nADD COLUMN metadata JSONB,\nADD COLUMN content TEXT;\n```\n\n- make sure you have the right policies set -> select Authentication > Policies\n- make sure you have the custom function `match_documents` set up in Supabase -> This is needed for the Vector Store Node (as query name) \n(if not, use the query below in the Supabase SQL Editor to create that function)\n- make sure you check the size of the AI model as it should be the same vector size for the table \n(e.g. OpenAI's Text-Embedding-3-Small uses 1536)\n\n```\nCREATE OR REPLACE FUNCTION public.match_documents(\n filter JSONB,\n match_count INT,\n query_embedding VECTOR(1536) // should match same dimensions as from insertion\n)\nRETURNS TABLE (\n id BIGINT,\n content TEXT,\n metadata JSONB,\n embedding VECTOR(1536), // should match same dimensions as from insertion\n similarity FLOAT\n)\nLANGUAGE plpgsql AS $$\nBEGIN\n RETURN QUERY\n SELECT\n v.id,\n v.content,\n v.metadata,\n v.embedding,\n 1 - (v.embedding <=> match_documents.query_embedding) AS similarity\n FROM \"YOUR TABLE NAME\" v\n WHERE v.metadata @> filter\n ORDER BY v.embedding <=> match_documents.query_embedding\n LIMIT match_count;\nEND;\n$$\n;\n```\n"
+        "content": "# PREPARATION (in Supabase)\n\n- your database needs the extension 'pgvector' enabled -> select Database > Extension > Search for 'vector'\n- make sure you have a table that has the following columns (if not, use the query below in the Supabase SQL Editor)\n\n```\nALTER TABLE \"YOUR TABLE NAME\"\nADD COLUMN embedding VECTOR(1536), // check which number of dimensions you need (depends on the embed model)\nADD COLUMN metadata JSONB,\nADD COLUMN content TEXT;\n```\n\n- make sure you have the right policies set -> select Authentication > Policies\n- make sure you have the custom function `match_documents` set up in Supabase -> This is needed for the Vector Store Node (as query name) \n(if not, use the query below in the Supabase SQL Editor to create that function)\n- make sure you check the size of the AI model as it should be the same vector size for the table \n(e.g. OpenAI's Text-Embedding-3-Small uses 1536)\n\n```\nCREATE OR REPLACE FUNCTION public.match_documents(\n  filter JSONB,\n  match_count INT,\n  query_embedding VECTOR(1536) // should match same dimensions as from insertion\n)\nRETURNS TABLE (\n  id BIGINT,\n  content TEXT,\n  metadata JSONB,\n  embedding VECTOR(1536), // should match same dimensions as from insertion\n  similarity FLOAT\n)\nLANGUAGE plpgsql AS $$\nBEGIN\n  RETURN QUERY\n  SELECT\n    v.id,\n    v.content,\n    v.metadata,\n    v.embedding,\n    1 - (v.embedding <=> match_documents.query_embedding) AS similarity\n  FROM \"YOUR TABLE NAME\" v\n  WHERE v.metadata @> filter\n  ORDER BY v.embedding <=> match_documents.query_embedding\n  LIMIT match_count;\nEND;\n$$\n;\n```\n"
       },
       "typeVersion": 1
     },
@@ -189,7 +189,7 @@
         "options": {
           "responseMode": "lastNode"
         },
-        "initialMessages": "=Hi there! \ud83d\ude4f\n\nYou can ask me anything about Venerable Geshe Kelsang Gyatso's Book - 'How To Transform Your Life'\n\nWhat would you like to know? "
+        "initialMessages": "=Hi there! 🙏\n\nYou can ask me anything about Venerable Geshe Kelsang Gyatso's Book - 'How To Transform Your Life'\n\nWhat would you like to know? "
       },
       "typeVersion": 1.1
     },
@@ -252,7 +252,7 @@
       "parameters": {
         "mode": "raw",
         "options": {},
-        "jsonOutput": "={\n \"Date\": \"{{ $now.format('dd MMM yyyy') }}\",\n \"Time\": \"{{ $now.format('HH:mm ZZZZ z') }}\"\n}\n"
+        "jsonOutput": "={\n  \"Date\": \"{{ $now.format('dd MMM yyyy') }}\",\n  \"Time\": \"{{ $now.format('HH:mm ZZZZ z') }}\"\n}\n"
       },
       "typeVersion": 3.4
     },

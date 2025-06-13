@@ -9,7 +9,7 @@
   "nodes": [
     {
       "id": "c4a6995f-7769-4b77-80ca-1e6bccef77c1",
-      "name": "When clicking \u2018Test workflow\u2019",
+      "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         -20,
@@ -553,7 +553,7 @@
         ]
       ]
     },
-    "When clicking \u2018Test workflow\u2019": {
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {

@@ -211,7 +211,7 @@
           "systemPromptTemplate": "You are an intelligent assistant for a shoe and accessories store (mainly bags). Your task is to analyze the input text coming from a chat and determine if the user is looking for a product. If the user is looking for a product, you need to extract the following information:\n1. The keyword (keyword) useful for the search.\n2. Any minimum or maximum prices specified.\n3. An SKU (product code) if mentioned.\n4. The name of the category to search in, if specified.\n\nInstructions:\n1. Identify the intent: Determine if the user is looking for a specific product.\n2. Extract the information:\n- If the user is looking for a product, identify:\n- Set the type \"search\" to true. Otherwise, set it to false\n- The keywords.\n- Any minimum or maximum prices (e.g. \"less than 50 euros\", \"between 30 and 60 euros\").\n- An SKU (e.g. \"ABC123 code\").\n- The category name (e.g. \"t-shirts\", \"jeans\", \"women\", \"men\").\n3. Output format: Return a JSON object with the given structure"
         },
         "schemaType": "manual",
-        "inputSchema": "{\n \"search_intent\": true,\n \"search_params\": [\n { \"type\": \"search\", \"value\": \"ture or false\" },\n { \"type\": \"keyword\", \"value\": \"valore_keyword\" },\n { \"type\": \"min_price\", \"value\": \"valore_min_price\" },\n { \"type\": \"max_price\", \"value\": \"valore_max_price\" },\n { \"type\": \"sku\", \"value\": \"valore_sku\" },\n { \"type\": \"category\", \"value\": \"valore_categoria\" }\n ]\n }"
+        "inputSchema": "{\n       \"search_intent\": true,\n       \"search_params\": [\n         { \"type\": \"search\", \"value\": \"ture or false\" },\n         { \"type\": \"keyword\", \"value\": \"valore_keyword\" },\n         { \"type\": \"min_price\", \"value\": \"valore_min_price\" },\n         { \"type\": \"max_price\", \"value\": \"valore_max_price\" },\n         { \"type\": \"sku\", \"value\": \"valore_sku\" },\n         { \"type\": \"category\", \"value\": \"valore_categoria\" }\n       ]\n     }"
       },
       "typeVersion": 1
     },
@@ -256,7 +256,7 @@
             "mode": "list",
             "value": "1lmnqpLFKS-gXmXT92C5VG0P1XlcoeFOb",
             "cachedResultUrl": "https://drive.google.com/drive/folders/1lmnqpLFKS-gXmXT92C5VG0P1XlcoeFOb",
-            "cachedResultName": "Scarperia Sal\u00f2 - RAG"
+            "cachedResultName": "Scarperia Salò - RAG"
           }
         },
         "options": {},
@@ -350,7 +350,7 @@
     },
     {
       "id": "ff77338e-4dac-4261-87a1-10a21108f543",
-      "name": "When clicking \u2018Test workflow\u2019",
+      "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         -200,
@@ -371,7 +371,7 @@
         "url": "https://QDRANTURL/collections/NAME/points/delete",
         "method": "POST",
         "options": {},
-        "jsonBody": "{\n \"filter\": {}\n}",
+        "jsonBody": "{\n  \"filter\": {}\n}",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -706,7 +706,7 @@
         ]
       ]
     },
-    "When clicking \u2018Test workflow\u2019": {
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {

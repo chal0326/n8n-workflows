@@ -70,7 +70,7 @@
         160
       ],
       "parameters": {
-        "jsCode": "// Parse the input JSON string and split it into four chunks\nconst rawText = $json.text;\n\n// Remove Markdown JSON code blocks if present\nconst cleanedText = rawText.replace(/```json|```/g, '').trim();\n\ntry {\n    const jsonArray = JSON.parse(cleanedText);\n    if (!Array.isArray(jsonArray)) {\n        throw new Error('The JSON is not an array.');\n    }\n    const chunkSize = Math.ceil(jsonArray.length / 4);\n    const chunks = [];\n    for (let i = 0; i < jsonArray.length; i += chunkSize) {\n        chunks.push(jsonArray.slice(i, i + chunkSize));\n    }\n    return chunks.map(chunk => ({ json: { chunk } }));\n} catch (error) {\n    return [{ json: { error: error.message } }];\n}\n"
+        "jsCode": "// Parse the input JSON string and split it into four chunks\nconst rawText = $json.text;\n\n// Remove Markdown JSON code blocks if present\nconst cleanedText = rawText.replace(/```json|```/g, '').trim();\n\ntry {\n const jsonArray = JSON.parse(cleanedText);\n if (!Array.isArray(jsonArray)) {\n throw new Error('The JSON is not an array.');\n }\n const chunkSize = Math.ceil(jsonArray.length / 4);\n const chunks = [];\n for (let i = 0; i < jsonArray.length; i += chunkSize) {\n chunks.push(jsonArray.slice(i, i + chunkSize));\n }\n return chunks.map(chunk => ({ json: { chunk } }));\n} catch (error) {\n return [{ json: { error: error.message } }];\n}\n"
       },
       "typeVersion": 2
     },
@@ -136,7 +136,7 @@
         140
       ],
       "parameters": {
-        "jsCode": "// Format the organic search results from SerpAPI\nconst results = $input.first().json.organic_results;\nif (results.length === 0) {\n  return [{ json: { error: 'No search results found.' } }];\n}\nconst formattedResults = results.map(result => ({\n  title: result.title || 'No title available',\n  url: result.link || 'No link available',\n  source: result.source || result.displayed_link || 'Unknown source'\n}));\nreturn formattedResults.map(result => ({ json: result }));\n"
+        "jsCode": "// Format the organic search results from SerpAPI\nconst results = $input.first().json.organic_results;\nif (results.length === 0) {\n return [{ json: { error: 'No search results found.' } }];\n}\nconst formattedResults = results.map(result => ({\n title: result.title || 'No title available',\n url: result.link || 'No link available',\n source: result.source || result.displayed_link || 'Unknown source'\n}));\nreturn formattedResults.map(result => ({ json: result }));\n"
       },
       "typeVersion": 2
     },

@@ -9,7 +9,7 @@
   "nodes": [
     {
       "id": "8a54ac1c-a072-42e6-a3ba-8cde33475eb5",
-      "name": "When clicking \u2018Test workflow\u2019",
+      "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         460,
@@ -68,11 +68,12 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         660,
-        -260
+        -460
       ],
       "parameters": {
-        "width": 504.88636363636317,
-        "content": "## Send data from Umami to A.I. and then save to Baserow\n\nYou can find out more about the stats available in the [Umami API](https://umami.is/docs/api/website-stats-api)\n\nRead the [case study here](https://rumjahn.com/how-to-analyze-umami-data-using-n8n-and-a-i-to-improve-seo-and-uncover-hidden-insights-for-better-content-optimization/).\n\n"
+        "width": 505,
+        "height": 320,
+        "content": "## Send data from Umami to A.I. and then save to Baserow\n\nYou can find out more about the stats available in the [Umami API](https://umami.is/docs/api/website-stats-api)\n\n[Watch youtube tutorial here](https://www.youtube.com/watch?v=hGzdhXyU-o8)\n\n[Get my SEO A.I. agent system here](https://2828633406999.gumroad.com/l/rumjahn)\n\nRead the [case study here](https://rumjahn.com/how-to-analyze-umami-data-using-n8n-and-a-i-to-improve-seo-and-uncover-hidden-insights-for-better-content-optimization/).\n\n"
       },
       "typeVersion": 1
     },
@@ -165,7 +166,7 @@
         260
       ],
       "parameters": {
-        "jsCode": "function transformToUrlString(items) {\n // In n8n, we need to check if items is an array and get the json property\n const data = items[0].json;\n \n if (!data) {\n console.log('No valid data found');\n return encodeURIComponent(JSON.stringify([]));\n }\n \n try {\n // Create a simplified object with the metrics\n const simplified = {\n pageviews: {\n value: parseInt(data.pageviews.value) || 0,\n prev: parseInt(data.pageviews.prev) || 0\n },\n visitors: {\n value: parseInt(data.visitors.value) || 0,\n prev: parseInt(data.visitors.prev) || 0\n },\n visits: {\n value: parseInt(data.visits.value) || 0,\n prev: parseInt(data.visits.prev) || 0\n },\n bounces: {\n value: parseInt(data.bounces.value) || 0,\n prev: parseInt(data.bounces.prev) || 0\n },\n totaltime: {\n value: parseInt(data.totaltime.value) || 0,\n prev: parseInt(data.totaltime.prev) || 0\n }\n };\n \n return encodeURIComponent(JSON.stringify(simplified));\n } catch (error) {\n console.log('Error processing data:', error);\n throw new Error('Invalid data structure');\n }\n}\n\n// Get the input data\nconst items = $input.all();\n\n// Process the data\nconst result = transformToUrlString(items);\n\n// Return the result\nreturn { json: { urlString: result } };"
+        "jsCode": "function transformToUrlString(items) {\n    // In n8n, we need to check if items is an array and get the json property\n    const data = items[0].json;\n    \n    if (!data) {\n        console.log('No valid data found');\n        return encodeURIComponent(JSON.stringify([]));\n    }\n    \n    try {\n        // Create a simplified object with the metrics\n        const simplified = {\n            pageviews: {\n                value: parseInt(data.pageviews.value) || 0,\n                prev: parseInt(data.pageviews.prev) || 0\n            },\n            visitors: {\n                value: parseInt(data.visitors.value) || 0,\n                prev: parseInt(data.visitors.prev) || 0\n            },\n            visits: {\n                value: parseInt(data.visits.value) || 0,\n                prev: parseInt(data.visits.prev) || 0\n            },\n            bounces: {\n                value: parseInt(data.bounces.value) || 0,\n                prev: parseInt(data.bounces.prev) || 0\n            },\n            totaltime: {\n                value: parseInt(data.totaltime.value) || 0,\n                prev: parseInt(data.totaltime.prev) || 0\n            }\n        };\n        \n        return encodeURIComponent(JSON.stringify(simplified));\n    } catch (error) {\n        console.log('Error processing data:', error);\n        throw new Error('Invalid data structure');\n    }\n}\n\n// Get the input data\nconst items = $input.all();\n\n// Process the data\nconst result = transformToUrlString(items);\n\n// Return the result\nreturn { json: { urlString: result } };"
       },
       "typeVersion": 2
     },
@@ -181,7 +182,7 @@
         "url": "https://openrouter.ai/api/v1/chat/completions",
         "method": "POST",
         "options": {},
-        "jsonBody": "={\n \"model\": \"meta-llama/llama-3.1-70b-instruct:free\",\n \"messages\": [\n {\n \"role\": \"user\",\n \"content\": \"You are an SEO expert. Here is data from Umami analytics of Pennibnotes.com. Where X is URL and Y is number of visitors. Give me a table summary of this data in markdown format:{{ $('Parse Umami data').item.json.urlString }}.\"\n }\n ]\n}",
+        "jsonBody": "={\n  \"model\": \"meta-llama/llama-3.1-70b-instruct:free\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"You are an SEO expert. Here is data from Umami analytics of Pennibnotes.com. Where X is URL and Y is number of visitors. Give me a table summary of this data in markdown format:{{ $('Parse Umami data').item.json.urlString }}.\"\n    }\n  ]\n}",
         "sendBody": true,
         "specifyBody": "json",
         "authentication": "genericCredentialType",
@@ -226,7 +227,7 @@
         260
       ],
       "parameters": {
-        "jsCode": "// Get input data\nconst data = $input.all();\n\n// Create URL-encoded string from the data\nconst encodedData = encodeURIComponent(JSON.stringify(data));\n\n// Return the encoded data\nreturn {\n json: {\n thisWeek: encodedData\n }\n};"
+        "jsCode": "// Get input data\nconst data = $input.all();\n\n// Create URL-encoded string from the data\nconst encodedData = encodeURIComponent(JSON.stringify(data));\n\n// Return the encoded data\nreturn {\n    json: {\n        thisWeek: encodedData\n    }\n};"
       },
       "typeVersion": 2
     },
@@ -261,7 +262,7 @@
         260
       ],
       "parameters": {
-        "jsCode": "// Get input data\nconst data = $input.all();\n\n// Create URL-encoded string from the data\nconst encodedData = encodeURIComponent(JSON.stringify(data));\n\n// Return the encoded data\nreturn {\n json: {\n lastweek: encodedData\n }\n};"
+        "jsCode": "// Get input data\nconst data = $input.all();\n\n// Create URL-encoded string from the data\nconst encodedData = encodeURIComponent(JSON.stringify(data));\n\n// Return the encoded data\nreturn {\n    json: {\n        lastweek: encodedData\n    }\n};"
       },
       "typeVersion": 2
     },
@@ -277,7 +278,7 @@
         "url": "https://openrouter.ai/api/v1/chat/completions",
         "method": "POST",
         "options": {},
-        "jsonBody": "={\n \"model\": \"meta-llama/llama-3.1-70b-instruct:free\",\n \"messages\": [\n {\n \"role\": \"user\",\n \"content\": \"You are an SEO expert. Here is data from Umami analytics of Pennibnotes.com. Where X is URL and Y is number of visitors. Compare the data from this week to last week. Present the data in a table using markdown and offer 5 improvement suggestions. This week:{{ $('Parse Umami data1').first().json.thisWeek }} Lastweek:{{ $json.lastweek }}\"\n }\n ]\n}\n\n",
+        "jsonBody": "={\n  \"model\": \"meta-llama/llama-3.1-70b-instruct:free\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"You are an SEO expert. Here is data from Umami analytics of Pennibnotes.com. Where X is URL and Y is number of visitors.  Compare the data from this week to last week. Present the data in a table using markdown and offer 5 improvement suggestions. This week:{{ $('Parse Umami data1').first().json.thisWeek }} Lastweek:{{ $json.lastweek }}\"\n    }\n  ]\n}\n\n",
         "sendBody": true,
         "specifyBody": "json",
         "authentication": "genericCredentialType",
@@ -338,7 +339,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "e28e067d-9245-4879-9321-4d21925f951e",
+  "versionId": "0c09e5c7-49a9-4f11-b93e-35659360fe02",
   "connections": {
     "Parse Umami": {
       "main": [
@@ -439,7 +440,7 @@
         ]
       ]
     },
-    "When clicking \u2018Test workflow\u2019": {
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {

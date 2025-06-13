@@ -36,7 +36,7 @@
         "url": "https://api.firecrawl.dev/v1/scrape",
         "method": "POST",
         "options": {},
-        "jsonBody": "={\n \"url\": \"{{ $json.query.url }}\",\n \"formats\": [\n \"markdown\"\n ]\n} ",
+        "jsonBody": "={\n  \"url\": \"{{ $json.query.url }}\",\n  \"formats\": [\n    \"markdown\"\n  ]\n} ",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -90,7 +90,7 @@
       "parameters": {
         "width": 620,
         "height": 200,
-        "content": "## Send URL got Crawl\nThis can be reused by Ai Agents and any Workspace to crawl a site. All that Workspace has to do is send a request:\n\n```json\n {\n \"url\": \"Some URL to Get\"\n }\n```"
+        "content": "## Send URL got Crawl\nThis can be reused by Ai Agents and any Workspace to crawl a site. All that Workspace has to do is send a request:\n\n```json\n {\n    \"url\": \"Some URL to Get\"\n  }\n```"
       },
       "typeVersion": 1
     }

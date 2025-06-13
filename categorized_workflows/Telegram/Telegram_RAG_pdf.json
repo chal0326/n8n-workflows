@@ -235,7 +235,7 @@
         220
       ],
       "parameters": {
-        "jsCode": "// Fun\u00e7\u00e3o para modificar os metadados do arquivo bin\u00e1rio\nfunction modifyBinaryMetadata(items) {\n for (const item of items) {\n if (item.binary && item.binary.data) {\n // Modifica o tipo MIME\n item.binary.data.mimeType = 'application/pdf';\n \n // Garante que o nome do arquivo termine com .pdf\n if (!item.binary.data.fileName.toLowerCase().endsWith('.pdf')) {\n item.binary.data.fileName += '.pdf';\n }\n \n // Atualiza o contentType no fileType (se existir)\n if (item.binary.data.fileType) {\n item.binary.data.fileType.contentType = 'application/pdf';\n }\n }\n }\n return items;\n}\n\n// Aplica a modifica\u00e7\u00e3o e retorna os itens atualizados\nreturn modifyBinaryMetadata($input.all());"
+        "jsCode": "// Função para modificar os metadados do arquivo binário\nfunction modifyBinaryMetadata(items) {\n  for (const item of items) {\n    if (item.binary && item.binary.data) {\n      // Modifica o tipo MIME\n      item.binary.data.mimeType = 'application/pdf';\n      \n      // Garante que o nome do arquivo termine com .pdf\n      if (!item.binary.data.fileName.toLowerCase().endsWith('.pdf')) {\n        item.binary.data.fileName += '.pdf';\n      }\n      \n      // Atualiza o contentType no fileType (se existir)\n      if (item.binary.data.fileType) {\n        item.binary.data.fileType.contentType = 'application/pdf';\n      }\n    }\n  }\n  return items;\n}\n\n// Aplica a modificação e retorna os itens atualizados\nreturn modifyBinaryMetadata($input.all());"
       },
       "typeVersion": 2
     },

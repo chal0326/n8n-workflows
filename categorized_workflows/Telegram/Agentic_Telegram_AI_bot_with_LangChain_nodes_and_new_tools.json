@@ -154,7 +154,7 @@
             }
           ]
         },
-        "toolDescription": "Call this tool to request a Dall-E-3 model, when the user asks to draw something. If you gеt a response from this tool, forward it to the Telegram tool.",
+        "toolDescription": "Call this tool to request a Dall-E-3 model, when the user asks to draw something. If you g\u0435t a response from this tool, forward it to the Telegram tool.",
         "nodeCredentialType": "openAiApi"
       },
       "credentials": {

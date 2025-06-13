@@ -32,7 +32,7 @@
       ],
       "parameters": {
         "name": "company",
-        "description": "Risponde alle domande relative a ci\u00f2 che ti viene chiesto"
+        "description": "Risponde alle domande relative a ciò che ti viene chiesto"
       },
       "typeVersion": 1
     },
@@ -91,7 +91,7 @@
         "color": 5,
         "width": 1400,
         "height": 240,
-        "content": "# STEP 4\n\n## RAG System\n\nClick on \"test workflow\" on n8n and \"Test AI agent\" on ElevenLabs. If everything is configured correctly, when you ask a question to the agent, the webhook on n8n is activated with the \"question\" field in the body filled with the question asked to the voice agent.\n\nThe AI \u200b\u200bAgent will extract the information from the vector database, send it to the model to create the response which will be sent via the response webhook to ElevenLabs which will transform it into voice"
+        "content": "# STEP 4\n\n## RAG System\n\nClick on \"test workflow\" on n8n and \"Test AI agent\" on ElevenLabs. If everything is configured correctly, when you ask a question to the agent, the webhook on n8n is activated with the \"question\" field in the body filled with the question asked to the voice agent.\n\nThe AI ​​Agent will extract the information from the vector database, send it to the model to create the response which will be sent via the response webhook to ElevenLabs which will transform it into voice"
       },
       "typeVersion": 1
     },
@@ -113,7 +113,7 @@
     },
     {
       "id": "ec053ee7-3a4a-4697-a08c-5645810d23f0",
-      "name": "When clicking \u2018Test workflow\u2019",
+      "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         -740,
@@ -134,7 +134,7 @@
         "url": "https://QDRANTURL/collections/COLLECTION",
         "method": "POST",
         "options": {},
-        "jsonBody": "{\n \"filter\": {}\n}",
+        "jsonBody": "{\n  \"filter\": {}\n}",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -169,7 +169,7 @@
         "url": "https://QDRANTURL/collections/COLLECTION/points/delete",
         "method": "POST",
         "options": {},
-        "jsonBody": "{\n \"filter\": {}\n}",
+        "jsonBody": "{\n  \"filter\": {}\n}",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -618,7 +618,7 @@
         ]
       ]
     },
-    "When clicking \u2018Test workflow\u2019": {
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {

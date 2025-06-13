@@ -390,7 +390,7 @@
         "color": 3,
         "width": 263.8708288482238,
         "height": 227.27233584499461,
-        "content": "### Configuration\n* Provide Your API Key\n* Set Background Color\n-HEX or values like white, transparent...\n* Select if Output Size / or Original Size should be used \n* Output Drive Folder\n ->Copy URL\n* Padding (Default 5%)"
+        "content": "### Configuration\n* Provide Your API Key\n* Set Background Color\n-HEX or values like white, transparent...\n* Select if Output Size / or Original  Size should be used \n* Output Drive Folder\n ->Copy URL\n* Padding (Default 5%)"
       },
       "typeVersion": 1
     },

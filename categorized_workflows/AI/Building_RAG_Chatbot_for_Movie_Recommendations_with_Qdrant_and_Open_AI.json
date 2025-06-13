@@ -9,7 +9,7 @@
   "nodes": [
     {
       "id": "06a34e3b-519a-4b48-afd0-4f2b51d2105d",
-      "name": "When clicking \u2018Test workflow\u2019",
+      "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         4980,
@@ -204,7 +204,7 @@
           "value": "a58HZKwcOy7lmz56"
         },
         "description": "Call this tool to get a list of recommended movies from a vector database. ",
-        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"positive_example\": {\n \"type\": \"string\",\n \"description\": \"A string with a movie description matching the user's positive recommendation request\"\n },\n \"negative_example\": {\n \"type\": \"string\",\n \"description\": \"A string with a movie description matching the user's negative anti-recommendation reuqest\"\n }\n}\n}",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"positive_example\": {\n      \"type\": \"string\",\n      \"description\": \"A string with a movie description matching the user's positive recommendation request\"\n    },\n    \"negative_example\": {\n      \"type\": \"string\",\n      \"description\": \"A string with a movie description matching the user's negative anti-recommendation reuqest\"\n    }\n}\n}",
         "specifyInputSchema": true
       },
       "typeVersion": 1.2
@@ -467,7 +467,7 @@
         "url": "https://edcc6735-2ffb-484f-b735-3467043828fe.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/imdb_1000_open_ai/points/query",
         "method": "POST",
         "options": {},
-        "jsonBody": "={\n \"query\": {\n \"recommend\": {\n \"positive\": [[{{ $json.positive_example }}]],\n \"negative\": [[{{ $json.negative_example }}]],\n \"strategy\": \"average_vector\"\n }\n },\n \"limit\":3\n}",
+        "jsonBody": "={\n  \"query\": {\n    \"recommend\": {\n      \"positive\": [[{{ $json.positive_example }}]],\n      \"negative\": [[{{ $json.negative_example }}]],\n      \"strategy\": \"average_vector\"\n    }\n  },\n  \"limit\":3\n}",
         "sendBody": true,
         "specifyBody": "json",
         "authentication": "predefinedCredentialType",
@@ -493,7 +493,7 @@
         "url": "https://edcc6735-2ffb-484f-b735-3467043828fe.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/imdb_1000_open_ai/points",
         "method": "POST",
         "options": {},
-        "jsonBody": "={\n \"ids\": [\"{{ $json.result.points[0].id }}\", \"{{ $json.result.points[1].id }}\", \"{{ $json.result.points[2].id }}\"],\n \"with_payload\":true\n}",
+        "jsonBody": "={\n    \"ids\": [\"{{ $json.result.points[0].id }}\", \"{{ $json.result.points[1].id }}\", \"{{ $json.result.points[2].id }}\"],\n    \"with_payload\":true\n}",
         "sendBody": true,
         "specifyBody": "json",
         "authentication": "predefinedCredentialType",
@@ -790,7 +790,7 @@
         ]
       ]
     },
-    "When clicking \u2018Test workflow\u2019": {
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {

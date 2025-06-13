@@ -1,82 +1,85 @@
 {
+  "id": "Eyh4jc7RK7rCTh4z",
   "meta": {
-    "instanceId": "4bcdfa475d937e8c2fc1d40936bca36ec49bdb2525076e1bd53cc12fc6c8756d"
+    "instanceId": "38fb1860cc6284b8af9ba3b485f32cc1851cd97470ef1b4a472b5e707f1c93b5",
+    "templateCredsSetupCompleted": true
   },
   "name": "My workflow 2",
   "tags": [],
   "nodes": [
     {
-      "id": "1562791c-33a9-425c-a774-32e328bd4715",
-      "name": "Token Request",
-      "type": "n8n-nodes-base.httpRequest",
-      "notes": "Get the token from Dartagnan that expires after 60 minutes",
+      "id": "084bcc9e-9d05-4b69-8cb1-eccdcb67358e",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        60,
-        200
+        500,
+        720
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "f593e3f1-adea-4ef7-9779-4f2436fe7774",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "position": [
+        1540,
+        880
       ],
       "parameters": {
-        "url": "https://app.dartagnan.io/oauth/v2/token",
-        "method": "POST",
         "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "client_id",
-              "value": "={{ $('Assign Credentials').item.json.client_id }}"
-            },
-            {
-              "name": "client_secret",
-              "value": "={{ $('Assign Credentials').item.json.client_secret }}"
-            },
-            {
-              "name": "grant_type",
-              "value": "client_credentials"
-            }
-          ]
+          "normalize": false,
+          "explicitArray": false
         }
       },
+      "executeOnce": true,
+      "typeVersion": 1
+    },
+    {
+      "id": "5906371f-d5da-4141-876f-542cb5d0d1a8",
+      "name": "GoogleTrends",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1280,
+        880
+      ],
+      "parameters": {
+        "url": "https://trends.google.it/trending/rss?geo=IT",
+        "options": {}
+      },
+      "executeOnce": true,
+      "retryOnFail": true,
       "typeVersion": 4.2
     },
     {
-      "id": "2d81394c-9898-419a-a832-339e66d56a29",
-      "name": "Assign Credentials",
+      "id": "7badc1ad-48c2-4142-88bb-fa3f442abd66",
+      "name": "CONFIG",
       "type": "n8n-nodes-base.set",
       "position": [
-        -400,
-        300
+        760,
+        880
       ],
       "parameters": {
         "options": {},
         "assignments": {
           "assignments": [
             {
-              "id": "debe5309-40f6-411d-8c4d-3b282cf1bba9",
-              "name": "client_id",
-              "type": "string",
-              "value": "Enter your Dartagnan client_id"
+              "id": "25d7e553-9678-40ad-bb69-e4eb4bce4d11",
+              "name": "min_traffic",
+              "type": "number",
+              "value": 500
             },
             {
-              "id": "6028c0c0-a701-449e-952e-46895280e4ef",
-              "name": "client_secret",
-              "type": "string",
-              "value": "Enter your Dartagnan client_secret"
+              "id": "decd0a3d-ddc5-45c3-a56f-ee1f14705019",
+              "name": "max_results",
+              "type": "number",
+              "value": 3
             },
             {
-              "id": "7e82aa01-18ff-4b76-802b-cc8cae987614",
-              "name": "instance_url",
+              "id": "12cdd78a-45a7-499e-8fe5-0ab6a7da8a10",
+              "name": "jina_key",
               "type": "string",
-              "value": "Enter your Braze instance_url like https://rest.fra-02.braze.eu for example"
-            },
-            {
-              "id": "a3c641d7-fdbd-4e96-a845-e2c5aad93398",
-              "name": "api_key",
-              "type": "string",
-              "value": "Enter your Braze API key"
+              "value": ""
             }
           ]
         }
@@ -84,123 +87,466 @@
       "typeVersion": 3.4
     },
     {
-      "id": "b80a8eda-bbf6-4560-8665-5128a97db217",
-      "name": "Dartagnan Project list",
-      "type": "n8n-nodes-base.httpRequest",
+      "id": "b92ad672-ea1d-4b5b-ae1d-0aa883c5db9a",
+      "name": "Get saved keywords",
+      "type": "n8n-nodes-base.googleSheets",
       "position": [
-        360,
-        200
+        1020,
+        880
       ],
       "parameters": {
-        "url": "https://app.dartagnan.io/api/public/projects",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "",
+          "cachedResultName": ""
         },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "",
+          "cachedResultUrl": "",
+          "cachedResultName": ""
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "0HENZXUy9PlxLx0O",
+          "name": "Google Sheets account"
+        }
+      },
+      "executeOnce": true,
+      "typeVersion": 4.5,
+      "alwaysOutputData": false
+    },
+    {
+      "id": "e5639494-d757-442f-942f-75927ecadd86",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        740,
+        1380
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "typeVersion": 3
+    },
+    {
+      "id": "2c81d605-6749-47a2-95ba-846d86388c04",
+      "name": "Mapping",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1000,
+        1380
+      ],
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
             {
-              "name": "Authorization",
-              "value": "=Bearer {{ $json.access_token }}"
+              "id": "7230decf-45d9-4006-b005-614fb1dede10",
+              "name": "summary",
+              "type": "string",
+              "value": "={{ $('content1').item.json.data.text.replaceAll('\\n', ' ').trim() }}\n---\n{{ $('content2').item.json.data.text.replaceAll('\\n', ' ').trim() }}\n---\n{{ $('content3').item.json.data.text.replaceAll('\\n', ' ').trim() }}"
+            },
+            {
+              "id": "ad8f7dcd-fc93-41f3-b643-db4a2b569119",
+              "name": "trending_keyword",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.trending_keyword }}"
+            },
+            {
+              "id": "a3838385-90e2-4308-b147-5ef6de4a2c19",
+              "name": "approx_traffic",
+              "type": "number",
+              "value": "={{ $('New keywords').item.json.approx_traffic }}"
+            },
+            {
+              "id": "fc8523d5-a68d-443b-ad49-9057dee85617",
+              "name": "pubDate",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.pubDate }}"
+            },
+            {
+              "id": "139fd57f-8ccc-453b-9f8f-94c9546bbd1c",
+              "name": "status",
+              "type": "string",
+              "value": "idea"
+            },
+            {
+              "id": "39fa6799-78db-453e-ad29-359ab441e912",
+              "name": "news_item_url1",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_url1 }}"
+            },
+            {
+              "id": "1e6e7545-526a-4003-ac92-520fa04cfe1d",
+              "name": "news_item_title1",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_title1 }}"
+            },
+            {
+              "id": "12c019fc-2fe6-41e8-a8b8-e38bdfa16215",
+              "name": "news_item_title2",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_title2 }}"
+            },
+            {
+              "id": "b14b5835-66b7-448c-b9a5-d9f85d9f7f12",
+              "name": "news_item_url2",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_url2 }}"
+            },
+            {
+              "id": "4df8d3e0-7c8d-40e1-8ed7-b1743a8bbf17",
+              "name": "news_item_title3",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_title3 }}"
+            },
+            {
+              "id": "7fe45e6d-1978-49b4-b289-c33e3d68f71a",
+              "name": "news_item_url3",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_url3 }}"
+            },
+            {
+              "id": "ef39509c-c4e7-49b1-9ee8-ad82a8af9514",
+              "name": "news_item_picture1",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_picture1 }}"
+            },
+            {
+              "id": "a2210ea6-8ee5-408a-9ba1-5e07bd4d7f1b",
+              "name": "news_item_source1",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_source1 }}"
+            },
+            {
+              "id": "b6136672-4c09-4da0-ba5b-d9026877ca1e",
+              "name": "news_item_picture2",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_picture2 }}"
+            },
+            {
+              "id": "f9a54dca-079c-4431-af34-6bb98a6d8711",
+              "name": "news_item_source2",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_source2 }}"
+            },
+            {
+              "id": "aa38fecd-3743-447f-aa54-a1a86b5ad717",
+              "name": "news_item_picture3",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_picture3 }}"
+            },
+            {
+              "id": "2ff53574-9f9d-4e35-afbe-161e77a58515",
+              "name": "news_item_source3",
+              "type": "string",
+              "value": "={{ $('New keywords').item.json.news_item_source3 }}"
             }
           ]
         }
       },
-      "typeVersion": 4.2
+      "typeVersion": 3.4
     },
     {
-      "id": "909eb4f9-d67e-4f5e-bdb6-67ef2da813a4",
-      "name": "Create email template",
-      "type": "n8n-nodes-base.httpRequest",
+      "id": "5ca98d8f-0bc6-4b77-a367-81ed2509deba",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
       "position": [
-        2420,
-        400
+        1580,
+        1180
       ],
       "parameters": {
-        "url": "=https://{{ $item(\"0\").$node[\"Assign Credentials\"].json[\"instance_url\"] }}/templates/email/create",
-        "method": "POST",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
+        "columns": {
+          "value": {
+            "status": "idea",
+            "pubDate": "={{ $json.pubDate }}",
+            "abstract": "={{ $json.abstract.replaceAll('  ', '').substring(0, 49999) }}",
+            "approx_traffic": "={{ $json.approx_traffic }}",
+            "news_item_url1": "={{ $json.news_item_url1 }}",
+            "news_item_url2": "={{ $json.news_item_url2 }}",
+            "news_item_url3": "={{ $json.news_item_url3 }}",
+            "news_item_title1": "={{ $json.news_item_title1 }}",
+            "news_item_title2": "={{ $json.news_item_title2 }}",
+            "news_item_title3": "={{ $json.news_item_title3 }}",
+            "trending_keyword": "={{ $json.trending_keyword }}",
+            "news_item_source1": "={{ $json.news_item_source1 }}",
+            "news_item_source2": "={{ $json.news_item_source2 }}",
+            "news_item_source3": "={{ $json.news_item_source3 }}",
+            "news_item_picture1": "={{ $json.news_item_picture1 }}",
+            "news_item_picture2": "={{ $json.news_item_picture2 }}",
+            "news_item_picture3": "={{ $json.news_item_picture3 }}"
+          },
+          "schema": [
+            {
+              "id": "status",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "status",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "trending_keyword",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "trending_keyword",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "approx_traffic",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "approx_traffic",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "abstract",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "abstract",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pubDate",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "pubDate",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_url1",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_url1",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_title1",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_title1",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_picture1",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_picture1",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_source1",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_source1",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_url2",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_url2",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_title2",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_title2",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_picture2",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_picture2",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_source2",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_source2",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_url3",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_url3",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_title3",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_title3",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_picture3",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_picture3",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "news_item_source3",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "news_item_source3",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
         },
-        "jsonBody": "={\n  \"template_name\": \"{{ $('Filter Braze vs Dartagnan').item.json.unified_name }}\",\n  \"subject\": \"Subject Line\",\n  \"body\": {{ $json.encoded_html }},\n  \"plaintext_body\":{{ $json.encoded_plaintext_body }}\n}",
-        "sendBody": true,
+        "options": {},
+        "operation": "append",
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "",
+          "cachedResultName": ""
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "",
+          "cachedResultUrl": "",
+          "cachedResultName": ""
+        }
+      },
+      "typeVersion": 4.5
+    },
+    {
+      "id": "41fcb412-ea5d-4adc-8d40-d72398537150",
+      "name": "New keywords",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1780,
+        880
+      ],
+      "parameters": {
+        "jsCode": "const max_results = $('CONFIG').first().json.max_results;\nconst min_traffic = $('CONFIG').first().json.min_traffic;\n\nconst gsheet = $(\"Get saved keywords\").all();\nconst gsheetKeys = gsheet.map(record => record.json.trending_keyword);\n\nconst items = $('XML').first().json.rss.channel.item;\nconst trafficKey = Object.keys(items[0]).find(key => key.includes(\"approx_traffic\"));\nconst parseTraffic = (traffic) => parseInt(traffic.replace('+', ''), 10);\n\nconst newItems = items.map(item => {\n    const links = Array.isArray(item[\"ht:news_item\"]) ? item[\"ht:news_item\"].slice(0, 3) : [];\n\n    const flattenedLinks = links.reduce((acc, news, index) => {\n        acc[`news_item_url${index + 1}`] = news[\"ht:news_item_url\"];\n        acc[`news_item_title${index + 1}`] = news[\"ht:news_item_title\"];\n        acc[`news_item_picture${index + 1}`] = news[\"ht:news_item_picture\"];\n        acc[`news_item_source${index + 1}`] = news[\"ht:news_item_source\"];\n        return acc;\n    }, {});\n\n    return {\n        trending_keyword: item.title,\n        approx_traffic: parseTraffic(item[trafficKey]),\n        pubDate: item.pubDate,\n        ...flattenedLinks, // Aggiungi i link\n    };\n}).filter(item => \n    item.approx_traffic >= min_traffic && \n    !gsheetKeys.includes(item.trending_keyword) // Filtra quelli già presenti in Google Sheets\n);\n\nlet sortedItems = newItems.sort((a, b) => b.approx_traffic - a.approx_traffic);\nif (max_results > 0) {\n    sortedItems = sortedItems.slice(0, max_results);\n}\n\nreturn sortedItems;\n"
+      },
+      "typeVersion": 2,
+      "alwaysOutputData": false
+    },
+    {
+      "id": "56a953da-15a7-48da-a299-c53a7947c45e",
+      "name": "content1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1020,
+        1700
+      ],
+      "parameters": {
+        "url": "=https://r.jina.ai/{{ $('New keywords').item.json.news_item_url1 }}",
+        "options": {},
         "sendHeaders": true,
-        "specifyBody": "json",
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $item(\"0\").$node[\"Assign Credentials\"].json[\"api_key\"] }}"
+              "value": "=Bearer {{ $('CONFIG').item.json.jina_key }}"
             },
             {
-              "name": "Content-Type",
+              "name": "Accept",
               "value": "application/json"
-            }
-          ]
-        }
-      },
-      "typeVersion": 4.2
-    },
-    {
-      "id": "0820220a-5ea6-42eb-bfd2-f697dcf37a8a",
-      "name": "List Available Email Template Braze",
-      "type": "n8n-nodes-base.httpRequest",
-      "position": [
-        60,
-        420
-      ],
-      "parameters": {
-        "url": "=https://{{ $('Assign Credentials').item.json.instance_url }}/templates/email/list ",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        },
-        "sendQuery": true,
-        "sendHeaders": true,
-        "queryParameters": {
-          "parameters": [
-            {}
-          ]
-        },
-        "headerParameters": {
-          "parameters": [
+            },
             {
-              "name": "Authorization",
-              "value": "=Bearer {{ $('Assign Credentials').item.json.api_key }}"
+              "name": "X-Remove-Selector",
+              "value": "a, link, script, footer, img, svg"
+            },
+            {
+              "name": "X-Retain-Images",
+              "value": "none"
+            },
+            {
+              "name": "X-Return-Format",
+              "value": "text"
             }
           ]
         }
       },
-      "executeOnce": false,
       "typeVersion": 4.2
     },
     {
-      "id": "dcfec31d-c42c-4545-91a0-3b2e3350d375",
-      "name": "Filtered Project Campaign",
+      "id": "e3dbb73f-eac8-47aa-b621-0775dd09c5bf",
+      "name": "content2",
       "type": "n8n-nodes-base.httpRequest",
-      "notes": "POC Avec la derniere valeur avant iteration sur une boucle for dans la v2",
       "position": [
-        640,
-        200
+        1280,
+        1700
       ],
       "parameters": {
-        "url": "=https://app.dartagnan.io/api/public/projects/{{ $json.id }}",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        },
+        "url": "=https://r.jina.ai/{{ $('New keywords').item.json.news_item_url2 }}",
+        "options": {},
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer  {{ $('Token Request').item.json.access_token }}"
+              "value": "=Bearer {{ $('CONFIG').item.json.jina_key }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Remove-Selector",
+              "value": "a, link, script, footer, img, svg"
+            },
+            {
+              "name": "X-Retain-Images",
+              "value": "none"
+            },
+            {
+              "name": "X-Return-Format",
+              "value": "text"
             }
           ]
         }
@@ -208,199 +554,38 @@
       "typeVersion": 4.2
     },
     {
-      "id": "1aba6e4c-d3b0-49f8-8bcb-bece8cce4b4d",
-      "name": "Filtering Dartagnan Campaigns",
-      "type": "n8n-nodes-base.set",
-      "position": [
-        840,
-        200
-      ],
-      "parameters": {
-        "options": {},
-        "assignments": {
-          "assignments": [
-            {
-              "id": "e82823f9-e094-48e6-9d10-8d10c126ffa8",
-              "name": "id",
-              "type": "string",
-              "value": "={{ $json.campaigns[0].id }}"
-            },
-            {
-              "id": "31ddce2b-7366-448c-a68f-bfea4dcb057b",
-              "name": "campaign_name",
-              "type": "string",
-              "value": "={{ $json.campaigns[0].name }}"
-            },
-            {
-              "id": "0eb93a91-fbd5-45f9-b47c-89340f716909",
-              "name": "=unified_name",
-              "type": "string",
-              "value": "={{ $json.campaigns[0].name }}-{{ $json.campaigns[0].id }}"
-            },
-            {
-              "id": "e784ad19-301f-45f7-b90b-27bcce06b6dc",
-              "name": "creation_date",
-              "type": "string",
-              "value": "={{ $json.campaigns[0].created }}"
-            },
-            {
-              "id": "8e99802a-1342-4482-afc7-fbe22df6cffc",
-              "name": "update_date",
-              "type": "string",
-              "value": "={{ $json.campaigns[0].updated }}"
-            },
-            {
-              "id": "f5814048-5cb6-465f-a95a-c56913c9ed2d",
-              "name": "created_by",
-              "type": "string",
-              "value": "={{ $json.campaigns[0].createdBy.firstname }} {{ $json.campaigns[0].createdBy.lastname }}"
-            },
-            {
-              "id": "19442a15-bf61-47e1-987f-709de70f8f08",
-              "name": "modified_by",
-              "type": "string",
-              "value": "={{ $json.campaigns[0].updatedBy.firstname }} {{ $json.campaigns[0].updatedBy.lastname }}"
-            },
-            {
-              "id": "b75db148-0006-4327-a418-49347da5b970",
-              "name": "access_token",
-              "type": "string",
-              "value": "={{ $('Token Request').item.json.access_token }}"
-            }
-          ]
-        }
-      },
-      "typeVersion": 3.4
-    },
-    {
-      "id": "ee26ca98-2c42-4e69-ab34-cc2d737c22f8",
-      "name": "Split Out",
-      "type": "n8n-nodes-base.splitOut",
-      "position": [
-        360,
-        420
-      ],
-      "parameters": {
-        "options": {},
-        "fieldToSplitOut": "templates"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "08d8372f-38cb-4722-95aa-c89bfcc36dff",
-      "name": "Filtering Braze Email Template",
-      "type": "n8n-nodes-base.set",
-      "position": [
-        800,
-        420
-      ],
-      "parameters": {
-        "options": {},
-        "assignments": {
-          "assignments": [
-            {
-              "id": "920fd95b-bf48-494d-9d55-d5d961fd459f",
-              "name": "braze_template_name",
-              "type": "string",
-              "value": "={{ $json.template_name }}"
-            },
-            {
-              "id": "8425c3c2-07c3-4c3d-a58e-e8d1460fea9c",
-              "name": "email_template_id",
-              "type": "string",
-              "value": "={{ $json.email_template_id }}"
-            },
-            {
-              "id": "1944b20a-147b-4b4d-9558-f2927de9b2f2",
-              "name": "created_at",
-              "type": "string",
-              "value": "={{ $json.created_at }}"
-            },
-            {
-              "id": "850a4a0a-d27b-43cb-a8a3-2d810a5fdc13",
-              "name": "updated_at",
-              "type": "string",
-              "value": "={{ $json.updated_at }}"
-            }
-          ]
-        }
-      },
-      "typeVersion": 3.4
-    },
-    {
-      "id": "3e07fa37-8afd-4d88-85a3-53a4f000f898",
-      "name": "Not existing In Braze",
-      "type": "n8n-nodes-base.merge",
-      "position": [
-        1160,
-        420
-      ],
-      "parameters": {
-        "mode": "combine",
-        "options": {},
-        "advanced": true,
-        "joinMode": "keepNonMatches",
-        "mergeByFields": {
-          "values": [
-            {
-              "field1": "unified_name",
-              "field2": "braze_template_name"
-            }
-          ]
-        }
-      },
-      "typeVersion": 3
-    },
-    {
-      "id": "210a9d44-f58f-4788-89bd-934dfc0fca41",
-      "name": "Existing In Braze",
-      "type": "n8n-nodes-base.merge",
-      "position": [
-        1140,
-        200
-      ],
-      "parameters": {
-        "mode": "combine",
-        "options": {},
-        "advanced": true,
-        "mergeByFields": {
-          "values": [
-            {
-              "field1": "unified_name",
-              "field2": "braze_template_name"
-            }
-          ]
-        }
-      },
-      "typeVersion": 3
-    },
-    {
-      "id": "59f8270b-b988-452b-aaf0-0e7b35490449",
-      "name": "Dartagnan HTML & MEDIA To Update",
+      "id": "0723267a-5e4e-40e2-87bf-4c215c79b66c",
+      "name": "content3",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1740,
-        180
+        1560,
+        1700
       ],
       "parameters": {
-        "url": "=https://app.dartagnan.io/api/public/campaigns/{{ $json.id }}",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        },
-        "sendQuery": true,
+        "url": "=https://r.jina.ai/{{ $('New keywords').item.json.news_item_url3 }}",
+        "options": {},
         "sendHeaders": true,
-        "queryParameters": {
-          "parameters": [
-            {}
-          ]
-        },
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer  {{ $('Token Request').item.json.access_token }}"
+              "value": "=Bearer {{ $('CONFIG').item.json.jina_key }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Remove-Selector",
+              "value": "a, link, script, footer, img, svg"
+            },
+            {
+              "name": "X-Retain-Images",
+              "value": "none"
+            },
+            {
+              "name": "X-Return-Format",
+              "value": "text"
             }
           ]
         }
@@ -408,312 +593,19 @@
       "typeVersion": 4.2
     },
     {
-      "id": "04b26314-cb00-4a90-a7fe-019936a5ba2a",
-      "name": "Encode Content To Update",
-      "type": "n8n-nodes-base.set",
-      "position": [
-        2180,
-        180
-      ],
-      "parameters": {
-        "options": {},
-        "assignments": {
-          "assignments": [
-            {
-              "id": "fb308822-842f-4559-b5c9-96853c79e00e",
-              "name": "encoded_html",
-              "type": "string",
-              "value": "={{JSON.stringify( $json.html  )}} "
-            },
-            {
-              "id": "390b747b-967d-45f4-9faf-3aaed605d769",
-              "name": "encoded_plaintext_body",
-              "type": "string",
-              "value": "={{JSON.stringify($json.text)}} "
-            }
-          ]
-        }
-      },
-      "typeVersion": 3.4
-    },
-    {
-      "id": "1455fd2e-85ee-4844-8c4b-755870dc9cee",
-      "name": "Dartagnan HTML & MEDIA Campagne to Create",
-      "type": "n8n-nodes-base.httpRequest",
-      "position": [
-        1760,
-        400
-      ],
-      "parameters": {
-        "url": "=https://app.dartagnan.io/api/public/campaigns/{{ $json.id }}",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        },
-        "sendQuery": true,
-        "sendHeaders": true,
-        "queryParameters": {
-          "parameters": [
-            {}
-          ]
-        },
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer  {{ $('Token Request').item.json.access_token }}"
-            }
-          ]
-        }
-      },
-      "typeVersion": 4.2
-    },
-    {
-      "id": "214d8b4b-c512-4d1f-8115-8491f6fc9272",
-      "name": "Encode Content to Create",
-      "type": "n8n-nodes-base.set",
-      "position": [
-        2200,
-        400
-      ],
-      "parameters": {
-        "options": {},
-        "assignments": {
-          "assignments": [
-            {
-              "id": "fb308822-842f-4559-b5c9-96853c79e00e",
-              "name": "encoded_html",
-              "type": "string",
-              "value": "={{JSON.stringify( $json.html  )}} "
-            },
-            {
-              "id": "390b747b-967d-45f4-9faf-3aaed605d769",
-              "name": "encoded_plaintext_body",
-              "type": "string",
-              "value": "={{JSON.stringify($json.text)}} "
-            }
-          ]
-        }
-      },
-      "typeVersion": 3.4
-    },
-    {
-      "id": "90158667-eeda-4d44-b45c-c6e7fa02e664",
-      "name": "If campaign is modified recently",
-      "type": "n8n-nodes-base.if",
-      "position": [
-        1420,
-        200
-      ],
-      "parameters": {
-        "options": {},
-        "conditions": {
-          "options": {
-            "version": 2,
-            "leftValue": "",
-            "caseSensitive": true,
-            "typeValidation": "strict"
-          },
-          "combinator": "and",
-          "conditions": [
-            {
-              "id": "7e9c9fd3-2ef9-47ce-bccb-9b3320472d36",
-              "operator": {
-                "type": "dateTime",
-                "operation": "after"
-              },
-              "leftValue": "={{ $json.update_date }}",
-              "rightValue": "={{ $json.updated_at }}"
-            }
-          ]
-        }
-      },
-      "typeVersion": 2.2
-    },
-    {
-      "id": "55aecc9b-d5a6-4a6b-a986-3ddfae200b94",
-      "name": "Filter Braze vs Dartagnan",
-      "type": "n8n-nodes-base.if",
-      "position": [
-        1440,
-        420
-      ],
-      "parameters": {
-        "options": {},
-        "conditions": {
-          "options": {
-            "version": 2,
-            "leftValue": "",
-            "caseSensitive": true,
-            "typeValidation": "strict"
-          },
-          "combinator": "and",
-          "conditions": [
-            {
-              "id": "7e9c9fd3-2ef9-47ce-bccb-9b3320472d36",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              },
-              "leftValue": "={{ $json.unified_name }}",
-              "rightValue": "="
-            }
-          ]
-        }
-      },
-      "typeVersion": 2.2
-    },
-    {
-      "id": "ff2a47df-983f-42f5-9c96-431fccbdb8ef",
-      "name": "Embed image in HTML",
-      "type": "n8n-nodes-base.code",
-      "position": [
-        1960,
-        180
-      ],
-      "parameters": {
-        "jsCode": "// n8n Code Node: HTML Image URL Replacer\n// This script replaces all image references in HTML with their direct URLs\n// It's designed to work with the data structure you provided\n\n/**\n * Main function to process the incoming data in n8n\n * Expects an item with html and medias properties\n */\nfunction processData(item) {\n  // Extract the HTML and media mappings from the item\n  const { html, medias } = item.json;\n\n  // Process the HTML and replace all image references\n  const processedHtml = replaceImageReferences(html, medias);\n\n  // Return the processed data\n  return {\n    json: {\n      ...item.json,\n      html: processedHtml\n    }\n  };\n}\n\n/**\n * Replace all image references in HTML with direct URLs\n * @param {string} html - The HTML content to process\n * @param {Object} medias - Key-value pairs mapping image paths to direct URLs\n * @returns {string} - Processed HTML with direct URLs\n */\nfunction replaceImageReferences(html, medias) {\n  if (!html || !medias) {\n    throw new Error('Missing required parameters: html or medias');\n  }\n  \n  let updatedHtml = html;\n  \n  // Process each media URL\n  Object.entries(medias).forEach(([imagePath, directUrl]) => {\n    // For safety, escape special regex characters in the image path\n    const escapedPath = imagePath.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\n    \n    // 1. Replace in img src attributes\n    updatedHtml = updatedHtml.replace(\n      new RegExp(`src=[\"']${escapedPath}[\"']`, 'g'), \n      match => match.replace(imagePath, directUrl)\n    );\n    \n    // 2. Replace in background attributes\n    updatedHtml = updatedHtml.replace(\n      new RegExp(`background=[\"']${escapedPath}[\"']`, 'g'), \n      match => match.replace(imagePath, directUrl)\n    );\n    \n    // 3. Replace in v:fill src attributes (for Outlook)\n    updatedHtml = updatedHtml.replace(\n      new RegExp(`<v:fill[^>]*src=[\"']${escapedPath}[\"'][^>]*>`, 'g'), \n      match => match.replace(imagePath, directUrl)\n    );\n    \n    // 4. Replace in CSS background and background-image styles\n    // Handle various quote styles and syntax patterns\n    const backgroundPatterns = [\n      `background-image:\\\\s*url\\\\(['\"]?${escapedPath}['\"]?\\\\)`,\n      `background:\\\\s*url\\\\(['\"]?${escapedPath}['\"]?\\\\)`,\n      `background:\\\\s*[^;]*url\\\\(['\"]?${escapedPath}['\"]?\\\\)`,\n    ];\n    \n    backgroundPatterns.forEach(pattern => {\n      updatedHtml = updatedHtml.replace(\n        new RegExp(pattern, 'g'),\n        match => match.replace(imagePath, directUrl)\n      );\n    });\n    \n    // 5. Replace in CSS class references\n    // This is more complex and depends on your HTML structure\n    // Extract file name for matching class names\n    const fileNameMatch = imagePath.match(/\\/([^\\/]+)\\.([^\\.]+)$/);\n    if (fileNameMatch) {\n      const fileName = fileNameMatch[1];\n      const fileExt = fileNameMatch[2];\n      \n      // Handle class names like \"bgiurlimagesdiv2dpng\"\n      const classPatterns = [\n        `bgiurlimagesdiv${fileName}d${fileExt}`,\n        `bgurlimagesdiv${fileName}d${fileExt}`\n      ];\n      \n      classPatterns.forEach(pattern => {\n        // Replace the class name and also update the associated styles if needed\n        updatedHtml = updatedHtml.replace(\n          new RegExp(`class=[\"'][^\"']*${pattern}[^\"']*[\"']`, 'g'),\n          match => match.replace(pattern, `direct-url-${Date.now()}`)\n        );\n      });\n    }\n  });\n  \n  return updatedHtml;\n}\n\n// This is the main execution for n8n\n// It processes each item in the incoming array and returns the results\nreturn items.map(processData);"
-      },
-      "typeVersion": 2
-    },
-    {
-      "id": "0fbdb7d6-64a3-40ae-8187-8afcb76451e8",
-      "name": "Embed image in HTML 1",
-      "type": "n8n-nodes-base.code",
-      "position": [
-        1960,
-        400
-      ],
-      "parameters": {
-        "jsCode": "// n8n Code Node: HTML Image URL Replacer\n// This script replaces all image references in HTML with their direct URLs\n// It's designed to work with the data structure you provided\n\n/**\n * Main function to process the incoming data in n8n\n * Expects an item with html and medias properties\n */\nfunction processData(item) {\n  // Extract the HTML and media mappings from the item\n  const { html, medias } = item.json;\n\n  // Process the HTML and replace all image references\n  const processedHtml = replaceImageReferences(html, medias);\n\n  // Return the processed data\n  return {\n    json: {\n      ...item.json,\n      html: processedHtml\n    }\n  };\n}\n\n/**\n * Replace all image references in HTML with direct URLs\n * @param {string} html - The HTML content to process\n * @param {Object} medias - Key-value pairs mapping image paths to direct URLs\n * @returns {string} - Processed HTML with direct URLs\n */\nfunction replaceImageReferences(html, medias) {\n  if (!html || !medias) {\n    throw new Error('Missing required parameters: html or medias');\n  }\n  \n  let updatedHtml = html;\n  \n  // Process each media URL\n  Object.entries(medias).forEach(([imagePath, directUrl]) => {\n    // For safety, escape special regex characters in the image path\n    const escapedPath = imagePath.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\n    \n    // 1. Replace in img src attributes\n    updatedHtml = updatedHtml.replace(\n      new RegExp(`src=[\"']${escapedPath}[\"']`, 'g'), \n      match => match.replace(imagePath, directUrl)\n    );\n    \n    // 2. Replace in background attributes\n    updatedHtml = updatedHtml.replace(\n      new RegExp(`background=[\"']${escapedPath}[\"']`, 'g'), \n      match => match.replace(imagePath, directUrl)\n    );\n    \n    // 3. Replace in v:fill src attributes (for Outlook)\n    updatedHtml = updatedHtml.replace(\n      new RegExp(`<v:fill[^>]*src=[\"']${escapedPath}[\"'][^>]*>`, 'g'), \n      match => match.replace(imagePath, directUrl)\n    );\n    \n    // 4. Replace in CSS background and background-image styles\n    // Handle various quote styles and syntax patterns\n    const backgroundPatterns = [\n      `background-image:\\\\s*url\\\\(['\"]?${escapedPath}['\"]?\\\\)`,\n      `background:\\\\s*url\\\\(['\"]?${escapedPath}['\"]?\\\\)`,\n      `background:\\\\s*[^;]*url\\\\(['\"]?${escapedPath}['\"]?\\\\)`,\n    ];\n    \n    backgroundPatterns.forEach(pattern => {\n      updatedHtml = updatedHtml.replace(\n        new RegExp(pattern, 'g'),\n        match => match.replace(imagePath, directUrl)\n      );\n    });\n    \n    // 5. Replace in CSS class references\n    // This is more complex and depends on your HTML structure\n    // Extract file name for matching class names\n    const fileNameMatch = imagePath.match(/\\/([^\\/]+)\\.([^\\.]+)$/);\n    if (fileNameMatch) {\n      const fileName = fileNameMatch[1];\n      const fileExt = fileNameMatch[2];\n      \n      // Handle class names like \"bgiurlimagesdiv2dpng\"\n      const classPatterns = [\n        `bgiurlimagesdiv${fileName}d${fileExt}`,\n        `bgurlimagesdiv${fileName}d${fileExt}`\n      ];\n      \n      classPatterns.forEach(pattern => {\n        // Replace the class name and also update the associated styles if needed\n        updatedHtml = updatedHtml.replace(\n          new RegExp(`class=[\"'][^\"']*${pattern}[^\"']*[\"']`, 'g'),\n          match => match.replace(pattern, `direct-url-${Date.now()}`)\n        );\n      });\n    }\n  });\n  \n  return updatedHtml;\n}\n\n// This is the main execution for n8n\n// It processes each item in the incoming array and returns the results\nreturn items.map(processData);"
-      },
-      "typeVersion": 2
-    },
-    {
-      "id": "89acf2f3-940b-47e9-81e3-2d458d3018ee",
-      "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -460,
-        80
-      ],
-      "parameters": {
-        "height": 400,
-        "content": "## Authentication Set Up\n\nObtain an access token from Dartagnan\nPrepare credentials for both Dartagnan and Braze"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "317cd699-6686-42a0-ba6d-8f6405338356",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        60,
-        480
-      ],
-      "parameters": {
-        "color": 5,
-        "width": 960,
-        "height": 380,
-        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Template Discovery\n\n\nList all existing email templates in Braze"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "d59b0dac-439e-4160-8879-b306ccd18773",
-      "name": "Sticky Note2",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        0,
-        0
-      ],
-      "parameters": {
-        "width": 260,
-        "height": 380,
-        "content": "## Authentication Token\n\nObtain an access token from Dartagnan"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "dc38ec97-ca50-4944-89f1-535f23420cfc",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        300,
-        0
-      ],
-      "parameters": {
-        "color": 5,
-        "width": 460,
-        "height": 380,
-        "content": "## Template Discovery\n\nRetrieve project and campaign details from Dartagnan\n"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "5fd7d7dc-f314-411a-ba0a-4af14874f96b",
-      "name": "Sticky Note4",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        1040,
-        0
-      ],
-      "parameters": {
-        "color": 5,
-        "width": 600,
-        "height": 680,
-        "content": "## Comparison and Sync\n\nCompare Dartagnan templates with existing Braze templates\nIdentify templates to update (top Branch) or create ( Lower Branch)"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "e198dca0-0278-4b67-9807-90796ff2d644",
-      "name": "Sticky Note5",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        1660,
-        0
-      ],
-      "parameters": {
-        "color": 5,
-        "width": 980,
-        "height": 680,
-        "content": "## Template Processing\n\nExtract HTML and media from Dartagnan templates\nReplace image references with direct URLs\nPrepare templates for Braze\nUpdate existing templates in Braze ( upper branch ) \nCreate new templates in Braze as needed ( lower branch ) "
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "321eb50a-66a2-4951-b61b-e0869a91b6a0",
-      "name": "Sticky Note6",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -980,
-        80
-      ],
-      "parameters": {
-        "color": 4,
-        "width": 460,
-        "height": 380,
-        "content": "## Trigger\n\nTrigger is scheduled to run every 5 minutes, you can change this, but bear in mind to stay in the API rate limits of each vendor\n"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "8e0984c5-ec70-4ca5-97fe-0bdd24acd95c",
-      "name": "Every 5 minutes start",
+      "id": "8621b782-a182-479a-afa1-de0b525d3909",
+      "name": "Start every hour past 11 minutes",
       "type": "n8n-nodes-base.scheduleTrigger",
-      "notes": "This node is a scheduled trigger that will synchronize ever",
       "position": [
-        -660,
-        300
+        500,
+        880
       ],
       "parameters": {
         "rule": {
           "interval": [
             {
-              "field": "minutes"
+              "field": "cronExpression",
+              "expression": "11 */1 * * *"
             }
           ]
         }
@@ -721,35 +613,210 @@
       "typeVersion": 1.2
     },
     {
-      "id": "adb2c227-d27e-44fc-8f6e-0b3d02952ef9",
-      "name": "Update existing email template in Braze",
-      "type": "n8n-nodes-base.httpRequest",
+      "id": "d04e89cd-a578-45d9-88f2-be4c72407049",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2400,
-        180
+        420,
+        560
       ],
       "parameters": {
-        "url": "=https://{{ $('Assign Credentials').item.json.instance_url }}/templates/email/update ",
-        "method": "POST",
+        "color": 5,
+        "height": 1300,
+        "content": "## Cron trigger\nGoogle Trends update the RSS feed every 10 minutes. This will start wordflow 1 minute after. "
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "4644b6ca-43da-42ab-870c-eeb52610208c",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        680,
+        560
+      ],
+      "parameters": {
+        "color": 3,
+        "height": 480,
+        "content": "## CONFIGURATION\nmin_traffic is a numeric value. Google Trend RSS has an approx traffic value 100, 200, 500, 1000 etc.\n\nmax_result is a numeric value used to limit max rss to scrape\n\njina_key is the jina.ai API key"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "b4ac3f6a-dc72-4e3e-9fa1-80298a66ddf9",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        940,
+        560
+      ],
+      "parameters": {
+        "height": 480,
+        "content": "## Google Sheet Database\nThis is main sheet where all your Editorial plan will be saved.\n\nThe column status value could be a trigger for other automations"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "09fa9ed7-2557-46ae-857f-e251bf25b10e",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1200,
+        560
+      ],
+      "parameters": {
+        "height": 480,
+        "content": "## Google Trends request\n\nWe get last kwyword in trend. Every item has a main keyword and 3 URL. We will use those url to scrape content and generate a combined summary"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "6d3d6f90-4eae-4239-b8cd-bfdb40bf01e9",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1460,
+        560
+      ],
+      "parameters": {
+        "height": 480,
+        "content": "## Simple conversion\n\nConverts XML RSS into a more readable json object"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "3b5dd19f-ac2d-426b-8853-1af3819e10f6",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1720,
+        560
+      ],
+      "parameters": {
+        "height": 480,
+        "content": "## Building dataset\n\nHere we limits results, filter by mmin traffic and we flat the RSS structure to adapt to Google Sheet, fields are renamed as per description.\n\nThen RSS result and Google Sheet is compared, if a new keyword is found we have result. If RSS give a keyword already srtored, this node doesn't give any output."
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "cce50db5-6566-439c-9b90-3f8720411613",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        940,
+        1080
+      ],
+      "parameters": {
+        "height": 460,
+        "content": "## Data mapping\n\nHere you have all fields needed in Google Sheet.\n\nWhile done, the content of 3 website linked in Google Trends RSS will be merged in a single Summary field"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "d57a8c16-21c6-4388-bb91-093428061ac5",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1200,
+        1080
+      ],
+      "parameters": {
+        "color": 3,
+        "height": 460,
+        "content": "## Data check\n\nSometimes scraping HTML content fails (for some reasons), that's normal but this should avoid to save a zero content if all 3 scraping nodes will fail"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "2bcbf0a9-423d-45eb-a444-ab2140db2db6",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        680,
+        1080
+      ],
+      "parameters": {
+        "height": 460,
+        "content": "## Data mapping\n\nHere you have all fields needed in Google Sheet.\n\nWhile done, the content of 3 website linked in Google Trends RSS will be merged in a single Summary field"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "692b342c-c252-48c6-ad11-b58906aa62e2",
+      "name": "If we have scraped min 1 url -> Save",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1280,
+        1380
+      ],
+      "parameters": {
         "options": {},
-        "jsonBody": "={\n  \"email_template_id\": {{ $('If campaign is modified recently').item.json.campaign_name }},\n  \"template_name\": \"{{ $('If campaign is modified recently').item.json.unified_name }}\",\n  \"subject\": \"Subject Line\",\n  \"body\":{{ $json.encoded_html }} ,\n  \"plaintext_body\": {{ $json.encoded_plaintext_body }}\n} ",
-        "sendBody": true,
-        "sendHeaders": true,
-        "specifyBody": "json",
-        "headerParameters": {
-          "parameters": [
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
             {
-              "name": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "=Bearer  {{ $('Assign Credentials').item.json.api_key }}"
+              "id": "42b15ebc-f2f7-4dc0-957f-b04d1bdacb41",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.summary.length > 100 }}",
+              "rightValue": ""
             }
           ]
         }
       },
-      "typeVersion": 4.2
+      "typeVersion": 2.2
+    },
+    {
+      "id": "f2f94f0b-dcb4-4b52-86f8-c92aa2fc3d88",
+      "name": "All scraping node failed. Don't save record without summary",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1580,
+        1380
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "id": "d3f42eb0-5e37-40ff-a476-46b6384f2647",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        680,
+        1560
+      ],
+      "parameters": {
+        "color": 7,
+        "width": 1280,
+        "height": 300,
+        "content": "## Scraping\n\nHere jina.ai will get text content from 3 Google Trends URLs"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "8178a70e-f3d2-4157-8f4b-9adaf8932e8e",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1460,
+        1080
+      ],
+      "parameters": {
+        "color": 4,
+        "width": 500,
+        "height": 460,
+        "content": "## Saving output\n\n"
+      },
+      "typeVersion": 1
     }
   ],
   "active": false,
@@ -757,226 +824,159 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "",
+  "versionId": "81aec91d-f995-4a14-b801-ef44070e7153",
   "connections": {
-    "Split Out": {
+    "XML": {
       "main": [
         [
           {
-            "node": "Filtering Braze Email Template",
+            "node": "New keywords",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Token Request": {
+    "CONFIG": {
       "main": [
         [
           {
-            "node": "Dartagnan Project list",
+            "node": "Get saved keywords",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Existing In Braze": {
+    "Mapping": {
       "main": [
         [
           {
-            "node": "If campaign is modified recently",
+            "node": "If we have scraped min 1 url -> Save",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Assign Credentials": {
+    "content1": {
       "main": [
         [
           {
-            "node": "List Available Email Template Braze",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Token Request",
+            "node": "content2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Embed image in HTML": {
+    "content2": {
       "main": [
         [
           {
-            "node": "Encode Content To Update",
+            "node": "content3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Embed image in HTML 1": {
+    "content3": {
       "main": [
         [
           {
-            "node": "Encode Content to Create",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Every 5 minutes start": {
+    "GoogleTrends": {
       "main": [
         [
           {
-            "node": "Assign Credentials",
+            "node": "XML",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Not existing In Braze": {
+    "New keywords": {
       "main": [
         [
           {
-            "node": "Filter Braze vs Dartagnan",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Dartagnan Project list": {
+    "Loop Over Items": {
       "main": [
         [
           {
-            "node": "Filtered Project Campaign",
+            "node": "Mapping",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "content1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Encode Content To Update": {
+    "Get saved keywords": {
       "main": [
         [
           {
-            "node": "Update existing email template in Braze",
+            "node": "GoogleTrends",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Encode Content to Create": {
+    "Start every hour past 11 minutes": {
       "main": [
         [
           {
-            "node": "Create email template",
+            "node": "CONFIG",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Filter Braze vs Dartagnan": {
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {
-            "node": "Dartagnan HTML & MEDIA Campagne to Create",
+            "node": "CONFIG",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Filtered Project Campaign": {
+    "If we have scraped min 1 url -> Save": {
       "main": [
         [
           {
-            "node": "Filtering Dartagnan Campaigns",
+            "node": "Google Sheets",
             "type": "main",
             "index": 0
           }
-        ]
-      ]
-    },
-    "Filtering Dartagnan Campaigns": {
-      "main": [
+        ],
         [
           {
-            "node": "Existing In Braze",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Not existing In Braze",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filtering Braze Email Template": {
-      "main": [
-        [
-          {
-            "node": "Existing In Braze",
-            "type": "main",
-            "index": 1
-          },
-          {
-            "node": "Not existing In Braze",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Dartagnan HTML & MEDIA To Update": {
-      "main": [
-        [
-          {
-            "node": "Embed image in HTML",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If campaign is modified recently": {
-      "main": [
-        [
-          {
-            "node": "Dartagnan HTML & MEDIA To Update",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "List Available Email Template Braze": {
-      "main": [
-        [
-          {
-            "node": "Split Out",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Dartagnan HTML & MEDIA Campagne to Create": {
-      "main": [
-        [
-          {
-            "node": "Embed image in HTML 1",
+            "node": "All scraping node failed. Don't save record without summary",
             "type": "main",
             "index": 0
           }

@@ -22,7 +22,7 @@
   "nodes": [
     {
       "id": "ff65c2db-6a94-4e56-a10c-2538c9617df6",
-      "name": "When clicking ‘Test workflow’",
+      "name": "When clicking \u2018Test workflow\u2019",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         220,
@@ -177,7 +177,7 @@
         "url": "https://api.openai.com/v1/fine_tuning/jobs",
         "method": "POST",
         "options": {},
-        "jsonBody": "={\n  \"training_file\": \"{{ $json.id }}\",\n  \"model\": \"gpt-4o-mini-2024-07-18\"\n} ",
+        "jsonBody": "={\n \"training_file\": \"{{ $json.id }}\",\n \"model\": \"gpt-4o-mini-2024-07-18\"\n} ",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -252,7 +252,7 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
+    "When clicking \u2018Test workflow\u2019": {
       "main": [
         [
           {

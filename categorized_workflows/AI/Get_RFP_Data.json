@@ -70,7 +70,7 @@
       "parameters": {
         "mode": "raw",
         "options": {},
-        "jsonOutput": "={\n  \"doc_title\": \"{{ $('Wait for Request').item.json.body.title }}\",\n  \"doc_filename\": \"{{ $('Wait for Request').item.json.body.id }} | {{ $('Wait for Request').item.json.body.title }} | {{ $now.format('yyyyMMddhhmmss') }}| RFP Response\",\n  \"reply_to\": \"{{ $('Wait for Request').item.json.body.reply_to }}\"\n}\n"
+        "jsonOutput": "={\n \"doc_title\": \"{{ $('Wait for Request').item.json.body.title }}\",\n \"doc_filename\": \"{{ $('Wait for Request').item.json.body.id }} | {{ $('Wait for Request').item.json.body.title }} | {{ $now.format('yyyyMMddhhmmss') }}| RFP Response\",\n \"reply_to\": \"{{ $('Wait for Request').item.json.body.reply_to }}\"\n}\n"
       },
       "typeVersion": 3.3
     },
@@ -172,7 +172,7 @@
       "parameters": {
         "width": 421.778219154496,
         "height": 515.8006969458895,
-        "content": "## Try It Out!\n\n**This workflow does the following:**\n* Receives a RFP document via webhook\n* Creates a new RFP response document via Google Docs\n* Uses LLMs to extract the questions from the RFP document into a questions list\n* Loops through each question and uses an OpenAI Assistant to generate an answer. Saving each answer into the response document.\n* Once complete, sends a gmail and slack notification to the team.\n\n\n📃**Example Documents**\nTo run this workflow, you'll need to following 2 documents:\n* [RFP Document](https://drive.google.com/file/d/1G42h4Vz2lBuiNCnOiXF_-EBP1MaIEVq5/view?usp=sharing)\n* [Example Company Document](https://drive.google.com/file/d/16WywCYcxBgYHXB3TY3wXUTyfyG2n_BA0/view?usp=sharing)\n\n### Need Help?\nJoin the [Discord](https://discord.com/invite/XPKeKXeB7d) or ask in the [Forum](https://community.n8n.io/)!\n\nHappy Hacking!"
+        "content": "## Try It Out!\n\n**This workflow does the following:**\n* Receives a RFP document via webhook\n* Creates a new RFP response document via Google Docs\n* Uses LLMs to extract the questions from the RFP document into a questions list\n* Loops through each question and uses an OpenAI Assistant to generate an answer. Saving each answer into the response document.\n* Once complete, sends a gmail and slack notification to the team.\n\n\n\ud83d\udcc3**Example Documents**\nTo run this workflow, you'll need to following 2 documents:\n* [RFP Document](https://drive.google.com/file/d/1G42h4Vz2lBuiNCnOiXF_-EBP1MaIEVq5/view?usp=sharing)\n* [Example Company Document](https://drive.google.com/file/d/16WywCYcxBgYHXB3TY3wXUTyfyG2n_BA0/view?usp=sharing)\n\n### Need Help?\nJoin the [Discord](https://discord.com/invite/XPKeKXeB7d) or ask in the [Forum](https://community.n8n.io/)!\n\nHappy Hacking!"
       },
       "typeVersion": 1
     },
@@ -280,7 +280,7 @@
       "parameters": {
         "width": 192.30781285767205,
         "height": 306.5264325350084,
-        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🚨**Required**\n* Use a tool such as Postman to send data to the webhook."
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ud83d\udea8**Required**\n* Use a tool such as Postman to send data to the webhook."
       },
       "typeVersion": 1
     },
@@ -323,7 +323,7 @@
       "parameters": {
         "width": 306.8994213707367,
         "height": 481.01365258903786,
-        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🚨**Required**\nYou'll need to create an OpenAI Assistant to use this workflow.\n* Sign up for [OpenAI Dashboard](https://platform.openai.com) if you haven't already.\n* Create an [OpenAI Assistant](https://platform.openai.com/playground/assistants)\n* Upload the [example company doc](https://drive.google.com/file/d/16WywCYcxBgYHXB3TY3wXUTyfyG2n_BA0/view?usp=sharing) to the assistant.\n\nThe assistant will use the company doc to answer the questions."
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ud83d\udea8**Required**\nYou'll need to create an OpenAI Assistant to use this workflow.\n* Sign up for [OpenAI Dashboard](https://platform.openai.com) if you haven't already.\n* Create an [OpenAI Assistant](https://platform.openai.com/playground/assistants)\n* Upload the [example company doc](https://drive.google.com/file/d/16WywCYcxBgYHXB3TY3wXUTyfyG2n_BA0/view?usp=sharing) to the assistant.\n\nThe assistant will use the company doc to answer the questions."
       },
       "typeVersion": 1
     },
@@ -338,7 +338,7 @@
       "parameters": {
         "width": 386.79263167741857,
         "height": 94.04968721739164,
-        "content": "🚨**Required**\n* Update the email address to send to in Gmail Node.\n* Update the channel and message for Slack."
+        "content": "\ud83d\udea8**Required**\n* Update the email address to send to in Gmail Node.\n* Update the channel and message for Slack."
       },
       "typeVersion": 1
     },

@@ -1,152 +1,177 @@
 {
   "meta": {
-    "instanceId": "67d4d33d8b0ad4e5e12f051d8ad92fc35893d7f48d7f801bc6da4f39967b3592",
-    "templateCredsSetupCompleted": true
+    "instanceId": "6a2a7715680b8313f7cb4676321c5baa46680adfb913072f089f2766f42e43bd"
   },
   "nodes": [
     {
-      "id": "22c8d63b-ce3c-4aab-b3f6-4bae8c1b9ec5",
+      "id": "1340d672-61c8-403e-89a7-f28e3afbc0e7",
       "name": "Window Buffer Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "position": [
-        1460,
-        880
+        1760,
+        540
       ],
       "parameters": {
-        "sessionKey": "={{ $json.sessionId }}",
-        "sessionIdType": "customKey",
-        "contextWindowLength": 20
+        "sessionKey": "=335458847",
+        "sessionIdType": "customKey"
+      },
+      "typeVersion": 1.3
+    },
+    {
+      "id": "3c770b79-d6c5-4512-94fa-7719af6d0620",
+      "name": "Get Chart",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        1900,
+        560
+      ],
+      "parameters": {
+        "name": "getChart",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "LCT4zHJr8LcjM6a7",
+          "cachedResultName": "Trading Agent"
+        },
+        "description": "Call this tool to get an analysis of a requested stock. The URL that is output from this tool must be returned in markdown format. For example, ![](url)\n\nIt'll be obligatory to pass ticker and chart style. Both can be specified by user. If chart style is not specified by user, use \"candle\" as default. Possible options for style: [bar, candle, line, area, heikinAshi, hollowCandle, baseline, hiLo, column]",
+        "workflowInputs": {
+          "value": {
+            "ticker": "={{ $fromAI(\"ticker\") }}",
+            "chart_style": "={{ $fromAI(\"chart_style\") }}"
+          },
+          "schema": [
+            {
+              "id": "ticker",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "ticker",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chart_style",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "chart_style",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "a44b48ac-9bfc-4988-81d7-177357971558",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        1660,
+        320
+      ],
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "options": {
+          "systemMessage": "=# Overview  \n\nYou are an AI agent specializing in  analyzing stocks. You can perform technical analysis using the **GetChart** tool to generate stock graphs.  \n\n\n# Instructions \n\n1. Begin by offering a warm and professional greeting.\n2. Maintain a conversational style when discussing finance and stock markets.\n3. If a user requests technical analysis of a stock, supplying its ticker:\n- Send only the stock ticker to the GetChart tool.\n- Present the chart's analysis and insights in a conversational format.\n4. When addressing financial subjects, provide thorough, easy-to-understand explanations suitable for the user's knowledge.\n5. Refrain from giving direct financial recommendations(buy or sell) or making predictions.\n\n\n## Tools  \n\n- **GetChart**: Used for generating stock graphs based on provided tickers.  \n\n## Standard Operating Procedure\n\n1. Interact with the user: Maintain a professional and approachable demeanor.\n2. Conduct stock analysis:\n- Upon request for technical analysis, send the stock's ticker symbol to the GetChart tool.\n- Present the chart's findings in an easy-to-understand, conversational manner.\n3. Clarify financial topics: Simplify intricate terms into accessible explanations suitable for the user's knowledge level.\n4. Refrain from offering financial recommendations: Deliver information and analysis without suggesting specific actions.\n5. Verify user understanding: Ask clarifying questions to ensure all needs are met."
+        },
+        "promptType": "define"
+      },
+      "typeVersion": 1.7
+    },
+    {
+      "id": "a6d405f0-52c5-4937-85cd-7ef6e4a596b6",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "position": [
+        760,
+        320
+      ],
+      "webhookId": "dbf7f0b7-5cdd-45a3-8c91-39f0665aba76",
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "UajcuBAYm5PEbptW",
+          "name": "Telegram Philipp"
+        }
+      },
+      "typeVersion": 1.1
+    },
+    {
+      "id": "22bd61a2-45cb-4074-a027-28a9a0d327f5",
+      "name": "Send Analysis",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        2040,
+        320
+      ],
+      "webhookId": "949b8c67-29b9-4714-8a42-b0e59e91ae10",
+      "parameters": {
+        "text": "={{ $json.output }}",
+        "chatId": "=335458847",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "UajcuBAYm5PEbptW",
+          "name": "Telegram Philipp"
+        }
       },
       "typeVersion": 1.2
     },
     {
-      "id": "45403d5c-6e85-424f-b40b-c6214b57457b",
-      "name": "Respond to Webhook",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "position": [
-        1880,
-        580
-      ],
-      "parameters": {
-        "options": {}
-      },
-      "typeVersion": 1.1
-    },
-    {
-      "id": "1111262a-1743-4bae-abf1-f69d2e1a580c",
-      "name": "OpenAI Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "position": [
-        1360,
-        760
-      ],
-      "parameters": {
-        "model": "gpt-4o-2024-08-06",
-        "options": {
-          "temperature": 0.4
-        }
-      },
-      "credentials": {
-        "openAiApi": {
-          "id": "XWFTuTtx9oWglhNn",
-          "name": "OpenAi account"
-        }
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "df891547-c715-4dc6-bfcc-c0ac5cfcaf02",
-      "name": "Make Appointment",
-      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
-      "position": [
-        1820,
-        840
-      ],
-      "parameters": {
-        "url": "https://graph.microsoft.com/v1.0/me/events",
-        "method": "POST",
-        "jsonBody": "{\n  \"subject\": \"Meetings with <name> at <company>\",\n  \"start\": {\n    \"dateTime\": \"{dateStartTime}\",\n    \"timeZone\": \"Europe/London\"\n  },\n  \"end\": {\n    \"dateTime\": \"{dateEndTime}\",\n    \"timeZone\": \"Europe/London\"\n  },\n  \"body\": {\n    \"contentType\": \"HTML\",\n    \"content\": \"{reason}\"\n  },\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"address\": \"{email}\",\n        \"name\": \"{name}\"\n      },\n      \"type\": \"required\"\n    }\n  ],\n  \"location\": {\n    \"displayName\": \"Online Meeting\"\n  },\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"showAs\": \"busy\",\n  \"categories\": [\n    \"Meeting\"\n  ]\n}",
-        "sendBody": true,
-        "sendQuery": true,
-        "specifyBody": "json",
-        "authentication": "predefinedCredentialType",
-        "parametersQuery": {
-          "values": [
-            {
-              "name": "Content-Type",
-              "value": "application/json",
-              "valueProvider": "fieldValue"
-            }
-          ]
-        },
-        "toolDescription": "Call this tool to make the appointment, ensure you send the user email, name, company, reason for the meeting and the appointment start time and the date in ISO String format with timezone for <timezone>. When creating an appointment, always send JSON.",
-        "nodeCredentialType": "microsoftOutlookOAuth2Api",
-        "placeholderDefinitions": {
-          "values": [
-            {
-              "name": "dateStartTime",
-              "type": "string",
-              "description": "The date and start time of the appointment in toISOString format with timezone for Europe/London"
-            },
-            {
-              "name": "dateEndTime",
-              "type": "string",
-              "description": "The date and end time of the appointment in toISOString format, always 30 minutes after the dateStartTime,  format with timezone for Europe/London"
-            },
-            {
-              "name": "reason",
-              "type": "string",
-              "description": "Detailed description of the meeting, will be sent to us and the customer"
-            },
-            {
-              "name": "email",
-              "type": "string",
-              "description": "The customers email address."
-            },
-            {
-              "name": "name",
-              "type": "string",
-              "description": "The customers full name, must be second and last name"
-            }
-          ]
-        }
-      },
-      "credentials": {
-        "microsoftOutlookOAuth2Api": {
-          "id": "E0WY3yUNKgrxIwLU",
-          "name": "Microsoft Outlook Business"
-        }
-      },
-      "typeVersion": 1.1
-    },
-    {
-      "id": "44141c44-de49-4707-b287-24007c84ca21",
-      "name": "Execute Workflow Trigger",
+      "id": "6f18a794-c302-47c3-8516-d14597408ae7",
+      "name": "Workflow Input Trigger",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        2160,
-        580
+        780,
+        960
       ],
-      "parameters": {},
-      "typeVersion": 1
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "ticker"
+            },
+            {
+              "name": "chart_style"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1.1
     },
     {
-      "id": "795e1451-57d8-4563-8b86-5a75df2427b6",
-      "name": "varResponse",
+      "id": "102a021b-c0bb-4bdb-bca1-a4f0f7a84687",
+      "name": "response",
       "type": "n8n-nodes-base.set",
       "position": [
-        3120,
-        460
+        2040,
+        960
       ],
       "parameters": {
         "options": {},
         "assignments": {
           "assignments": [
             {
-              "id": "c0b6e779-0f7b-41f0-81f8-457f2b31ccfe",
+              "id": "fdf7e016-7082-4146-9038-454139023990",
               "name": "response",
-              "type": "array",
-              "value": "={{ $json.freeTimeSlots.toJsonString() }}"
+              "type": "string",
+              "value": "={{ $('Technical Analysis').item.json.choices[0].message.content }}"
             }
           ]
         }
@@ -154,165 +179,121 @@
       "typeVersion": 3.4
     },
     {
-      "id": "4283635f-649c-4cc7-84b9-37524ddb6ce0",
-      "name": "freeTimeSlots",
-      "type": "n8n-nodes-base.code",
-      "position": [
-        2900,
-        460
-      ],
-      "parameters": {
-        "jsCode": "// Input: An array with objects containing a 'value' array of events.\nconst businessHoursStart = \"08:00:00Z\";  // Business hours start time\nconst businessHoursEnd = \"17:30:00Z\";    // Business hours end time\n\nconst inputData = items[0].json.value;  // Assuming the input data is in the 'value' array of the first item\n\n// Function to convert ISO datetime string to a Date object with specified time\nfunction getDateWithTime(dateString, time) {\n  const datePart = new Date(dateString).toISOString().split(\"T\")[0];  // Extract the date part (YYYY-MM-DD)\n  return new Date(`${datePart}T${time}`);\n}\n\n// Function to get day of the week from a date string\nfunction getDayOfWeek(dateString) {\n  const daysOfWeek = [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"];\n  return daysOfWeek[new Date(dateString).getUTCDay()];\n}\n\n// Function to add days to a date\nfunction addDays(date, days) {\n  const result = new Date(date);\n  result.setDate(result.getDate() + days);\n  return result;\n}\n\n// Function to format date as YYYY-MM-DD\nfunction formatDate(date) {\n  return date.toISOString().split('T')[0];\n}\n\n// Determine the default timezone from input data\nconst defaultTimeZone = inputData.length > 0 && inputData[0].start && inputData[0].start.timeZone \n  ? inputData[0].start.timeZone \n  : \"UTC\";\n\n// Find min and max dates in the input\nlet minDate = null;\nlet maxDate = null;\n\ninputData.forEach(event => {\n  if (event.start && event.start.dateTime) {\n    const eventDate = new Date(event.start.dateTime);\n    if (!minDate || eventDate < minDate) {\n      minDate = eventDate;\n    }\n    if (!maxDate || eventDate > maxDate) {\n      maxDate = eventDate;\n    }\n  }\n});\n\n// If we have valid dates, ensure they're at the start of the day\nif (minDate && maxDate) {\n  minDate = new Date(minDate.toISOString().split('T')[0]);\n  maxDate = new Date(maxDate.toISOString().split('T')[0]);\n}\n\n// Organise events by date\nconst eventsByDate = {};\ninputData.forEach(event => {\n  if (event.start && event.start.dateTime) {\n    const eventDate = new Date(event.start.dateTime).toISOString().split(\"T\")[0];  // Extract the date\n    if (!eventsByDate[eventDate]) {\n      eventsByDate[eventDate] = [];\n    }\n    if (event.showAs === \"busy\") {\n      eventsByDate[eventDate].push({\n        start: new Date(event.start.dateTime),\n        end: new Date(event.end.dateTime),\n        timeZone: event.start.timeZone || defaultTimeZone\n      });\n    }\n  }\n});\n\n// Find free slots within business hours for each date\nconst freeTimeSlots = [];\n\n// Process all dates in the range\nif (minDate && maxDate) {\n  for (let currentDate = new Date(minDate); currentDate <= maxDate; currentDate = addDays(currentDate, 1)) {\n    const dateStr = formatDate(currentDate);\n    const busyEvents = eventsByDate[dateStr] || [];\n    \n    // Define business start and end times for the current date\n    const businessStart = getDateWithTime(dateStr, businessHoursStart);\n    const businessEnd = getDateWithTime(dateStr, businessHoursEnd);\n    \n    // If there are no busy events for this date, add the entire business day as free\n    if (busyEvents.length === 0) {\n      freeTimeSlots.push({\n        date: dateStr,\n        dayOfWeek: getDayOfWeek(dateStr),\n        freeStart: businessStart.toISOString(),\n        freeEnd: businessEnd.toISOString(),\n        timeZone: defaultTimeZone\n      });\n      continue; // Skip to the next date\n    }\n    \n    // Sort events by their start time\n    busyEvents.sort((a, b) => a.start - b.start);\n    \n    // Check if there's free time before the first busy event\n    if (busyEvents[0].start > businessStart) {\n      freeTimeSlots.push({\n        date: dateStr,\n        dayOfWeek: getDayOfWeek(dateStr),\n        freeStart: businessStart.toISOString(),\n        freeEnd: busyEvents[0].start.toISOString(),\n        timeZone: busyEvents[0].timeZone\n      });\n    }\n    \n    // Check for gaps between busy events\n    for (let i = 0; i < busyEvents.length - 1; i++) {\n      if (busyEvents[i].end < busyEvents[i+1].start) {\n        freeTimeSlots.push({\n          date: dateStr,\n          dayOfWeek: getDayOfWeek(dateStr),\n          freeStart: busyEvents[i].end.toISOString(),\n          freeEnd: busyEvents[i+1].start.toISOString(),\n          timeZone: busyEvents[i].timeZone\n        });\n      }\n    }\n    \n    // Check if there's free time after the last busy event\n    if (busyEvents[busyEvents.length - 1].end < businessEnd) {\n      freeTimeSlots.push({\n        date: dateStr,\n        dayOfWeek: getDayOfWeek(dateStr),\n        freeStart: busyEvents[busyEvents.length - 1].end.toISOString(),\n        freeEnd: businessEnd.toISOString(),\n        timeZone: busyEvents[busyEvents.length - 1].timeZone\n      });\n    }\n  }\n}\n\n// Output the free time slots\nreturn [{ json: { freeTimeSlots } }];\n"
-      },
-      "typeVersion": 2
-    },
-    {
-      "id": "0786b561-449e-4c8f-bddb-c2bbd95dc197",
-      "name": "Get Events",
+      "id": "ba96d38a-5a12-44a0-927f-5893cd91ac9b",
+      "name": "Download Chart",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        2680,
-        460
+        1440,
+        960
       ],
       "parameters": {
-        "url": "=https://graph.microsoft.com/v1.0/me/calendarView",
-        "options": {},
-        "sendQuery": true,
-        "sendHeaders": true,
-        "authentication": "predefinedCredentialType",
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "startDateTime",
-              "value": "={{ new Date(new Date().setDate(new Date().getDate() + 2)).toISOString() }}"
-            },
-            {
-              "name": "endDateTime",
-              "value": "={{ new Date(new Date().setDate(new Date().getDate() + 16)).toISOString() }}"
-            },
-            {
-              "name": "$top",
-              "value": "50"
-            },
-            {
-              "name": "select",
-              "value": "start,end,categories,importance,isAllDay,recurrence,showAs,subject,type"
-            },
-            {
-              "name": "orderby",
-              "value": "start/dateTime asc"
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "typeVersion": 4.2
+    },
+    {
+      "id": "7deaf5b4-0280-46d2-b9f8-4d14a67f60b6",
+      "name": "Get Chart URL",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1220,
+        960
+      ],
+      "parameters": {
+        "url": "https://api.chart-img.com/v2/tradingview/advanced-chart/storage",
+        "method": "POST",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
             }
-          ]
+          }
         },
+        "jsonBody": "={\n  \"style\": \"{{ $json.chart_style }}\",\n  \"theme\": \"light\",\n  \"interval\": \"1W\",\n  \"symbol\": \"NASDAQ:{{ $json.ticker }}\",\n  \"override\": {\n    \"showStudyLastValue\": false\n  },\n  \"studies\": [\n    {\n      \"name\": \"Volume\",\n      \"forceOverlay\": true\n    },\n{\n      \"name\": \"Relative Strength Index\"\n    },\n{\n      \"name\": \"Stochastic RSI\"\n}\n  ]\n}",
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "headerParameters": {
           "parameters": [
             {
-              "name": "Prefer",
-              "value": "outlook.timezone=\"Europe/London\""
+              "name": "Content-Type",
+              "value": "application/json"
             }
           ]
-        },
-        "nodeCredentialType": "microsoftOutlookOAuth2Api"
+        }
       },
       "credentials": {
-        "microsoftOutlookOAuth2Api": {
-          "id": "E0WY3yUNKgrxIwLU",
-          "name": "Microsoft Outlook Business"
+        "httpHeaderAuth": {
+          "id": "Go406nynVPn88QIS",
+          "name": "Header Auth account 3"
         }
       },
       "typeVersion": 4.2
     },
     {
-      "id": "55c4233e-d395-4193-9a1d-1884faed6f1e",
-      "name": "Get Availability",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "id": "46ebe865-b13b-4d7d-8acf-a10d78ba4b5b",
+      "name": "Send Chart",
+      "type": "n8n-nodes-base.telegram",
       "position": [
-        1760,
-        1080
+        1840,
+        960
       ],
+      "webhookId": "a42b988a-cd3a-4cf0-8975-7a38c8b510ba",
       "parameters": {
-        "name": "Get_availability",
-        "fields": {
-          "values": [
-            {
-              "name": "route",
-              "stringValue": "availability"
-            }
-          ]
-        },
-        "workflowId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "KD21RG8VeXYDS2Vf",
-          "cachedResultName": "Website Chatbot"
-        },
-        "description": "Call this tool to check my calendar for availability before booking an appointment. This will result in all events for the next 2 weeks. Review all events and do not double book."
+        "file": "={{ $('Get Chart URL').item.json.url }}",
+        "chatId": "335458847",
+        "operation": "sendPhoto",
+        "additionalFields": {}
       },
-      "typeVersion": 1.2
-    },
-    {
-      "id": "096d1962-31e6-4b3b-ba75-7956f70a6a32",
-      "name": "Send Message",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "position": [
-        1620,
-        1080
-      ],
-      "parameters": {
-        "name": "Send_email",
-        "fields": {
-          "values": [
-            {
-              "name": "route",
-              "stringValue": "message"
-            }
-          ]
-        },
-        "workflowId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "KD21RG8VeXYDS2Vf",
-          "cachedResultName": "Website Chatbot"
-        },
-        "description": "Call this tool when the customer wants to speak to a human, or is not ready to make an appointment or if the customer has questions outside of your remit. The tool will send an email to our founder, <insert name>. Always send the customer's full name, company and email address along with a detailed message about the enquiry. You must always gather project details.",
-        "jsonSchemaExample": "{\n\t\"email\": \"the customer's email\",\n    \"subject\": \"the subject of the email\",\n    \"message\": \"The customer's enquiry, must be a detailed description of their enquiry\",\n    \"name\": \"the customer's full name\",\n    \"company\": \"the customer company name\"\n}",
-        "specifyInputSchema": true
-      },
-      "typeVersion": 1.2
-    },
-    {
-      "id": "285ddd31-5412-4d1c-ab80-d9960ec902bb",
-      "name": "Chat Trigger",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "disabled": true,
-      "position": [
-        620,
-        600
-      ],
-      "webhookId": "f406671e-c954-4691-b39a-66c90aa2f103",
-      "parameters": {
-        "mode": "webhook",
-        "public": true,
-        "options": {
-          "responseMode": "responseNode",
-          "allowedOrigins": "*"
+      "credentials": {
+        "telegramApi": {
+          "id": "UajcuBAYm5PEbptW",
+          "name": "Telegram Philipp"
         }
       },
-      "typeVersion": 1
+      "typeVersion": 1.2
     },
     {
-      "id": "032a26e9-6853-490d-991b-b2af2d845f58",
+      "id": "e5a62237-af1e-42dd-befd-51aa0e0a0c08",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        1600,
+        540
+      ],
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "9RivS2BmSh1DDBFm",
+          "name": "OpenAI Philipp"
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "c3d63b6f-5908-4e64-9063-1910024b0ed4",
       "name": "Switch",
       "type": "n8n-nodes-base.switch",
       "position": [
-        2380,
-        580
+        940,
+        320
       ],
       "parameters": {
         "rules": {
           "values": [
             {
-              "outputKey": "availability",
+              "outputKey": "Voice",
               "conditions": {
                 "options": {
                   "version": 2,
@@ -325,17 +306,18 @@
                   {
                     "operator": {
                       "type": "string",
-                      "operation": "equals"
+                      "operation": "exists",
+                      "singleValue": true
                     },
-                    "leftValue": "={{ $json.route }}",
-                    "rightValue": "availability"
+                    "leftValue": "={{ $json.message.voice.file_id }}",
+                    "rightValue": ""
                   }
                 ]
               },
               "renameOutput": true
             },
             {
-              "outputKey": "message",
+              "outputKey": "Text",
               "conditions": {
                 "options": {
                   "version": 2,
@@ -346,14 +328,14 @@
                 "combinator": "and",
                 "conditions": [
                   {
-                    "id": "52fd844b-cc8d-471f-a56a-40e119b66194",
+                    "id": "8c844924-b2ed-48b0-935c-c66a8fd0c778",
                     "operator": {
-                      "name": "filter.operator.equals",
                       "type": "string",
-                      "operation": "equals"
+                      "operation": "exists",
+                      "singleValue": true
                     },
-                    "leftValue": "={{ $json.route }}",
-                    "rightValue": "message"
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": ""
                   }
                 ]
               },
@@ -366,24 +348,64 @@
       "typeVersion": 3.2
     },
     {
-      "id": "c74905ce-4fd9-486c-abc4-b0b1d57d71a8",
-      "name": "varMessageResponse",
-      "type": "n8n-nodes-base.set",
+      "id": "1d27102b-47c9-4aa7-a93c-71699326960d",
+      "name": "Transcribe",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
       "position": [
-        2900,
-        700
+        1460,
+        240
       ],
       "parameters": {
-        "options": {
-          "ignoreConversionErrors": false
-        },
+        "options": {},
+        "resource": "audio",
+        "operation": "transcribe"
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "9RivS2BmSh1DDBFm",
+          "name": "OpenAI Philipp"
+        }
+      },
+      "typeVersion": 1.6
+    },
+    {
+      "id": "1252b926-9965-4499-a539-3c7e2a7eb151",
+      "name": "Download File",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1300,
+        240
+      ],
+      "webhookId": "83bb7385-33f6-4105-8294-1a91c0ebbee5",
+      "parameters": {
+        "fileId": "={{ $json.message.voice.file_id }}",
+        "resource": "file"
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "UajcuBAYm5PEbptW",
+          "name": "Telegram Philipp"
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "3777f861-d933-4a95-af74-2e787beda709",
+      "name": "Set Text",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1360,
+        440
+      ],
+      "parameters": {
+        "options": {},
         "assignments": {
           "assignments": [
             {
-              "id": "0d2ad084-9707-4979-84e4-297d1c21f725",
-              "name": "response",
+              "id": "fe7ecc99-e1e8-4a5e-bdd6-6fce9757b234",
+              "name": "text",
               "type": "string",
-              "value": "={{ $json }}"
+              "value": "={{ $json.message.text }}"
             }
           ]
         }
@@ -391,247 +413,459 @@
       "typeVersion": 3.4
     },
     {
-      "id": "04c5d43c-1629-4e11-a6bb-ae73369d7002",
-      "name": "Send Message1",
-      "type": "n8n-nodes-base.microsoftOutlook",
+      "id": "5630eed3-7b99-400f-ad54-bf72c7e52570",
+      "name": "Set Values",
+      "type": "n8n-nodes-base.set",
       "position": [
-        2680,
-        700
-      ],
-      "webhookId": "d8acc2cb-fcba-4312-a743-e74abe76d071",
-      "parameters": {
-        "subject": "={{ $('Execute Workflow Trigger').item.json.query.subject }}",
-        "bodyContent": "=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>New Webchat Customer Enquiry</title>\n    <style type=\"text/css\">\n        /* Client-specific styles */\n        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }\n        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }\n        img { -ms-interpolation-mode: bicubic; }\n\n        /* Reset styles */\n        body { margin: 0; padding: 0; }\n        img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }\n        table { border-collapse: collapse !important; }\n        body { height: 100% !important; margin: 0; padding: 0; width: 100% !important; }\n\n        /* iOS BLUE LINKS */\n        a[x-apple-data-detectors] {\n            color: inherit !important;\n            text-decoration: none !important;\n            font-size: inherit !important;\n            font-family: inherit !important;\n            font-weight: inherit !important;\n            line-height: inherit !important;\n        }\n\n        /* Styles for Outlook and other email clients */\n        .ExternalClass { width: 100%; }\n        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }\n        \n        /* Responsive styles */\n        @media screen and (max-width: 600px) {\n            .container { width: 100% !important; }\n            .content { padding: 15px !important; }\n            .field { padding: 10px !important; }\n            .header h1 { font-size: 20px !important; }\n            .header p { font-size: 12px !important; }\n        }\n    </style>\n</head>\n<body style=\"margin: 0; padding: 0; background-color: #f4f4f4;\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n            <td>\n                <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"border-collapse: collapse; background-color: #ffffff;\">\n                    <tr>\n                        <td align=\"center\" bgcolor=\"#1a1a1a\" style=\"padding: 30px 0; background: linear-gradient(135deg, #1a1a1a 0%, #2d1f3d 100%);\">\n                            <h1 style=\"color: #ffffff; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 1px;\">New Customer Enquiry</h1>\n                            <p style=\"color: #ffffff; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; margin: 10px 0 0; opacity: 0.8;\">A potential client has reached out through our webchat</p>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"padding: 20px;\">\n                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n                                <tr>\n                                    <td style=\"padding: 15px; background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px;\">\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #6a1b9a; font-weight: bold; margin: 0 0 5px 0;\">FROM</p>\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333333; margin: 0;\">{{ $('Execute Workflow Trigger').item.json.query.name }}</p>\n                                    </td>\n                                </tr>\n                                <tr><td height=\"20\"></td></tr>\n                                <tr>\n                                    <td style=\"padding: 15px; background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px;\">\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #6a1b9a; font-weight: bold; margin: 0 0 5px 0;\">EMAIL</p>\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333333; margin: 0;\">{{ $('Execute Workflow Trigger').item.json.query.email }}</p>\n                                    </td>\n                                </tr>\n                                <tr><td height=\"20\"></td></tr>\n                                <tr>\n                                    <td style=\"padding: 15px; background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px;\">\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #6a1b9a; font-weight: bold; margin: 0 0 5px 0;\">COMPANY</p>\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333333; margin: 0;\">{{ $('Execute Workflow Trigger').item.json.query.company }}</p>\n                                    </td>\n                                </tr>\n                                <tr><td height=\"20\"></td></tr>\n                                <tr>\n                                    <td style=\"padding: 15px; background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px;\">\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #6a1b9a; font-weight: bold; margin: 0 0 5px 0;\">MESSAGE</p>\n                                        <p style=\"font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333333; margin: 0;\">{{ $('Execute Workflow Trigger').item.json.query.message }}</p>\n                                    </td>\n                                </tr>\n                            </table>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td align=\"center\" bgcolor=\"#e90ebb\" style=\"padding: 20px; background: linear-gradient(135deg, #e90ebb 0%, #6a1b9a 100%);\">\n                            <p style=\"font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #ffffff; margin: 0;\">This enquiry was automatically generated from our website's chat interface.</p>\n                        </td>\n                    </tr>\n                </table>\n            </td>\n        </tr>\n    </table>\n</body>\n</html>",
-        "toRecipients": "you@yourdomain.com",
-        "additionalFields": {
-          "importance": "High",
-          "bodyContentType": "html"
-        }
-      },
-      "credentials": {
-        "microsoftOutlookOAuth2Api": {
-          "id": "E0WY3yUNKgrxIwLU",
-          "name": "Microsoft Outlook Business"
-        }
-      },
-      "typeVersion": 2
-    },
-    {
-      "id": "5a2636f1-47d3-4421-840b-56553bf14d82",
-      "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        1580,
-        1000
-      ],
-      "parameters": {
-        "width": 311.6936390497898,
-        "height": 205.34013605442183,
-        "content": "Ensure these referance this workflow, replace placeholders"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "a9fe05d4-6b86-4313-9f11-b20e3ce7db89",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        2600,
-        380
-      ],
-      "parameters": {
-        "width": 468,
-        "height": 238,
-        "content": "modify business hours\nmodify timezones"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "5dfda5c9-eeeb-421a-a80d-f42c94602080",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "position": [
-        1460,
-        580
-      ],
-      "parameters": {
-        "text": "={{ $json.chatInput }}",
-        "options": {
-          "systemMessage": "=You are an intelligent personal assistant to Wayne, Founder at nocodecreative.io (ai consultancy and software development agency) responsible for coordinating appointments and gathering relevant information from customers. Your tasks are to:\n\n- Understand when the customer is available by asking for suitable days and times (ensuring they are aware we are in a UK timezone)\n- Check the calendar to identify available slots that match their preferences. Pay attention to each event's start and end time and do not double book, you will be given all events for the next 14 days\n- Ask the customer what they would like to discuss during the appointment to ensure proper preparation.\n- Get the customer's name, company name and email address to book the appointment\n- Make the conversation friendly and natural. Confirm the appointment details with the customer and let them know I’ll be ready to discuss what they’d like.\n- After you have checked the calendar, book the appointment accordingly, without double booking. Confirm the customer's timezone and adjust the appointment for EU/London.\n- If the customer isn't ready to book, you can send an email for a human to respond to, ensure you gather a detailed enquiry from the customer including contact details and project information.Ensure the message contains enough information for a human to respond, always include project details, if the customer hasn't provided project details, ask.\n- Alwways suggest an appointment before sending a message, appointment are you primary goal, message are a fall back\n\nExample questions:\n\n\"Hi there! we'd love to help arrange a time that works for us to meet. Could you let us know which days and times are best for you? We’ll check the calendar and book in a suitable slot.\"\n\n\"Could you please let us know what you’d like to discuss during the appointment? This helps us prepare in advance and make our time together as productive as possible.\"\n\n\"Before we put you in touch with a human, please can you provide more information about the project you have in mind?\" //You must gather project info at all times, even if the enquiry is about pricing/costs.\n\nIf the time the customer suggests is not available, suggest the nearest alternative appointment based on existing events, do not book an appointment outside of freeTimeSlots\n\nImportant information:\n- All appointments need 48 hours' notice from {{ \n  new Date().toLocaleString(\"en-GB\", { timeZone: \"Europe/London\", hour12: false })\n  .split(\", \")[0].split(\"/\").reverse().join(\"-\") \n  + \"T\" + new Date().toLocaleTimeString(\"en-GB\", { timeZone: \"Europe/London\", hour12: false }) + \":00.000Z\" \n}} (current date and time in the UK) // this is non-negotiable, but discuss with care and be friendly, only let the customer know this if required\n- Business hours are 8am - 6pm Monday to Friday only Europe/London timezone, ensure the customer is aware of this and help them book during UK hours, you must confirm their timezone to do this!\n- Do not book appointments on a Saturday or sunday\n- Do not book appointments outside of freeTimeSlots\n- Always check the next 14 days, and review all events before providing availability \n- All appointments are for a max of 30 minutes\n- You must never offer an appointment without checking the calendar, if you cannot check the calendar, you cannot book and must let the customer know you can not book an appointment right now.\n- Always offer the soonest appointment available if the customer's preferred time is unavailable\n- When confirming an appointment, be thankful and excited!\n- Initial 30 minute consultation are free of charge\n\n\nMessages and description:\n- When creating descriptions or sending messages, always ensure enough detail is provided for preparation, meaning you can ask follow-up questions to extract further information as required. For example, if a customer asks about pricing, gather some information about the project so our team can provide accurate pricing, and apply this logic throughout\n\nComments:\n//!IMPORTANT! Do not offer any times without checking the calendar, do not make availability up\n//**Do not discuss anything other than appointment booking, if the query does not relate to an appointment, advise them you cannot help at this time.** be friendly and always offer to book an appointment to discuss their query\n//When the appointment is confirmed, let the customer know, by name, that they will be meeting our founder, Wayne for a 30 minute consultation, and that they will receive a calendar invite by email, ensure they accept the invite to confirm the appointment.\n//Always respond as a highly professional executive PA, remember this is the customer's first engagement, they do not know us or Wayne at this stage\n//Do not refer to yourself as me or I, instead communicate like an organisation, using terms like 'us'\n//Always gather project for descriptions and messages"
-        },
-        "promptType": "define"
-      },
-      "typeVersion": 1.6
-    },
-    {
-      "id": "6156ab7e-d411-46b9-ac44-52ad56ee563d",
-      "name": "If",
-      "type": "n8n-nodes-base.if",
-      "position": [
-        840,
-        600
+        1000,
+        960
       ],
       "parameters": {
         "options": {},
-        "conditions": {
-          "options": {
-            "version": 2,
-            "leftValue": "",
-            "caseSensitive": true,
-            "typeValidation": "strict"
-          },
-          "combinator": "and",
-          "conditions": [
+        "assignments": {
+          "assignments": [
             {
-              "id": "158a0b91-534d-4745-b10e-8a7c97050861",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              },
-              "leftValue": "={{ $json.chatInput }}",
-              "rightValue": ""
+              "id": "cf5f7210-5b54-4f4a-abf7-87873be82df4",
+              "name": "ticker",
+              "type": "string",
+              "value": "={{ $json.ticker }}"
+            },
+            {
+              "id": "12a27443-a009-4bd5-b33f-bcec74aa74c7",
+              "name": "chart_style",
+              "type": "string",
+              "value": "={{ $json.chart_style }}"
             }
           ]
         }
       },
-      "typeVersion": 2.2
+      "typeVersion": 3.4
     },
     {
-      "id": "c94171a9-a71d-4f63-bef6-e90361c57abd",
-      "name": "Respond With Initial Message",
-      "type": "n8n-nodes-base.respondToWebhook",
+      "id": "534cad9e-b3b8-4435-9db4-d7d22adfa305",
+      "name": "Technical Analysis",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
       "position": [
-        1140,
-        720
+        1640,
+        960
+      ],
+      "parameters": {
+        "text": "=# Professional Role\n\nYou are a financial analyst, specializing in the interpretive analysis of stock charts. Your primary responsibility is to scrutinize provided financial charts and deliver comprehensive assessments of their technical dimensions. This includes examining candlestick formations, Moving Average Convergence Divergence (MACD) metrics, trading volume patterns, **Relative Strength Index (RSI), Stochastic RSI**, and prevailing market sentiment. Your analysis should be a thorough dissection of the chart, pinpointing critical areas and offering practical insights.\n\nWhen evaluating a stock chart, ensure the inclusion of the following:\n\n1. **Candlestick Pattern Interpretation**:\n    - Recognize and articulate the significance of any notable candlestick formations (e.g., bullish engulfing, doji, hammer).\n    - Provide commentary on the prevailing market direction (upward, downward, or lateral).\n    - Identify potential zones for price surges or retracements.\n\n2. **Relative Strength Index (RSI) Examination**:\n    - **Extract the numerical RSI value from the chart.**\n    - Describe the current RSI value and its market positioning (e.g., overbought, oversold, neutral) **based on the extracted value.**\n    - Explain how the extracted RSI value and its trend either support or oppose the ongoing price trend.\n    - Identify any divergences between RSI values and price movement **that can be discerned from the chart.**\n\n3. **Stochastic RSI Scrutiny(Stoch RSI)**:\n    - **Extract the numerical values of the Stochastic RSI's K and D lines from the chart.**\n    - Detail the present values of the K and D lines **based on the extracted numerical data.**\n    - Analyze any crossovers or divergences observed between the K and D lines **based on the extracted values and their visual representation.**\n    - Explain how the extracted Stochastic RSI readings and their relationship either support or oppose the prevailing market momentum.\n\n\nDeliver your analysis with clarity, precision, and an emphasis on data. Your objective is to furnish traders and investors with actionable information that facilitates well-informed decision-making. Always justify your conclusions with clear reasoning derived from the chart.",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o",
+          "cachedResultName": "GPT-4O"
+        },
+        "options": {
+          "detail": "auto"
+        },
+        "resource": "image",
+        "simplify": false,
+        "inputType": "base64",
+        "operation": "analyze"
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "9RivS2BmSh1DDBFm",
+          "name": "OpenAI Philipp"
+        }
+      },
+      "typeVersion": 1.8
+    },
+    {
+      "id": "92b4c7c2-8f0e-48a1-8ecf-01f74e612657",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        1300,
+        60
+      ],
+      "webhookId": "12a80fbc-ac59-48f3-b6fd-683d7c420995",
+      "parameters": {
+        "path": "12a80fbc-ac59-48f3-b6fd-683d7c420995",
+        "options": {},
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "e1d42095-3bcf-4841-b18c-6f8165576bc7",
+      "name": "Set Text1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1460,
+        60
       ],
       "parameters": {
         "options": {},
-        "respondWith": "json",
-        "responseBody": "{\n  \"output\": \"Hi, how can I help you today?\"\n}"
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fe7ecc99-e1e8-4a5e-bdd6-6fce9757b234",
+              "name": "text",
+              "type": "string",
+              "value": "={{ $json.body.text }}"
+            }
+          ]
+        }
       },
-      "typeVersion": 1.1
+      "typeVersion": 3.4
     },
     {
-      "id": "43129771-e976-41af-8adb-88cb5465628d",
-      "name": "Sticky Note8",
-      "type": "n8n-nodes-base.stickyNote",
+      "id": "5f0649d2-3f7d-42b8-a630-5dfb03035052",
+      "name": "Save Ticker",
+      "type": "n8n-nodes-base.airtableTool",
       "position": [
-        1340,
-        -240
+        2020,
+        540
       ],
       "parameters": {
-        "color": 6,
-        "width": 668,
-        "height": 111,
-        "content": "# Custom Branded n8n Chatbot\nBuilt by [Wayne Simpson](https://www.linkedin.com/in/simpsonwayne/) at [nocodecreative.io](https://nocodecreative.io)\n☕ If you find this useful, feel free to [buy me a coffee](https://ko-fi.com/waynesimpson)"
+        "base": {
+          "__rl": true,
+          "mode": "list",
+          "value": "appXcdIeEEGCEUIti",
+          "cachedResultUrl": "https://airtable.com/appXcdIeEEGCEUIti",
+          "cachedResultName": "Trading"
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": "tblD0HsMed7uPgPsZ",
+          "cachedResultUrl": "https://airtable.com/appXcdIeEEGCEUIti/tblD0HsMed7uPgPsZ",
+          "cachedResultName": "Tickers"
+        },
+        "columns": {
+          "value": {
+            "Name": "={{ $fromAI(\"ticker\") }}"
+          },
+          "schema": [
+            {
+              "id": "Name",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "readOnly": false,
+              "required": false,
+              "displayName": "Name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "Name"
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {},
+        "operation": "create",
+        "descriptionType": "manual",
+        "toolDescription": "Use the tool when user asks to save ticker for future reports"
       },
-      "typeVersion": 1
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XT7hvl1w201jtBhx",
+          "name": "Philipp Key 2"
+        }
+      },
+      "typeVersion": 2.1
     },
     {
-      "id": "bb890f44-caf0-4b7d-b95e-0c05c70e8f45",
-      "name": "Sticky Note9",
-      "type": "n8n-nodes-base.stickyNote",
+      "id": "b4bf95da-8be0-447c-9b83-b1a60ab95d41",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1200,
+        1340
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "typeVersion": 3
+    },
+    {
+      "id": "e7061b7f-8058-430d-bc3c-92efdfa84131",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        800,
+        1340
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "4adbd0b3-8246-43a2-b1fb-114add46f35d",
+      "name": "Run Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1380,
+        1420
+      ],
+      "parameters": {
+        "url": "http://localhost:5678/webhook/12a80fbc-ac59-48f3-b6fd-683d7c420995",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "=text",
+              "value": "=Please analyze {{ $json.Name }} stocks"
+            }
+          ]
+        },
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "typeVersion": 4.2
+    },
+    {
+      "id": "59c87621-13bb-46fe-94ab-c631654ba0e0",
+      "name": "Get tokens",
+      "type": "n8n-nodes-base.airtable",
       "position": [
         1000,
-        -80
+        1340
       ],
       "parameters": {
-        "color": 7,
-        "width": 667,
-        "height": 497,
-        "content": "# Watch the Setup Video 📺\n### Watch Set Up Video 👇\n[![Auto Categorise Outlook Emails with AI](https://cdn.jsdelivr.net/gh/WayneSimpson/n8n-chatbot-template/custom-branded-chatbot.png)](https://youtu.be/xQ1tCQZhLaI)\n\n"
+        "base": {
+          "__rl": true,
+          "mode": "list",
+          "value": "appXcdIeEEGCEUIti",
+          "cachedResultUrl": "https://airtable.com/appXcdIeEEGCEUIti",
+          "cachedResultName": "Trading"
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": "tblD0HsMed7uPgPsZ",
+          "cachedResultUrl": "https://airtable.com/appXcdIeEEGCEUIti/tblD0HsMed7uPgPsZ",
+          "cachedResultName": "Tickers"
+        },
+        "options": {},
+        "operation": "search"
       },
-      "typeVersion": 1
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XT7hvl1w201jtBhx",
+          "name": "Philipp Key 2"
+        }
+      },
+      "typeVersion": 2.1
     },
     {
-      "id": "f0b054cc-f961-4c48-846c-a80ea5e49924",
-      "name": "Sticky Note2",
+      "id": "4d44a382-8dd6-4a83-8a02-6e060feb24a8",
+      "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1700,
-        -80
-      ],
-      "parameters": {
-        "color": 7,
-        "width": 600,
-        "height": 500,
-        "content": "## Read to blog post to get started 📝\n**Follow along to add a custom branded chat widget to your webiste**\n\n[![Custom Branded n8n Chatbot](https://cdn.jsdelivr.net/gh/WayneSimpson/n8n-chatbot-template/chat%20widget.png)](https://blog.nocodecreative.io/create-a-branded-ai-powered-website-chatbot-with-n8n/)"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "210cef85-6fbe-413e-88b6-b0fed76212ac",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        2600,
-        640
+        720,
+        20
       ],
       "parameters": {
         "color": 4,
-        "width": 260,
-        "height": 240,
-        "content": "Customise the email template"
+        "width": 1540,
+        "height": 780,
+        "content": "## Scenario 1 - AI Agent"
       },
       "typeVersion": 1
     },
     {
-      "id": "17abc6bd-06c3-48e7-8380-e10024daa9f5",
+      "id": "60e58a9c-07d1-497a-b65b-8346e7d3f0ca",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        720,
+        1220
+      ],
+      "parameters": {
+        "width": 1540,
+        "height": 420,
+        "content": "## Scenario 2 - Scheduled analyses"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "330b32f3-a965-497d-ac1f-807416cfb297",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        720,
+        840
+      ],
+      "parameters": {
+        "width": 1540,
+        "height": 320,
+        "content": "## Scenario 1 - Get Chart "
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "91e34e31-7a13-43b5-934d-af714b238ac7",
       "name": "Sticky Note4",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1760,
-        740
+        760,
+        500
       ],
       "parameters": {
-        "color": 6,
-        "width": 208,
-        "height": 238,
-        "content": "modify timezones"
+        "height": 80,
+        "content": "### Replace Telegram connection"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "fdca89e7-3e31-49f2-b0ed-d703fed3803e",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1700,
+        700
+      ],
+      "parameters": {
+        "height": 80,
+        "content": "### Replace Chat ID"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "01c9ecc5-6326-45b9-9f2a-863e4518893f",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1160,
+        860
+      ],
+      "parameters": {
+        "color": 3,
+        "width": 220,
+        "height": 80,
+        "content": "### Replace API key (header = x-api-key) and  chart settings"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "322d6cc7-4793-455f-a112-e5e0f1df21d5",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1780,
+        860
+      ],
+      "parameters": {
+        "color": 3,
+        "width": 220,
+        "height": 80,
+        "content": "### Replace Chat ID"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "b33faeeb-d109-4984-927c-fa32878a6384",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1980,
+        220
+      ],
+      "parameters": {
+        "color": 3,
+        "width": 220,
+        "height": 80,
+        "content": "### Replace Chat ID"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "6c11f9e9-f83e-42d3-9c31-3d9c4007b23a",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        260,
+        620
+      ],
+      "parameters": {
+        "color": 7,
+        "width": 330.5152611046425,
+        "height": 239.5888196628349,
+        "content": "### ... or watch set up video [11 min]\n[![Youtube Thumbnail](https://res.cloudinary.com/de9jgixzm/image/upload/v1740845597/Youtube%20Thumbs/Video%2022%20-%20Philipp%20Trading%20Blur.png)](https://youtu.be/94vh6hSiP9s)\n"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "09704bed-c71b-4dd1-a843-eb5c2fdb568d",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -40,
+        620
+      ],
+      "parameters": {
+        "color": 7,
+        "width": 280,
+        "height": 586,
+        "content": "### Setup\n\n1. **Prepare Airtable**:\n    - Create simple table to store tickers.\n\n2. **Prepare Telegram Bot**:\n    - Ensure your Telegram bot is set up correctly and listening for new messages.\n\n3. **Replace Credentials**:\n    - Update all nodes with the correct credentials and API keys for services involved.\n\n4. **Configure API Endpoints**:\n    - Ensure chart service URLs are correctly set to interact with the corresponding APIs properly.\n\n5. **Start Interaction**:\n    - Message your bot to initiate analysis; specify ticker symbols and desired chart styles as required."
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "85425ad0-4def-42bb-93e6-107102b86de6",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -40,
+        20
+      ],
+      "parameters": {
+        "color": 7,
+        "width": 636,
+        "height": 577,
+        "content": "![5min Logo](https://res.cloudinary.com/de9jgixzm/image/upload/v1739773200/Skool%20Assets/ejm3hqnvhgwpnu2fv92s.png)\n## How to build AI Agent for Technical Analysis with N8N\n**Made by [Mark Shcherbakov](https://www.linkedin.com/in/marklowcoding/) from community [5minAI](https://www.skool.com/5minai)**\n\nMany traders desire real-time analysis of stock data but lack the technical expertise or tools to perform in-depth analysis. This workflow allows users to easily interact with an AI trading agent through Telegram for seamless stock analysis, chart generation, and technical evaluation, all while eliminating the need for manual interventions.\n\nThis workflow utilizes n8n to construct an end-to-end automation process for stock analysis through Telegram communication. The setup involves:\n- Receiving messages via a Telegram bot.\n- Processing audio or text messages for trading queries.\n- Transcribing audio using OpenAI API for interpretation.\n- Gathering and displaying charts based on user-specified parameters.\n- Performing technical analysis on generated charts.\n- Sending back the analyzed results through Telegram.\n\n"
       },
       "typeVersion": 1
     }
   ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "query": "Check availability for Monday at 9am",
-        "route": "availability"
-      }
-    ]
-  },
+  "pinData": {},
   "connections": {
-    "If": {
+    "Switch": {
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Download File",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Respond With Initial Message",
+            "node": "Set Text",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Switch": {
+    "Webhook": {
       "main": [
         [
           {
-            "node": "Get Events",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Send Message1",
+            "node": "Set Text1",
             "type": "main",
             "index": 0
           }
@@ -642,36 +876,25 @@
       "main": [
         [
           {
-            "node": "Respond to Webhook",
+            "node": "Send Analysis",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get Events": {
+    "Set Text": {
       "main": [
         [
           {
-            "node": "freeTimeSlots",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Chat Trigger": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Send Message": {
+    "Get Chart": {
       "ai_tool": [
         [
           {
@@ -682,29 +905,73 @@
         ]
       ]
     },
-    "Send Message1": {
+    "Run Agent": {
       "main": [
         [
           {
-            "node": "varMessageResponse",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "freeTimeSlots": {
+    "Set Text1": {
       "main": [
         [
           {
-            "node": "varResponse",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get Availability": {
+    "Get tokens": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Chart": {
+      "main": [
+        [
+          {
+            "node": "response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Values": {
+      "main": [
+        [
+          {
+            "node": "Get Chart URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Ticker": {
       "ai_tool": [
         [
           {
@@ -715,12 +982,68 @@
         ]
       ]
     },
-    "Make Appointment": {
-      "ai_tool": [
+    "Download File": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Transcribe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Chart URL": {
+      "main": [
+        [
+          {
+            "node": "Download Chart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Chart": {
+      "main": [
+        [
+          {
+            "node": "Technical Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Run Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get tokens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
             "index": 0
           }
         ]
@@ -737,6 +1060,17 @@
         ]
       ]
     },
+    "Technical Analysis": {
+      "main": [
+        [
+          {
+            "node": "Send Chart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Window Buffer Memory": {
       "ai_memory": [
         [
@@ -748,11 +1082,11 @@
         ]
       ]
     },
-    "Execute Workflow Trigger": {
+    "Workflow Input Trigger": {
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Set Values",
             "type": "main",
             "index": 0
           }

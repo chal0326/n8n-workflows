@@ -1,5 +1,5 @@
 {
-  "id": "APCp9GPNjUSFPSfJ",
+  "id": "NLOITjwt4iZK16Qq",
   "meta": {
     "instanceId": "a4bfc93e975ca233ac45ed7c9227d84cf5a2329310525917adaf3312e10d5462",
     "templateCredsSetupCompleted": true
@@ -8,12 +8,12 @@
   "tags": [],
   "nodes": [
     {
-      "id": "2c5b2dd1-c63f-4bc9-909e-5f4b2a385d01",
+      "id": "5be03c5c-e02d-4770-b0db-795dff0bf84f",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "position": [
-        1020,
-        1040
+        -60,
+        1140
       ],
       "parameters": {
         "options": {},
@@ -23,30 +23,30 @@
       "typeVersion": 1.1
     },
     {
-      "id": "cc230fcd-f88c-40d4-8835-ac9dc6228b18",
+      "id": "8e24d1bc-8e65-4562-8cc4-4ce9c917841b",
       "name": "AI Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "position": [
-        1560,
-        1380
+        480,
+        1480
       ],
       "parameters": {
         "text": "={{ $('Respond').item.json.body.entry[0].changes[0].value.messages[0].text.body }}",
         "agent": "conversationalAgent",
         "options": {
-          "systemMessage": "You are an AI-powered assistant for an electronics store. Your primary goal is to assist customers by providing accurate and helpful information about products, troubleshooting tips, and general support. Use the provided knowledge base (retrieved documents) to answer questions with precision and professionalism.\n\n**Guidelines**:\n1. **Product Information**:\n - Provide detailed descriptions of products, including specifications, features, and compatibility.\n - Highlight key selling points and differences between similar products.\n - Mention availability, pricing, and promotions if applicable.\n\n2. **Technical Support**:\n - Offer step-by-step troubleshooting guides for common issues.\n - Suggest solutions for setup, installation, or configuration problems.\n - If the issue is complex, recommend contacting the store\u2019s support team for further assistance.\n\n3. **Customer Service**:\n - Respond politely and professionally to all inquiries.\n - If a question is unclear, ask for clarification to provide the best possible answer.\n - For order-related questions (e.g., status, returns, or cancellations), guide customers on how to proceed using the store\u2019s systems.\n\n4. **Knowledge Base Usage**:\n - Always reference the provided knowledge base (retrieved documents) to ensure accuracy.\n - If the knowledge base does not contain relevant information, inform the customer and suggest alternative resources or actions.\n\n5. **Tone and Style**:\n - Use a friendly, approachable, and professional tone.\n - Avoid technical jargon unless the customer demonstrates familiarity with the topic.\n - Keep responses concise but informative.\n\n**Example Interactions**:\n1. **Product Inquiry**:\n - Customer: \"What\u2019s the difference between the XYZ Smartwatch and the ABC Smartwatch?\"\n - AI: \"The XYZ Smartwatch features a longer battery life (up to 7 days) and built-in GPS, while the ABC Smartwatch has a brighter AMOLED display and supports wireless charging. Both are compatible with iOS and Android devices. Would you like more details on either product?\"\n\n2. **Technical Support**:\n - Customer: \"My wireless router isn\u2019t connecting to the internet.\"\n - AI: \"Please try the following steps: 1) Restart your router and modem. 2) Ensure all cables are securely connected. 3) Check if the router\u2019s LED indicators show a stable connection. If the issue persists, you may need to reset the router to factory settings. Would you like a detailed guide for resetting your router?\"\n\n3. **Customer Service**:\n - Customer: \"How do I return a defective product?\"\n - AI: \"To return a defective product, please visit our Returns Portal on our website and enter your order number. You\u2019ll receive a return label and instructions. If you need further assistance, our support team is available at support@electronicsstore.com.\"\n\n**Limitations**:\n- If the question is outside the scope of the knowledge base or requires human intervention, inform the customer and provide contact details for the appropriate department.\n- Do not provide speculative or unverified information. Always rely on the knowledge base or direct the customer to official resources."
+          "systemMessage": "You are an AI-powered assistant for an electronics store. Your primary goal is to assist customers by providing accurate and helpful information about products, troubleshooting tips, and general support. Use the provided knowledge base (retrieved documents) to answer questions with precision and professionalism.\n\n**Guidelines**:\n1. **Product Information**:\n   - Provide detailed descriptions of products, including specifications, features, and compatibility.\n   - Highlight key selling points and differences between similar products.\n   - Mention availability, pricing, and promotions if applicable.\n\n2. **Technical Support**:\n   - Offer step-by-step troubleshooting guides for common issues.\n   - Suggest solutions for setup, installation, or configuration problems.\n   - If the issue is complex, recommend contacting the store’s support team for further assistance.\n\n3. **Customer Service**:\n   - Respond politely and professionally to all inquiries.\n   - If a question is unclear, ask for clarification to provide the best possible answer.\n   - For order-related questions (e.g., status, returns, or cancellations), guide customers on how to proceed using the store’s systems.\n\n4. **Knowledge Base Usage**:\n   - Always reference the provided knowledge base (retrieved documents) to ensure accuracy.\n   - If the knowledge base does not contain relevant information, inform the customer and suggest alternative resources or actions.\n\n5. **Tone and Style**:\n   - Use a friendly, approachable, and professional tone.\n   - Avoid technical jargon unless the customer demonstrates familiarity with the topic.\n   - Keep responses concise but informative.\n\n**Example Interactions**:\n1. **Product Inquiry**:\n   - Customer: \"What’s the difference between the XYZ Smartwatch and the ABC Smartwatch?\"\n   - AI: \"The XYZ Smartwatch features a longer battery life (up to 7 days) and built-in GPS, while the ABC Smartwatch has a brighter AMOLED display and supports wireless charging. Both are compatible with iOS and Android devices. Would you like more details on either product?\"\n\n2. **Technical Support**:\n   - Customer: \"My wireless router isn’t connecting to the internet.\"\n   - AI: \"Please try the following steps: 1) Restart your router and modem. 2) Ensure all cables are securely connected. 3) Check if the router’s LED indicators show a stable connection. If the issue persists, you may need to reset the router to factory settings. Would you like a detailed guide for resetting your router?\"\n\n3. **Customer Service**:\n   - Customer: \"How do I return a defective product?\"\n   - AI: \"To return a defective product, please visit our Returns Portal on our website and enter your order number. You’ll receive a return label and instructions. If you need further assistance, our support team is available at support@electronicsstore.com.\"\n\n**Limitations**:\n- If the question is outside the scope of the knowledge base or requires human intervention, inform the customer and provide contact details for the appropriate department.\n- Do not provide speculative or unverified information. Always rely on the knowledge base or direct the customer to official resources."
         },
         "promptType": "define"
       },
       "typeVersion": 1.7
     },
     {
-      "id": "283df38d-1a2b-44d9-8e29-5e928ca1c4c9",
+      "id": "22fe09e5-053c-4f80-9e44-71f533492e31",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        740,
-        1260
+        -340,
+        1360
       ],
       "parameters": {
         "width": 459,
@@ -56,12 +56,12 @@
       "typeVersion": 1
     },
     {
-      "id": "b8f5ac53-03fe-4151-ac56-b246245702b6",
+      "id": "cfed3c49-be8a-4d1a-aa3a-5e60a19c00ac",
       "name": "OpenAI Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "position": [
-        1560,
-        1580
+        480,
+        1680
       ],
       "parameters": {
         "model": {
@@ -80,31 +80,31 @@
       "typeVersion": 1.2
     },
     {
-      "id": "a02f4e76-1895-48ad-a2d5-6daf3347f181",
-      "name": "When clicking \u2018Test workflow\u2019",
+      "id": "55970db5-284d-40b9-ad6f-f43b513aac45",
+      "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        460,
-        100
+        -620,
+        200
       ],
       "parameters": {},
       "typeVersion": 1
     },
     {
-      "id": "35a71dd7-ae08-46c5-acb2-e66d92b311cb",
+      "id": "99de11b0-ab4a-49fe-977b-b3102c9ff1cf",
       "name": "Qdrant Vector Store",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "position": [
-        1440,
-        220
+        360,
+        320
       ],
       "parameters": {
         "mode": "insert",
         "options": {},
         "qdrantCollection": {
           "__rl": true,
-          "mode": "id",
-          "value": "=COLLECTION"
+          "mode": "list",
+          "value": ""
         }
       },
       "credentials": {
@@ -116,18 +116,18 @@
       "typeVersion": 1
     },
     {
-      "id": "1538c8b1-f914-4991-b311-e533df625c5f",
+      "id": "619d2d2f-7a1e-49ba-a3ae-24bf24287dd2",
       "name": "Create collection",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        760,
-        -40
+        -320,
+        60
       ],
       "parameters": {
         "url": "https://QDRANTURL/collections/COLLECTION",
         "method": "POST",
         "options": {},
-        "jsonBody": "{\n \"filter\": {}\n}",
+        "jsonBody": "{\n  \"filter\": {}\n}",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -151,18 +151,18 @@
       "typeVersion": 4.2
     },
     {
-      "id": "423b73a6-2497-4635-9ad0-9e768f32018d",
+      "id": "b61d5d74-14d2-4488-a0d6-3f7df9745329",
       "name": "Refresh collection",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        760,
-        220
+        -320,
+        320
       ],
       "parameters": {
         "url": "https://QDRANTURL/collections/COLLECTION/points/delete",
         "method": "POST",
         "options": {},
-        "jsonBody": "{\n \"filter\": {}\n}",
+        "jsonBody": "{\n  \"filter\": {}\n}",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -186,12 +186,12 @@
       "typeVersion": 4.2
     },
     {
-      "id": "9519866a-f28a-495a-9cb4-3b2170407943",
+      "id": "71c8817f-f5be-4900-aecc-14d483993c4c",
       "name": "Get folder",
       "type": "n8n-nodes-base.googleDrive",
       "position": [
-        980,
-        220
+        -100,
+        320
       ],
       "parameters": {
         "filter": {
@@ -214,18 +214,18 @@
       "credentials": {
         "googleDriveOAuth2Api": {
           "id": "HEy5EuZkgPZVEa9w",
-          "name": "Google Drive account"
+          "name": "Google Drive account (n3w.it)"
         }
       },
       "typeVersion": 3
     },
     {
-      "id": "c9a36259-8340-4382-8bb0-84b73a8288c6",
+      "id": "c14e570d-527d-4cc2-b0c0-2406b814ffc6",
       "name": "Download Files",
       "type": "n8n-nodes-base.googleDrive",
       "position": [
-        1200,
-        220
+        120,
+        320
       ],
       "parameters": {
         "fileId": {
@@ -245,18 +245,18 @@
       "credentials": {
         "googleDriveOAuth2Api": {
           "id": "HEy5EuZkgPZVEa9w",
-          "name": "Google Drive account"
+          "name": "Google Drive account (n3w.it)"
         }
       },
       "typeVersion": 3
     },
     {
-      "id": "b20975d7-e367-49a3-ac8c-613289775463",
+      "id": "7f1ffbd5-7aa0-49d3-aa11-9568ac704d6e",
       "name": "Embeddings OpenAI",
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "position": [
-        1420,
-        420
+        340,
+        520
       ],
       "parameters": {
         "options": {}
@@ -270,12 +270,12 @@
       "typeVersion": 1.1
     },
     {
-      "id": "4c2d02a4-c954-42c4-97b0-b94ee3198f56",
+      "id": "bdc58292-5880-41b9-bc55-d6437f037629",
       "name": "Default Data Loader",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "position": [
-        1600,
-        420
+        520,
+        520
       ],
       "parameters": {
         "options": {},
@@ -284,12 +284,12 @@
       "typeVersion": 1
     },
     {
-      "id": "72591129-1691-4caf-bf63-c04db85708dc",
+      "id": "7df52ba0-011e-44a5-b25d-a4610f903ed9",
       "name": "Token Splitter",
       "type": "@n8n/n8n-nodes-langchain.textSplitterTokenSplitter",
       "position": [
-        1560,
-        580
+        480,
+        680
       ],
       "parameters": {
         "chunkSize": 300,
@@ -298,12 +298,12 @@
       "typeVersion": 1
     },
     {
-      "id": "cc74592d-6562-4816-917c-0d88913a8125",
+      "id": "b3306890-d527-44d9-bd42-2decd61b35a2",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        200,
-        1140
+        -880,
+        1240
       ],
       "parameters": {
         "color": 3,
@@ -314,12 +314,12 @@
       "typeVersion": 1
     },
     {
-      "id": "9c8d4973-dcc5-4506-967f-3b3a5df501fa",
+      "id": "2da39c54-1596-4674-99c5-8fdac7873ea3",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        740,
-        800
+        -340,
+        900
       ],
       "parameters": {
         "color": 5,
@@ -330,12 +330,12 @@
       "typeVersion": 1
     },
     {
-      "id": "ec013e0c-a354-4f12-8ded-97013bb8fb21",
+      "id": "9c8a18df-d2a9-4d91-a799-a8ee6c5160ba",
       "name": "Verify",
       "type": "n8n-nodes-base.webhook",
       "position": [
-        780,
-        1040
+        -300,
+        1140
       ],
       "webhookId": "f0d2e6f6-8fda-424d-b377-0bd191343c20",
       "parameters": {
@@ -346,12 +346,12 @@
       "typeVersion": 2
     },
     {
-      "id": "253ddc93-5693-4362-aa6c-a80ab3f6df82",
+      "id": "1ca39545-9ec1-489d-bcaf-f6289163d3e0",
       "name": "Respond",
       "type": "n8n-nodes-base.webhook",
       "position": [
-        760,
-        1420
+        -320,
+        1520
       ],
       "webhookId": "f0d2e6f6-8fda-424d-b377-0bd191343c20",
       "parameters": {
@@ -362,12 +362,12 @@
       "typeVersion": 2
     },
     {
-      "id": "2d4b956e-92d9-41da-a6d3-9f588e453d2a",
+      "id": "02ae9009-b34b-49a5-86f2-50e681125d77",
       "name": "is Message?",
       "type": "n8n-nodes-base.if",
       "position": [
-        980,
-        1420
+        -100,
+        1520
       ],
       "parameters": {
         "options": {},
@@ -397,12 +397,12 @@
       "typeVersion": 2.2
     },
     {
-      "id": "2af633a9-f6b0-4989-9e85-abb619d2b3bb",
+      "id": "9f866e16-cedb-4c43-ab38-e0e53703402a",
       "name": "Only message",
       "type": "n8n-nodes-base.whatsApp",
       "position": [
-        1280,
-        1520
+        200,
+        1620
       ],
       "parameters": {
         "textBody": "=You can only send text messages",
@@ -421,12 +421,12 @@
       "typeVersion": 1
     },
     {
-      "id": "5235dd06-2235-4edb-904e-872848e2ed79",
+      "id": "3867b8c8-db5f-40f6-b3ae-edf1ab732395",
       "name": "Send",
       "type": "n8n-nodes-base.whatsApp",
       "position": [
-        1980,
-        1380
+        900,
+        1480
       ],
       "parameters": {
         "textBody": "={{ $json.output }}",
@@ -445,23 +445,23 @@
       "typeVersion": 1
     },
     {
-      "id": "dafe692e-7767-4ded-966c-df812f58ae63",
+      "id": "401a8204-4cea-4bd0-9ae7-8c5c6797c586",
       "name": "Window Buffer Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "position": [
-        1760,
-        1580
+        640,
+        1720
       ],
       "parameters": {},
       "typeVersion": 1.3
     },
     {
-      "id": "ba6254bd-4dad-47bb-a535-7b6b708ea763",
+      "id": "ff1ebe0d-b572-4b77-ad67-351c0ec17927",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        960,
-        -100
+        -120,
+        0
       ],
       "parameters": {
         "color": 6,
@@ -472,12 +472,12 @@
       "typeVersion": 1
     },
     {
-      "id": "83cf4483-cd45-4de6-9b88-e00727ed8352",
+      "id": "df7bc44c-fb7d-4bc4-bc79-245f53e17eca",
       "name": "Sticky Note4",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        740,
-        160
+        -340,
+        260
       ],
       "parameters": {
         "color": 4,
@@ -488,17 +488,98 @@
       "typeVersion": 1
     },
     {
-      "id": "4e0a4245-370f-4596-b01b-4eed8acbe2c3",
+      "id": "df4f90ab-1cbb-4335-893a-0f3e2a62be04",
       "name": "Sticky Note5",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1520,
-        1260
+        440,
+        1360
       ],
       "parameters": {
         "width": 380,
         "height": 260,
         "content": "## Configure AI Agent\nSet System prompt and chat model. If you want you can set any tools"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "b0928ee4-2c6a-4bc0-a013-15504f157379",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        980,
+        1920
+      ],
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "CDX6QM4gLYanh0P4",
+          "name": "OpenAi account"
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "16ca729c-9492-4af1-a02f-9b3e5b4ebc43",
+      "name": "Retrive Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "position": [
+        620,
+        1940
+      ],
+      "parameters": {
+        "options": {},
+        "qdrantCollection": {
+          "__rl": true,
+          "mode": "id",
+          "value": "COLLECTION"
+        }
+      },
+      "credentials": {
+        "qdrantApi": {
+          "id": "iyQ6MQiVaF3VMBmt",
+          "name": "QdrantApi account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "c950482d-23e3-4318-a878-f80f8cfee556",
+      "name": "Embeddings OpenAI2",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "position": [
+        500,
+        2140
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "CDX6QM4gLYanh0P4",
+          "name": "OpenAi account"
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "46347cfc-b4e7-4627-a991-3f30c12d7f42",
+      "name": "RAG",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "position": [
+        840,
+        1700
+      ],
+      "parameters": {
+        "name": "company_data",
+        "description": "Retrive data about company knowledge from vector store"
       },
       "typeVersion": 1
     }
@@ -508,8 +589,19 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "4eb1a148-185f-4f16-a6ad-01c3201d4fc0",
+  "versionId": "b760b44b-24d8-41c6-8251-c7e6ddac82c1",
   "connections": {
+    "RAG": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Verify": {
       "main": [
         [
@@ -616,6 +708,28 @@
         ]
       ]
     },
+    "Embeddings OpenAI2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Retrive Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "RAG",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Refresh collection": {
       "main": [
         [
@@ -649,7 +763,18 @@
         ]
       ]
     },
-    "When clicking \u2018Test workflow\u2019": {
+    "Retrive Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "RAG",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {

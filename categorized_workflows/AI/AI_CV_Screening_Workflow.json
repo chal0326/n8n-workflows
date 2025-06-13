@@ -37,7 +37,7 @@
       "webhookId": "954756dc-2946-4b78-b208-06f3df612ab5",
       "parameters": {
         "sendTo": "={{ $('Application Form').item.json['E-mail'] }}",
-        "message": "=Dear {{ $('Application Form').item.json['Full Name'] }}, \n\nThank you for submitting your CV. We have received it and will review it shortly.  \n\nBest regards,\nMediusware",
+        "message": "=Dear {{ $('Application Form').item.json['Full Name'] }}, \n\nThank you for submitting your CV. We have received it and will review it shortly. \n\nBest regards,\nMediusware",
         "options": {},
         "subject": "We Have Received Your CV"
       },
@@ -85,7 +85,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "Rule 1 :  Do not exceed  maximum of 75 words. As an AI with advanced capabilities in talent acquisition and human resources, your task is to conduct a thorough and intricate analysis of a candidate's resume or CV against a specific job description. You will assist hiring professionals in discerning the alignment between the candidate's skills, experience, qualifications, and the requirements of the job. Your expert insights will equip employers with a lucid understanding of the candidate's suitability for the role. Very important for you to write output text in ${output_language} language. It's VERY IMPORTANT for me for text be in ${output_language} or I will be fired. Your analysis should follow this structured format: 1. **Compatibility Rating**: Propose an overall compatibility rating on a scale from 1 (not compatible) to 10 (perfect fit). Support your rating by elucidating the rationale behind it. 2. **Recommendation**: Informed by your analysis and compatibility rating, offer a recommendation on whether the employer should consider this candidate for an interview. Furnish a well-argued explanation for your recommendation. Remember, your analysis should be comprehensive, professional, and actionable. It should equip an employer with a vivid understanding of the candidate's suitability for the role. This isn't merely about ticking off boxes; it's about illustrating a comprehensive picture of how well the candidate might fit into the role and complement the existing team. Here is your task: Analyze the compatibility of the following candidate's resume with the provided job description. Endeavor to apply your deep understanding of talent evaluation to provide the most insightful analysis. Job description: \"Software Engineer\" Resume: ${resume}\nNo Markdown Please, only plain text. Please no double '**'"
+              "message": "Rule 1 : Do not exceed maximum of 75 words. As an AI with advanced capabilities in talent acquisition and human resources, your task is to conduct a thorough and intricate analysis of a candidate's resume or CV against a specific job description. You will assist hiring professionals in discerning the alignment between the candidate's skills, experience, qualifications, and the requirements of the job. Your expert insights will equip employers with a lucid understanding of the candidate's suitability for the role. Very important for you to write output text in ${output_language} language. It's VERY IMPORTANT for me for text be in ${output_language} or I will be fired. Your analysis should follow this structured format: 1. **Compatibility Rating**: Propose an overall compatibility rating on a scale from 1 (not compatible) to 10 (perfect fit). Support your rating by elucidating the rationale behind it. 2. **Recommendation**: Informed by your analysis and compatibility rating, offer a recommendation on whether the employer should consider this candidate for an interview. Furnish a well-argued explanation for your recommendation. Remember, your analysis should be comprehensive, professional, and actionable. It should equip an employer with a vivid understanding of the candidate's suitability for the role. This isn't merely about ticking off boxes; it's about illustrating a comprehensive picture of how well the candidate might fit into the role and complement the existing team. Here is your task: Analyze the compatibility of the following candidate's resume with the provided job description. Endeavor to apply your deep understanding of talent evaluation to provide the most insightful analysis. Job description: \"Software Engineer\" Resume: ${resume}\nNo Markdown Please, only plain text. Please no double '**'"
             }
           ]
         },
@@ -235,7 +235,7 @@
           "mode": "list",
           "value": "gid=0",
           "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1y4FFMXTuznSf2wWUraK57eBJnu4MVtgkxrGYRzRMwDQ/edit#gid=0",
-          "cachedResultName": "পত্রক1"
+          "cachedResultName": "\u09aa\u09a4\u09cd\u09b0\u09951"
         },
         "documentId": {
           "__rl": true,

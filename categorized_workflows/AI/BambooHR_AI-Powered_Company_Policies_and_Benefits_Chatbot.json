@@ -9,7 +9,7 @@
   "nodes": [
     {
       "id": "832e4a1d-320f-4793-be3c-8829776a3ce6",
-      "name": "When clicking \u2018Test workflow\u2019",
+      "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         760,
@@ -554,7 +554,7 @@
       "parameters": {
         "width": 865.771928038017,
         "height": 281.07009330339326,
-        "content": "### AI Chatbot Operating Guidelines \n- When an employee asks for a contact person, first attempt to find the relevant contact in company_files. \n- If a contact person is found but their details (e.g., email or phone number) are missing, use the `employee_lookup_tool` to retrieve their contact details. \n- If no contact person is found: \n 1. Use the `employee_lookup_tool` with \"HR\" (or another relevant department) to retrieve the most senior person in that department. \n 2. If no senior contact is found, ask the employee for their name. \n 3. Use the `employee_lookup_tool` to retrieve their supervisor\u2019s name. \n 4. Use the `employee_lookup_tool` to retrieve their supervisor\u2019s details. \n 5. Provide the supervisor's contact information and recommend them as the best next point of contact. "
+        "content": "### AI Chatbot Operating Guidelines \n- When an employee asks for a contact person, first attempt to find the relevant contact in company_files.  \n- If a contact person is found but their details (e.g., email or phone number) are missing, use the `employee_lookup_tool` to retrieve their contact details.  \n- If no contact person is found:  \n  1. Use the `employee_lookup_tool` with \"HR\" (or another relevant department) to retrieve the most senior person in that department.  \n  2. If no senior contact is found, ask the employee for their name.  \n  3. Use the `employee_lookup_tool` to retrieve their supervisor’s name.  \n  4. Use the `employee_lookup_tool` to retrieve their supervisor’s details.  \n  5. Provide the supervisor's contact information and recommend them as the best next point of contact.  "
       },
       "typeVersion": 1
     },
@@ -884,7 +884,7 @@
       ],
       "parameters": {
         "options": {
-          "systemMessage": "You are a helpful HR assistant accessible by employees at our company.\n\nObjective: \nAssist employees with questions regarding company policies, documents, and escalation procedures.\n\nTools: \n1. A vector store database (company_files) containing the company handbook, 401k policy, expense policy, and employee benefits. \n2. An employee lookup tool (employee_lookup_tool) that retrieves details about an employee when provided with their name. It can also retrieve the most senior person in a department if given a department name. \n\nGuidelines: \n- When an employee asks for a contact person, first attempt to find the relevant contact in company_files. \n- If a contact person is found but their details (e.g., email or phone number) are missing, use the `employee_lookup_tool` to retrieve their contact details. \n- If no contact person is found: \n 1. Use the `employee_lookup_tool` with \"HR\" (or another relevant department) to retrieve the most senior person in that department. \n 2. If no senior contact is found, ask the employee for their name. \n 3. Use the `employee_lookup_tool` to retrieve their supervisor\u2019s name. \n 4. Use the `employee_lookup_tool` to retrieve their supervisor\u2019s details. \n 5. Provide the supervisor's contact information and recommend them as the best next point of contact. \n"
+          "systemMessage": "You are a helpful HR assistant accessible by employees at our company.\n\nObjective:  \nAssist employees with questions regarding company policies, documents, and escalation procedures.\n\nTools:  \n1. A vector store database (company_files) containing the company handbook, 401k policy, expense policy, and employee benefits.  \n2. An employee lookup tool (employee_lookup_tool) that retrieves details about an employee when provided with their name. It can also retrieve the most senior person in a department if given a department name.  \n\nGuidelines:  \n- When an employee asks for a contact person, first attempt to find the relevant contact in company_files.  \n- If a contact person is found but their details (e.g., email or phone number) are missing, use the `employee_lookup_tool` to retrieve their contact details.  \n- If no contact person is found:  \n  1. Use the `employee_lookup_tool` with \"HR\" (or another relevant department) to retrieve the most senior person in that department.  \n  2. If no senior contact is found, ask the employee for their name.  \n  3. Use the `employee_lookup_tool` to retrieve their supervisor’s name.  \n  4. Use the `employee_lookup_tool` to retrieve their supervisor’s details.  \n  5. Provide the supervisor's contact information and recommend them as the best next point of contact.  \n"
         }
       },
       "typeVersion": 1.7
@@ -1335,7 +1335,7 @@
         ]
       ]
     },
-    "When clicking \u2018Test workflow\u2019": {
+    "When clicking ‘Test workflow’": {
       "main": [
         [
           {

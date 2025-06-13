@@ -156,7 +156,7 @@
         460
       ],
       "parameters": {
-        "text": "={{ $json.output }} \n\nThank you for your{{ $('Combine content and set properties').item.json['Source Type'] }} {{ $('Combine content and set properties').item.json['Message Type '] }} \ud83e\udd17",
+        "text": "={{ $json.output }} \n\nThank you for your{{ $('Combine content and set properties').item.json['Source Type'] }} {{ $('Combine content and set properties').item.json['Message Type '] }} 🤗",
         "chatId": "={{ $('Listen for incoming events').first().json.message.from.id }}",
         "additionalFields": {
           "parse_mode": "HTML",

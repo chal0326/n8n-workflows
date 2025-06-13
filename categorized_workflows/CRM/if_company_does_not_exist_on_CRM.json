@@ -1,15 +1,15 @@
 {
   "meta": {
     "instanceId": "257476b1ef58bf3cb6a46e65fac7ee34a53a5e1a8492d5c6e4da5f87c9b82833",
-    "templateId": "2129"
+    "templateId": "2130"
   },
   "nodes": [
     {
-      "id": "02cd5c16-de39-4e5c-acf8-fd3287662dfb",
+      "id": "10e83e54-7043-4894-bc92-be1fb0cfba04",
       "name": "if company does not exist on CRM",
       "type": "n8n-nodes-base.if",
       "position": [
-        2240,
+        2120,
         140
       ],
       "parameters": {
@@ -38,38 +38,22 @@
       "typeVersion": 2
     },
     {
-      "id": "c1325687-53cf-404f-9f9c-16696be0fcce",
+      "id": "0afb1099-c0b8-4316-84ad-0b1d718bf07d",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        380,
+        240,
         240
       ],
       "parameters": {
         "width": 257.64008049230523,
         "height": 255.97404402400312,
-        "content": "## Setup\n1. Add `Clearbit`, `Hubspot`, and `Calendly` credentials\n2. Click on `Test workflow`\n3. Book meeting on Calendly so the event starts the workflow"
+        "content": "## Setup\n1. Add `Clearbit`, `Hubspot`, and `ConvertKit` credentials\n2. Click on `Test workflow`\n3. Subscribe user to form/list so the event starts the workflow"
       },
       "typeVersion": 1
     },
     {
-      "id": "8c1f4364-1e5b-4d63-b11d-295a683ace73",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        660,
-        240
-      ],
-      "parameters": {
-        "color": 4,
-        "width": 225.41119920533646,
-        "height": 260.45841271216835,
-        "content": "Replace this node with your booking tool of choice"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "0fd0557e-56da-4b64-8f50-e931022d630b",
+      "id": "4b7f0086-49cc-4662-8fba-a31abb25a76a",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
@@ -85,49 +69,81 @@
       "typeVersion": 1
     },
     {
-      "id": "9fe1367e-1d8b-4384-a920-8a6ebfcbb0db",
+      "id": "868af061-52ca-4c3b-870c-21b954da7c64",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1040,
+        920,
         240
       ],
       "parameters": {
         "color": 4,
         "width": 233.74765680228705,
         "height": 260.45841271216835,
-        "content": "Make sure to map the email field from the data your booking tool provides"
+        "content": "Make sure to map the email field from the data your email automation tool provides"
       },
       "typeVersion": 1
     },
     {
-      "id": "241835fc-1369-4c67-8de2-ffc86336369f",
+      "id": "d8a8082b-ec9e-4295-b675-0bbf346e5831",
       "name": "Enrich company",
       "type": "n8n-nodes-base.clearbit",
       "notes": "Enrich company",
       "position": [
-        1680,
+        1560,
         140
       ],
       "parameters": {
         "domain": "={{ $json.employment.domain }}",
         "additionalFields": {}
       },
-      "credentials": {
-        "clearbitApi": {
-          "id": "cKDImrinp9tg0ZHW",
-          "name": "Clearbit account"
-        }
-      },
       "notesInFlow": false,
       "typeVersion": 1
     },
     {
-      "id": "ba694bd1-0b7a-4caa-b31a-cbde1d77e626",
+      "id": "ccbe7caf-a256-4273-bedb-ff6b59e1843f",
+      "name": "Search company",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1860,
+        140
+      ],
+      "parameters": {
+        "limit": 1,
+        "domain": "={{ $json.domain }}",
+        "options": {},
+        "resource": "company",
+        "operation": "searchByDomain",
+        "authentication": "oAuth2"
+      },
+      "typeVersion": 2,
+      "alwaysOutputData": true
+    },
+    {
+      "id": "8e7ee0cd-7b23-4077-a4c9-3b4e40de0695",
+      "name": "Upsert lead",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1560,
+        440
+      ],
+      "parameters": {
+        "email": "={{ $('Enrich email').item.json.email }}",
+        "options": {},
+        "authentication": "oAuth2",
+        "additionalFields": {
+          "lastName": "={{ $('Enrich email').item.json.name.familyName }}",
+          "firstName": "={{ $('Enrich email').item.json.name.fullName }}"
+        }
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "d7dde1e3-cd14-4977-8065-a2ec23e97d55",
       "name": "Create company",
       "type": "n8n-nodes-base.hubspot",
       "position": [
-        2520,
+        2400,
         120
       ],
       "parameters": {
@@ -146,21 +162,15 @@
           "numberOfEmployees": "={{ $('Enrich company').item.json.metrics.employees }}"
         }
       },
-      "credentials": {
-        "hubspotOAuth2Api": {
-          "id": "WEONgGVHLYPjIE6k",
-          "name": "HubSpot account"
-        }
-      },
       "typeVersion": 2,
       "alwaysOutputData": true
     },
     {
-      "id": "b3ce17b4-ea85-4051-9231-67218d8586ea",
+      "id": "c2f3015c-24ce-47ad-bce5-81f85145ef5c",
       "name": "Upsert contact",
       "type": "n8n-nodes-base.hubspot",
       "position": [
-        2780,
+        2660,
         120
       ],
       "parameters": {
@@ -173,20 +183,14 @@
           "associatedCompanyId": "={{ $json.companyId }}"
         }
       },
-      "credentials": {
-        "hubspotOAuth2Api": {
-          "id": "WEONgGVHLYPjIE6k",
-          "name": "HubSpot account"
-        }
-      },
       "typeVersion": 2
     },
     {
-      "id": "b7eb2b8d-4460-4aa3-b78d-fa5d575b0577",
+      "id": "fe33b776-b30f-44b8-b0db-77c2fd198fc7",
       "name": "Update company",
       "type": "n8n-nodes-base.hubspot",
       "position": [
-        2520,
+        2400,
         420
       ],
       "parameters": {
@@ -208,55 +212,45 @@
         },
         "authentication": "oAuth2"
       },
-      "credentials": {
-        "hubspotOAuth2Api": {
-          "id": "WEONgGVHLYPjIE6k",
-          "name": "HubSpot account"
-        }
-      },
       "typeVersion": 2
     },
     {
-      "id": "7215afb3-c9af-4b94-bb55-6cd95c075af5",
-      "name": "Contact not found, do nothing",
-      "type": "n8n-nodes-base.noOp",
+      "id": "b7432f23-eb19-48bd-a76b-916c072bfb76",
+      "name": "ConvertKit Trigger",
+      "type": "n8n-nodes-base.convertKitTrigger",
       "position": [
-        1380,
-        600
-      ],
-      "parameters": {},
-      "typeVersion": 1
-    },
-    {
-      "id": "97bcd33e-333b-4e2f-a450-e415c774e1b1",
-      "name": "Enrich email",
-      "type": "n8n-nodes-base.clearbit",
-      "notes": "Enrich email",
-      "onError": "continueErrorOutput",
-      "position": [
-        1100,
+        580,
         340
       ],
+      "webhookId": "f0a3fa8a-a364-47c3-a261-ed71ba7abb8c",
       "parameters": {
-        "email": "={{ $json.payload.email }}",
-        "resource": "person",
-        "additionalFields": {}
+        "event": "formSubscribe",
+        "formId": 6242124
       },
-      "credentials": {
-        "clearbitApi": {
-          "id": "cKDImrinp9tg0ZHW",
-          "name": "Clearbit account"
-        }
-      },
-      "notesInFlow": false,
       "typeVersion": 1
     },
     {
-      "id": "1a759054-07ea-44eb-bfa5-d487630f84d0",
-      "name": "Filter out personal emails",
+      "id": "97376217-0388-43fd-af20-06ef790e652c",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        520,
+        240
+      ],
+      "parameters": {
+        "color": 4,
+        "width": 225.41119920533646,
+        "height": 260.45841271216835,
+        "content": "Replace this node with your email automation tool of choice"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "e19ad9e9-781a-47a6-9a8e-f27d0b0167f1",
+      "name": "Filter out personal emails1",
       "type": "n8n-nodes-base.filter",
       "position": [
-        920,
+        780,
         340
       ],
       "parameters": {
@@ -275,7 +269,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@gmail.com"
             },
             {
@@ -284,7 +278,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@yahoo.com"
             },
             {
@@ -293,7 +287,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@outlook.com"
             },
             {
@@ -302,7 +296,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@hotmail.com"
             },
             {
@@ -311,7 +305,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@icloud.com"
             },
             {
@@ -320,7 +314,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@mail.com"
             },
             {
@@ -329,7 +323,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@aol.com"
             },
             {
@@ -338,7 +332,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@zoho.com"
             },
             {
@@ -347,7 +341,7 @@
                 "type": "string",
                 "operation": "notContains"
               },
-              "leftValue": "={{ $json.payload.email }}",
+              "leftValue": "={{ $json.subscriber.email_address }}",
               "rightValue": "@gmx"
             }
           ]
@@ -356,61 +350,40 @@
       "typeVersion": 2
     },
     {
-      "id": "17905d5e-bdc6-4419-b10e-5f390b92f269",
-      "name": "Search company",
-      "type": "n8n-nodes-base.hubspot",
+      "id": "b5258a3e-966c-4ac8-ab30-e1727f22db5a",
+      "name": "Contact not found, do nothing1",
+      "type": "n8n-nodes-base.noOp",
       "position": [
-        1980,
-        140
+        1260,
+        540
       ],
-      "parameters": {
-        "limit": 1,
-        "domain": "={{ $json.domain }}",
-        "options": {},
-        "resource": "company",
-        "operation": "searchByDomain",
-        "authentication": "oAuth2"
-      },
-      "credentials": {
-        "hubspotOAuth2Api": {
-          "id": "WEONgGVHLYPjIE6k",
-          "name": "HubSpot account"
-        }
-      },
-      "typeVersion": 2,
-      "alwaysOutputData": true
+      "parameters": {},
+      "typeVersion": 1
     },
     {
-      "id": "c3eff32b-a767-4165-9424-112cb85c8949",
-      "name": "Upsert lead",
-      "type": "n8n-nodes-base.hubspot",
+      "id": "bd5fc02e-eded-4e67-b880-e94678d7d728",
+      "name": "Enrich email",
+      "type": "n8n-nodes-base.clearbit",
+      "notes": "Enrich email",
+      "onError": "continueErrorOutput",
       "position": [
-        1680,
-        440
+        980,
+        340
       ],
       "parameters": {
-        "email": "={{ $('Enrich email').item.json.email }}",
-        "options": {},
-        "authentication": "oAuth2",
-        "additionalFields": {
-          "lastName": "={{ $('Enrich email').item.json.name.familyName }}",
-          "firstName": "={{ $('Enrich email').item.json.name.fullName }}"
-        }
+        "email": "={{ $json.subscriber.email_address }}",
+        "resource": "person",
+        "additionalFields": {}
       },
-      "credentials": {
-        "hubspotOAuth2Api": {
-          "id": "WEONgGVHLYPjIE6k",
-          "name": "HubSpot account"
-        }
-      },
-      "typeVersion": 2
+      "notesInFlow": false,
+      "typeVersion": 1
     },
     {
-      "id": "55aaa7fc-d138-499a-8246-57e978062a20",
-      "name": "If person has a company",
+      "id": "972a4bee-6fd5-4c49-9a69-9f4f203e8285",
+      "name": "If person has company",
       "type": "n8n-nodes-base.if",
       "position": [
-        1380,
+        1260,
         340
       ],
       "parameters": {
@@ -436,28 +409,6 @@
         }
       },
       "typeVersion": 2
-    },
-    {
-      "id": "372c6118-5670-4afb-8e1d-df61c24acfd3",
-      "name": "Calendly Trigger",
-      "type": "n8n-nodes-base.calendlyTrigger",
-      "position": [
-        720,
-        340
-      ],
-      "webhookId": "9690577f-aa08-427e-9338-798c719361b1",
-      "parameters": {
-        "events": [
-          "invitee.created"
-        ]
-      },
-      "credentials": {
-        "calendlyApi": {
-          "id": "MJZuKpbZfBDXlvaH",
-          "name": "Calendly account"
-        }
-      },
-      "typeVersion": 1
     }
   ],
   "pinData": {},
@@ -466,14 +417,14 @@
       "main": [
         [
           {
-            "node": "If person has a company",
+            "node": "If person has company",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Contact not found, do nothing",
+            "node": "Contact not found, do nothing1",
             "type": "main",
             "index": 0
           }
@@ -513,18 +464,18 @@
         ]
       ]
     },
-    "Calendly Trigger": {
+    "ConvertKit Trigger": {
       "main": [
         [
           {
-            "node": "Filter out personal emails",
+            "node": "Filter out personal emails1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If person has a company": {
+    "If person has company": {
       "main": [
         [
           {
@@ -542,7 +493,7 @@
         ]
       ]
     },
-    "Filter out personal emails": {
+    "Filter out personal emails1": {
       "main": [
         [
           {

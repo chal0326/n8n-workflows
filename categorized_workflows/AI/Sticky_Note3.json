@@ -1,224 +1,314 @@
 {
+  "meta": {
+    "instanceId": "6a5e68bcca67c4cdb3e0b698d01739aea084e1ec06e551db64aeff43d174cb23",
+    "templateCredsSetupCompleted": true
+  },
   "nodes": [
     {
-      "id": "0a4e65b7-39be-44eb-8c66-913ebfe8a87a",
+      "id": "bc49829b-45f2-4910-9c37-907271982f14",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1140,
-        840
-      ],
-      "parameters": {
-        "color": 3,
-        "width": 215,
-        "height": 80,
-        "content": "**Replace password and username for Supabase**"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "2cea21fc-f3fe-47b7-a7b6-12acb0bc03ac",
-      "name": "Sticky Note5",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -160,
+        -140,
         320
       ],
       "parameters": {
-        "color": 7,
-        "width": 280.2462120317618,
-        "height": 545.9087885077763,
-        "content": "### Set up steps\n\n#### Preparation\n1. **Create Accounts**:\n - [N8N](https://n8n.partnerlinks.io/2hr10zpkki6a): For workflow automation.\n - [Supabase](https://supabase.com/): For database hosting and management.\n - [OpenAI](https://openai.com/): For building the conversational AI agent.\n2. **Configure Database Connection**:\n - Set up a PostgreSQL database in Supabase.\n - Use appropriate credentials (`username`, `password`, `host`, and `database` name) in your workflow.\n\n#### N8N Workflow\n\nAI agent with tools:\n\n1. **Code Tool**:\n - Execute SQL queries based on user input.\n2. **Database Schema Tool**:\n - Retrieve a list of all tables in the database.\n - Use a predefined SQL query to fetch table definitions, including column names, types, and references.\n3. **Table Definition**:\n - Retrieve a list of columns with types for one table."
+        "width": 780,
+        "height": 540,
+        "content": "### 4. Do you need more details?\nFind a step-by-step guide in this tutorial\n![Guide](https://www.samirsaci.com/content/images/2025/03/Miniature-2.png)\n[🎥 Watch My Tutorial](https://www.youtube.com/watch?v=kQ8dO_30SB0)"
       },
       "typeVersion": 1
     },
     {
-      "id": "eacc0c8c-11d5-44fb-8ff1-10533a233693",
-      "name": "Sticky Note6",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -160,
-        -200
-      ],
-      "parameters": {
-        "color": 7,
-        "width": 636.2128494576581,
-        "height": 497.1532689930921,
-        "content": "![5min Logo](https://res.cloudinary.com/de9jgixzm/image/upload/v1739773200/Skool%20Assets/ejm3hqnvhgwpnu2fv92s.png)\n## AI Agent to chat with Supabase/PostgreSQL DB\n**Made by [Mark Shcherbakov](https://www.linkedin.com/in/marklowcoding/) from community [5minAI](https://www.skool.com/5minai-2861)**\n\nAccessing and analyzing database data often requires SQL expertise or dedicated reports, which can be time-consuming. This workflow empowers users to interact with a database conversationally through an AI-powered agent. It dynamically generates SQL queries based on user requests, streamlining data retrieval and analysis.\n\nThis workflow integrates OpenAI with a Supabase database, enabling users to interact with their data via an AI agent. The agent can:\n- Retrieve records from the database.\n- Extract and analyze JSON data stored in tables.\n- Provide summaries, aggregations, or specific data points based on user queries.\n\n"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "be1559ea-1f75-4e7c-9bdd-3add8d8be70b",
-      "name": "Sticky Note7",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        140,
-        320
-      ],
-      "parameters": {
-        "color": 7,
-        "width": 330.5152611046425,
-        "height": 239.5888196628349,
-        "content": "### ... or watch set up video [20 min]\n[![Youtube Thumbnail](https://res.cloudinary.com/de9jgixzm/image/upload/v1739773279/Youtube%20Thumbs/Chat%20With%20DB.png)](https://www.youtube.com/watch?v=-GgKzhCNxjk)\n"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "4ea87754-dead-49ea-848c-ed86c98e217b",
-      "name": "When chat message received",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "position": [
-        720,
-        400
-      ],
-      "webhookId": "6e95bc27-99a6-417c-8bf7-2831d7f7a4be",
-      "parameters": {
-        "options": {}
-      },
-      "typeVersion": 1.1
-    },
-    {
-      "id": "c20d6e57-eb41-4682-a7f5-5bb4323df476",
-      "name": "OpenAI Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "position": [
-        760,
-        680
-      ],
-      "parameters": {
-        "options": {}
-      },
-      "credentials": {
-        "openAiApi": {
-          "id": "zJhr5piyEwVnWtaI",
-          "name": "OpenAi club"
-        }
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "8d3b1faf-643c-4070-996d-a59cb06e1827",
-      "name": "DB Schema",
-      "type": "n8n-nodes-base.postgresTool",
-      "position": [
-        1180,
-        660
-      ],
-      "parameters": {
-        "query": "SELECT table_schema, table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE' AND table_schema = 'public';",
-        "options": {},
-        "operation": "executeQuery",
-        "descriptionType": "manual",
-        "toolDescription": "Get list of all tables in database"
-      },
-      "credentials": {
-        "postgres": {
-          "id": "AO9cER6p8uX7V07T",
-          "name": "Postgres 5minai"
-        }
-      },
-      "typeVersion": 2.5
-    },
-    {
-      "id": "d9346ade-79d1-44c2-8fa6-b337ad8b0544",
-      "name": "Get table definition",
-      "type": "n8n-nodes-base.postgresTool",
-      "position": [
-        1340,
-        660
-      ],
-      "parameters": {
-        "query": "SELECT \n c.column_name,\n c.data_type,\n c.is_nullable,\n c.column_default,\n tc.constraint_type,\n ccu.table_name AS referenced_table,\n ccu.column_name AS referenced_column\nFROM \n information_schema.columns c\nLEFT JOIN \n information_schema.key_column_usage kcu \n ON c.table_name = kcu.table_name \n AND c.column_name = kcu.column_name\nLEFT JOIN \n information_schema.table_constraints tc \n ON kcu.constraint_name = tc.constraint_name\n AND tc.constraint_type = 'FOREIGN KEY'\nLEFT JOIN\n information_schema.constraint_column_usage ccu\n ON tc.constraint_name = ccu.constraint_name\nWHERE \n c.table_name = '{{ $fromAI(\"table_name\") }}' -- Your table name\n AND c.table_schema = 'public' -- Ensure it's in the right schema\nORDER BY \n c.ordinal_position;\n",
-        "options": {},
-        "operation": "executeQuery",
-        "descriptionType": "manual",
-        "toolDescription": "Get table definition to find all columns and types."
-      },
-      "credentials": {
-        "postgres": {
-          "id": "AO9cER6p8uX7V07T",
-          "name": "Postgres 5minai"
-        }
-      },
-      "typeVersion": 2.5
-    },
-    {
-      "id": "b88a21e0-d2ff-4431-bd84-dfd43edeb5c4",
-      "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        960,
-        280
-      ],
-      "parameters": {
-        "width": 215,
-        "height": 80,
-        "content": "**Finetune the prompt of assistant**"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "fbe9eb68-5990-485c-820f-08234ea33194",
+      "id": "40c6e16a-3b4f-4e28-b0a1-7066e0efab5d",
       "name": "AI Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "position": [
-        940,
-        400
+        -460,
+        -80
       ],
       "parameters": {
-        "text": "={{ $('When chat message received').item.json.chatInput }}",
-        "agent": "openAiFunctionsAgent",
+        "text": "=Email Subject:  {{ $json.subject }}\nEmail Body: \n{{ $json.text }}",
         "options": {
-          "systemMessage": "You are DB assistant. You need to run queries in DB aligned with user requests.\n\nRun custom SQL query to aggregate data and response to user.\n\nFetch all data to analyse it for response if needed.\n"
+          "systemMessage": "=You are an assistant that processes emails related to inbound orders from Hermas.\n\nEach email has the subject line containing a purchase order reference (e.g., \"PO45231\").\nIn the email body, you will find:\n\nAn expected delivery date, typically in formats like 27/03/2025 or 2025-03-27.\n\nOne or more order lines, where each line contains:\n\nAn SKU (e.g., HERM-SHOE-001)\n\nA quantity (e.g., 120)\n\nYour goal is to extract the following fields:\n\npurchase_order: The PO number from the subject line (e.g., PO45231)\n\nexpected_delivery_date: In ISO format (e.g., 2025-03-27)\n\nlines: A list of objects with sku and quantity for each order line\n\nReturn your output strictly as a valid JSON object using the format below."
         },
-        "promptType": "define"
+        "promptType": "define",
+        "hasOutputParser": true
       },
-      "typeVersion": 1.6
+      "typeVersion": 1.8
     },
     {
-      "id": "7f82d6d9-d7d6-4443-bbaa-c9b276a376e3",
-      "name": "Run SQL Query",
-      "type": "n8n-nodes-base.postgresTool",
+      "id": "e9cb7bb1-40e7-463e-8b3f-417602338e5c",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "position": [
-        1040,
-        660
+        -520,
+        120
       ],
       "parameters": {
-        "query": "{{ $fromAI(\"query\",\"SQL query for PostgreSQL DB in Supabase\") }}",
-        "options": {},
-        "operation": "executeQuery",
-        "descriptionType": "manual",
-        "toolDescription": "Run custom SQL queries using knowledge about Output structure to provide needed response for user request.\nUse ->> operator to extract JSON data."
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
       },
-      "credentials": {
-        "postgres": {
-          "id": "AO9cER6p8uX7V07T",
-          "name": "Postgres 5minai"
+      "typeVersion": 1.2
+    },
+    {
+      "id": "468bdb39-223f-4bae-8bdb-a72272ab57c3",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -180,
+        120
+      ],
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"purchase_order\": \"PO45231\",\n  \"expected_delivery_date\": \"2025-03-27\",\n  \"lines\": [\n    { \"sku\": \"HERM-SHOE-001\", \"quantity\": 120 },\n    { \"sku\": \"HERM-BAG-032\", \"quantity\": 45 },\n    { \"sku\": \"HERM-WATCH-105\", \"quantity\": 30 },\n    { \"sku\": \"HERM-SCARF-018\", \"quantity\": 80 }\n  ]\n}\n"
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "667a8d43-1ce5-4ec8-871a-26007356a89e",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        -460
+      ],
+      "parameters": {
+        "color": 7,
+        "width": 380,
+        "height": 720,
+        "content": "### 1. Workflow Trigger with Gmail Trigger\nThe workflow is triggered by a new email received in your Gmail mailbox. \nIf the subject includes the string \"Inbound Order\" we proceed, if not we do nothing.\n\n#### How to setup?\n- **Gmail Trigger Node:** set up your Gmail API credentials\n[Learn more about the Gmail Trigger Node](https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.gmailtrigger)\n"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "e1e2d95a-9bbd-4bd5-92ec-7a4835db21a2",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -600,
+        -460
+      ],
+      "parameters": {
+        "color": 7,
+        "width": 660,
+        "height": 720,
+        "content": "### 2. AI Agent equipped with the query tool\nThe email body and subject are sent to the AI agent for parsing. The results include the **PO Number**, **expected delivery date** and all the order lines with **SKU ID** and **order quantity**. Outputs are formatted by the code node to fit in a Google Sheet.\n\n#### How to setup?\n- **AI Agent with the Chat Model**:\n   1. Add a **chat model** with the required credentials *(Example: Open AI 4o-mini)*\n   2. Adapt the system prompt to the format of your emails\n  [Learn more about the AI Agent Node](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent)"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "53375c17-a36c-431e-9ba6-07a9a84fc4c9",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        80,
+        -460
+      ],
+      "parameters": {
+        "color": 7,
+        "width": 460,
+        "height": 540,
+        "content": "### 3. Store the orderlines in a Google Sheet\nThe table generated by the **code node** includes all the order lines with the **PO Number** and the **expected delivery date**. This **Google Sheet Node** loads the content in a Google Sheet.\n\n#### How to setup?\n- **Add Results in Google Sheets**:\n   1. Add your Google Sheet API credentials to access the Google Sheet file\n   2. Select the file using the list, an URL or an ID\n   3. Select the sheet in which the vocabulary list is stored\n   4. Create the columns: **PO_NUMBER, EXPECTED_DELIVERY DATE, SKU_ID, QUANTITY**\n  [Learn more about the Google Sheet Node](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.googlesheets)"
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "776cfc0e-264b-44cc-b534-dc387b0c9fce",
+      "name": "Store Purchase Order Lines",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        180,
+        -80
+      ],
+      "parameters": {
+        "columns": {
+          "value": {
+            "SKU_ID": "={{ $json.sku }}",
+            "QUANTITY": "={{ $json.quantity }}",
+            "PO_NUMBER": "={{ $json.purchase_order }}",
+            "EXPECTED_DELIVERY DATE": "={{ $json.expected_delivery_date }}"
+          },
+          "schema": [
+            {
+              "id": "PO_NUMBER",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "PO_NUMBER",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "EXPECTED_DELIVERY DATE",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "EXPECTED_DELIVERY DATE",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "SKU_ID",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "SKU_ID",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "QUANTITY",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "QUANTITY",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {},
+        "operation": "append",
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "=",
+          "cachedResultName": "="
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1HnaJJ-DqzqgWJo2YwQDcgB6BgWiU6eMlnGvv4kapubg",
+          "cachedResultUrl": "=",
+          "cachedResultName": "="
         }
       },
-      "typeVersion": 2.5
+      "notesInFlow": true,
+      "typeVersion": 4.5
+    },
+    {
+      "id": "d5c52625-fef2-47a9-b2a4-bf005d8b9e05",
+      "name": "Email Received",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "position": [
+        -980,
+        -80
+      ],
+      "parameters": {
+        "simple": false,
+        "filters": {},
+        "options": {},
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "6dc9e5cc-9ab3-469c-ad93-e0e7817ccbf7",
+      "name": "Is PO?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -760,
+        -80
+      ],
+      "parameters": {
+        "options": {},
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "f300ae2b-5de4-4efc-88ae-130a957588cb",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.subject }}",
+              "rightValue": "Inbound Order"
+            }
+          ]
+        }
+      },
+      "typeVersion": 2.2
+    },
+    {
+      "id": "385db736-0867-46b9-9274-380e7c255fc4",
+      "name": "Format Purchase Order Lines",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -120,
+        -80
+      ],
+      "parameters": {
+        "jsCode": "const {purchase_order, expected_delivery_date, lines} = $input.first().json.output;\n\nreturn lines.map( line => ({\n  json: {\n    purchase_order,\n    expected_delivery_date,\n    sku: line.sku,\n    quantity: line.quantity\n  }\n}))\n"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "b2e39591-70be-4d7f-a5d4-1505741d6310",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1000,
+        320
+      ],
+      "parameters": {
+        "width": 780,
+        "height": 720,
+        "content": "### Test the workflow with this email!\n\n#### How?\n1. Send this email to the Gmail box you set up in your credentials.\n2. Click on Test workflow\n\n### Email\n**Email Subject:** Inbound Order PO45231 – Expected Delivery on 2025-03-27\n\n**Email Body:** \nDear LogiGreen Team,\n\nPlease find below the details of the upcoming inbound order.\n\nPurchase Order: PO45231\nExpected Delivery Date: 27/03/2025\n\nOrder Lines:\n\nSKU: HERM-SHOE-001 — Qty: 120\n\nSKU: HERM-BAG-032 — Qty: 45\n\nSKU: HERM-WATCH-105 — Qty: 30\n\nSKU: HERM-SCARF-018 — Qty: 80\n\nLet us know if you need any additional details.\n\nBest regards,\nSophie Lambert\nAdmin Assistant – Hermas Logistics\n📞 +33 1 23 45 67 89 78 84\n✉️ sophie.lambert@hermas.com\n"
+      },
+      "typeVersion": 1
     }
   ],
   "pinData": {},
   "connections": {
-    "DB Schema": {
-      "ai_tool": [
+    "Is PO?": {
+      "main": [
         [
           {
             "node": "AI Agent",
-            "type": "ai_tool",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Run SQL Query": {
-      "ai_tool": [
+    "AI Agent": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Format Purchase Order Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Received": {
+      "main": [
+        [
+          {
+            "node": "Is PO?",
+            "type": "main",
             "index": 0
           }
         ]
@@ -235,22 +325,22 @@
         ]
       ]
     },
-    "Get table definition": {
-      "ai_tool": [
+    "Structured Output Parser": {
+      "ai_outputParser": [
         [
           {
             "node": "AI Agent",
-            "type": "ai_tool",
+            "type": "ai_outputParser",
             "index": 0
           }
         ]
       ]
     },
-    "When chat message received": {
+    "Format Purchase Order Lines": {
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Store Purchase Order Lines",
             "type": "main",
             "index": 0
           }

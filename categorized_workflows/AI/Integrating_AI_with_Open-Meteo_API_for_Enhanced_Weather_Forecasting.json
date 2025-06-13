@@ -19,12 +19,12 @@
       "parameters": {
         "public": true,
         "options": {
-          "title": "N8N \ud83d\udc4b",
+          "title": "N8N 👋",
           "subtitle": "Weather Assistant: Example of Tools Using ChatGPT",
           "allowFileUploads": false,
           "loadPreviousSession": "memory"
         },
-        "initialMessages": "Type like this: Weather Forecast for the Next 7 Days in S\u00e3o Paulo"
+        "initialMessages": "Type like this: Weather Forecast for the Next 7 Days in São Paulo"
       },
       "typeVersion": 1.1
     },
@@ -59,7 +59,7 @@
         "color": 5,
         "width": 500,
         "height": 720,
-        "content": "## Integrating AI with Open-Meteo API for Enhanced Weather Forecasting\n\n## Use case\n\n### Workshop\n\nWe are using this workflow in our workshops to teach how to use Tools a.k.a functions with artificial intelligence. In this specific case, we will use a generic \"AI Agent\" node to illustrate that it could use other models from different data providers.\n\n### Enhanced Weather Forecasting\n\nIn this small example, it's easy to demonstrate how to obtain weather forecast results from the Open-Meteo site to accurately display the upcoming days.\n\nThis can be used to plan travel decisions, for example.\n\n## What this workflow does\n\n1. We will make an HTTP request to find out the geographic coordinates of a city.\n2. Then, we will make other HTTP requests to discover the weather for the upcoming days.\n\nIn this workshop, we demonstrate that the AI will be able to determine which tool to call first\u2014it will first call the geolocation tool and then the weather forecast tool. All of this within a single client conversation call.\n\n\n## Setup\n\nInsert an OpenAI Key and activate the workflow.\n\nby Davi Saranszky Mesquita\nhttps://www.linkedin.com/in/mesquitadavi/"
+        "content": "## Integrating AI with Open-Meteo API for Enhanced Weather Forecasting\n\n## Use case\n\n### Workshop\n\nWe are using this workflow in our workshops to teach how to use Tools a.k.a functions with artificial intelligence. In this specific case, we will use a generic \"AI Agent\" node to illustrate that it could use other models from different data providers.\n\n### Enhanced Weather Forecasting\n\nIn this small example, it's easy to demonstrate how to obtain weather forecast results from the Open-Meteo site to accurately display the upcoming days.\n\nThis can be used to plan travel decisions, for example.\n\n## What this workflow does\n\n1. We will make an HTTP request to find out the geographic coordinates of a city.\n2. Then, we will make other HTTP requests to discover the weather for the upcoming days.\n\nIn this workshop, we demonstrate that the AI will be able to determine which tool to call first—it will first call the geolocation tool and then the weather forecast tool. All of this within a single client conversation call.\n\n\n## Setup\n\nInsert an OpenAI Key and activate the workflow.\n\nby Davi Saranszky Mesquita\nhttps://www.linkedin.com/in/mesquitadavi/"
       },
       "typeVersion": 1
     },

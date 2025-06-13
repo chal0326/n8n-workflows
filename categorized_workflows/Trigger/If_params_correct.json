@@ -86,7 +86,7 @@
         "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $json.body.voice_id }}",
         "method": "POST",
         "options": {},
-        "jsonBody": "={\n \"text\": \"{{ $json.body.text }}\"\n} ",
+        "jsonBody": "={\n  \"text\":  \"{{ $json.body.text }}\"\n} ",
         "sendBody": true,
         "sendHeaders": true,
         "specifyBody": "json",
@@ -120,7 +120,7 @@
       "parameters": {
         "width": 806.0818150700699,
         "height": 495.17470523089514,
-        "content": "## Generate Text-to-Speech Using Elevenlabs via API\nThis workflow provides an API endpoint to generate speech from text using [Elevenlabs.io](https://elevenlabs.io/), a popular text-to-speech service.\n\n### Step 1: Configure Custom Credentials in n8n\nTo set up your credentials in n8n, create a new custom authentication entry with the following JSON structure:\n```json\n{\n \"headers\": {\n \"xi-api-key\": \"your-elevenlabs-api-key\"\n }\n}\n```\nReplace `\"your-elevenlabs-api-key\"` with your actual Elevenlabs API key.\n\n### Step 2: Send a POST Request to the Webhook\nSend a POST request to the workflow's webhook endpoint with these two parameters:\n- `voice_id`: The ID of the voice from Elevenlabs that you want to use.\n- `text`: The text you want to convert to speech.\n\nThis workflow has been a significant time-saver in my video production tasks. I hope it proves just as useful to you!\n\nHappy automating! \nThe n8Ninja"
+        "content": "## Generate Text-to-Speech Using Elevenlabs via API\nThis workflow provides an API endpoint to generate speech from text using [Elevenlabs.io](https://elevenlabs.io/), a popular text-to-speech service.\n\n### Step 1: Configure Custom Credentials in n8n\nTo set up your credentials in n8n, create a new custom authentication entry with the following JSON structure:\n```json\n{\n  \"headers\": {\n    \"xi-api-key\": \"your-elevenlabs-api-key\"\n  }\n}\n```\nReplace `\"your-elevenlabs-api-key\"` with your actual Elevenlabs API key.\n\n### Step 2: Send a POST Request to the Webhook\nSend a POST request to the workflow's webhook endpoint with these two parameters:\n- `voice_id`: The ID of the voice from Elevenlabs that you want to use.\n- `text`: The text you want to convert to speech.\n\nThis workflow has been a significant time-saver in my video production tasks. I hope it proves just as useful to you!\n\nHappy automating!  \nThe n8Ninja"
       },
       "typeVersion": 1
     },
@@ -135,7 +135,7 @@
       "parameters": {
         "options": {},
         "respondWith": "json",
-        "responseBody": "{\n \"error\": \"Invalid inputs.\"\n}"
+        "responseBody": "{\n  \"error\": \"Invalid inputs.\"\n}"
       },
       "typeVersion": 1.1
     }
