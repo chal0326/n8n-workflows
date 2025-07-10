@@ -27,7 +27,7 @@
     {
       "id": "048f9d67-6519-4dea-97df-aaddfefbfea2",
       "name": "Default Data Loader",
-      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "type": "n8n-nodes-langchain.documentdefaultdataloader",
       "position": [
         1300,
         720
@@ -55,7 +55,7 @@
     {
       "id": "9e9047c9-4428-4afb-8c74-d6eb1075a65a",
       "name": "Recursive Character Text Splitter",
-      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "type": "n8n-nodes-langchain.textsplitterrecursivecharactertextsplitter",
       "position": [
         1300,
         860
@@ -69,7 +69,7 @@
     {
       "id": "e42e3f82-6cd9-40c4-9da2-8f87ee5b3956",
       "name": "Embeddings Mistral Cloud",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsMistralCloud",
+      "type": "n8n-nodes-langchain.embeddingsmistralcloud",
       "position": [
         1180,
         720
@@ -207,7 +207,7 @@
       "parameters": {
         "mode": "raw",
         "options": {},
-        "jsonOutput": "{\n  \"docs\": [\n    {\n      \"filename\": \"study_guide.md\",\n      \"title\": \"Study Guide\",\n      \"description\": \"A Study Guide is a consolidated resource designed to aid learning. This guide includes three key elements: * A short answer quiz accompanied by an answer key to test comprehension. * A curated list of long-form essay questions to encourage deeper analysis and synthesis of the material. * A glossary of key terms to reinforce understanding of important concepts.\"\n    },\n    {\n      \"filename\": \"timeline.md\",\n      \"title\": \"Timeline\",\n      \"description\": \"A Timeline organizes all significant events described in the sources you have uploaded in chronological order. This ordered list makes it easier to understand the sequence of events and their connection to the broader context of your sources. In addition to the list of events, the Timeline also provides a “cast of characters,” which comprises short biographical sketches of all the important people mentioned in your uploaded sources. These short biographies can help you quickly grasp the roles of various individuals involved in the events described by the Timeline.\"\n    },\n    {\n      \"filename\": \"briefing_doc.md\",\n      \"title\": \"Briefing Doc\",\n      \"description\": \"A Briefing Doc identifies and presents the most important facts and insights from the sources in an easy-to-understand outline format. This format is designed to provide a concise overview of the key takeaways from the uploaded materials.\"\n    }\n  ]\n}\n"
+        "jsonOutput": "{\n  \"docs\": [\n    {\n      \"filename\": \"study_guide.md\",\n      \"title\": \"Study Guide\",\n      \"description\": \"A Study Guide is a consolidated resource designed to aid learning. This guide includes three key elements: * A short answer quiz accompanied by an answer key to test comprehension. * A curated list of long-form essay questions to encourage deeper analysis and synthesis of the material. * A glossary of key terms to reinforce understanding of important concepts.\"\n    },\n    {\n      \"filename\": \"timeline.md\",\n      \"title\": \"Timeline\",\n      \"description\": \"A Timeline organizes all significant events described in the sources you have uploaded in chronological order. This ordered list makes it easier to understand the sequence of events and their connection to the broader context of your sources. In addition to the list of events, the Timeline also provides a \u201ccast of characters,\u201d which comprises short biographical sketches of all the important people mentioned in your uploaded sources. These short biographies can help you quickly grasp the roles of various individuals involved in the events described by the Timeline.\"\n    },\n    {\n      \"filename\": \"briefing_doc.md\",\n      \"title\": \"Briefing Doc\",\n      \"description\": \"A Briefing Doc identifies and presents the most important facts and insights from the sources in an easy-to-understand outline format. This format is designed to provide a concise overview of the key takeaways from the uploaded materials.\"\n    }\n  ]\n}\n"
       },
       "executeOnce": true,
       "typeVersion": 3.3
@@ -242,7 +242,7 @@
     {
       "id": "c334b546-8e11-424d-bdd5-006e7086f24b",
       "name": "Item List Output Parser",
-      "type": "@n8n/n8n-nodes-langchain.outputParserItemList",
+      "type": "n8n-nodes-langchain.outputparseritemlist",
       "position": [
         2840,
         840
@@ -255,7 +255,7 @@
     {
       "id": "4267c2b5-f1cd-4df7-84ee-be01a643a1c1",
       "name": "Vector Store Retriever",
-      "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
+      "type": "n8n-nodes-langchain.retrievervectorstore",
       "position": [
         3200,
         840
@@ -266,7 +266,7 @@
     {
       "id": "abf833ec-8a6d-4e13-a526-0ea6b80d578f",
       "name": "Embeddings Mistral Cloud1",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsMistralCloud",
+      "type": "n8n-nodes-langchain.embeddingsmistralcloud",
       "position": [
         3200,
         1060
@@ -285,7 +285,7 @@
     {
       "id": "a0e50185-6662-4b11-9922-59e8b06e4967",
       "name": "Qdrant Vector Store1",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "type": "n8n-nodes-langchain.vectorstoreqdrant",
       "position": [
         3200,
         940
@@ -382,7 +382,7 @@
     {
       "id": "efb26a5d-6a61-44b2-ad99-6d1f8b48998d",
       "name": "Discover",
-      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "type": "n8n-nodes-langchain.chainretrievalqa",
       "position": [
         3100,
         680
@@ -778,7 +778,7 @@
     {
       "id": "08839972-f0f4-4144-bf27-810664cbf828",
       "name": "Qdrant Vector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "type": "n8n-nodes-langchain.vectorstoreqdrant",
       "position": [
         1200,
         560
@@ -849,7 +849,7 @@
       "parameters": {
         "width": 172.26820279743384,
         "height": 295.46359440513226,
-        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### 💡Add your own templates here!\n"
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### \ud83d\udca1Add your own templates here!\n"
       },
       "typeVersion": 1
     }

@@ -107,7 +107,7 @@
     {
       "id": "89c8bc41-cbf9-4099-a3ac-6d5d7cd1a626",
       "name": "MCP_GMAIL",
-      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "type": "n8n-nodes-langchain.mcptrigger",
       "position": [
         0,
         0

@@ -55,7 +55,7 @@
     {
       "id": "9b88e307-3ad5-4167-8c5f-e5827f7444ac",
       "name": "Hugging Face Inference Model",
-      "type": "@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference",
+      "type": "n8n-nodes-langchain.lmopenhuggingfaceinference",
       "position": [
         120,
         440

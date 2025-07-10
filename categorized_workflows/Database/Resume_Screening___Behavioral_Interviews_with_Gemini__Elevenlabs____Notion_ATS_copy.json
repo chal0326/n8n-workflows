@@ -117,7 +117,7 @@
       "parameters": {
         "width": 360,
         "height": 400,
-        "content": "## Applicant Summary \n### Writes a concise summary of applicant’s Education, Job History, and Skills."
+        "content": "## Applicant Summary \n### Writes a concise summary of applicant\u2019s Education, Job History, and Skills."
       },
       "typeVersion": 1
     },
@@ -280,7 +280,7 @@
             {
               "name": "Skills",
               "required": true,
-              "description": "Extract the candidate’s technical skills. What software, frameworks, functional skills they are proficient in. Make a bulleted list."
+              "description": "Extract the candidate\u2019s technical skills. What software, frameworks, functional skills they are proficient in. Make a bulleted list."
             },
             {
               "name": "Experience",
@@ -681,7 +681,7 @@
         "color": 4,
         "width": 720,
         "height": 180,
-        "content": "## Human in the Loop 2 - (Notion)\n### Hiring manager reviews Notion ATS dashboard (free template) and views AI Agent’s, overall assessment of conversation, including score, and individual assessment of each question response.  Manager can then automatically schedule the next interview  by dragging the applicant profile to the next process stage in Notion dashboard.\n"
+        "content": "## Human in the Loop 2 - (Notion)\n### Hiring manager reviews Notion ATS dashboard (free template) and views AI Agent\u2019s, overall assessment of conversation, including score, and individual assessment of each question response.  Manager can then automatically schedule the next interview  by dragging the applicant profile to the next process stage in Notion dashboard.\n"
       },
       "typeVersion": 1
     },
@@ -962,7 +962,7 @@
           "buttonLabel": "Submit",
           "respondWithOptions": {
             "values": {
-              "formSubmittedText": "Thank you for your interest in joining the [Company Name] team! We’ll review your information, and if your background looks like a match, we’ll reach out to schedule the next steps.  While we review your application, please know that we will not share your application information with anyone outside the [Company Name] team except where necessary to assist us in assessing your candidacy throughout the recruitment process. That means your data may be assessed in the United States by our team in [City/Location]. We may keep the information you submitted for up to four years and use it to keep you informed of other opportunities that might be a good fit for you.  If you would like to know more about how we use your personal data, please review our Privacy Notice, where you can also find information on how to update your contact preferences.  In the meantime, check out our company culture!  Thanks again,  The [Company Name] Talent Acquisition Team"
+              "formSubmittedText": "Thank you for your interest in joining the [Company Name] team! We\u2019ll review your information, and if your background looks like a match, we\u2019ll reach out to schedule the next steps.  While we review your application, please know that we will not share your application information with anyone outside the [Company Name] team except where necessary to assist us in assessing your candidacy throughout the recruitment process. That means your data may be assessed in the United States by our team in [City/Location]. We may keep the information you submitted for up to four years and use it to keep you informed of other opportunities that might be a good fit for you.  If you would like to know more about how we use your personal data, please review our Privacy Notice, where you can also find information on how to update your contact preferences.  In the meantime, check out our company culture!  Thanks again,  The [Company Name] Talent Acquisition Team"
             }
           }
         },
@@ -1009,7 +1009,7 @@
           "buttonLabel": "Submit",
           "respondWithOptions": {
             "values": {
-              "formSubmittedText": "Thank you for your interest in joining the [Company Name] team! We’ll review your information, and if your background looks like a match, we’ll reach out to schedule the next steps.  While we review your application, please know that we will not share your application information with anyone outside the [Company Name] team except where necessary to assist us in assessing your candidacy throughout the recruitment process. That means your data may be assessed in the United States by our team in [City/Location]. We may keep the information you submitted for up to four years and use it to keep you informed of other opportunities that might be a good fit for you.  If you would like to know more about how we use your personal data, please review our Privacy Notice, where you can also find information on how to update your contact preferences.  In the meantime, check out our company culture!  Thanks again,  The [Company Name] Talent Acquisition Team"
+              "formSubmittedText": "Thank you for your interest in joining the [Company Name] team! We\u2019ll review your information, and if your background looks like a match, we\u2019ll reach out to schedule the next steps.  While we review your application, please know that we will not share your application information with anyone outside the [Company Name] team except where necessary to assist us in assessing your candidacy throughout the recruitment process. That means your data may be assessed in the United States by our team in [City/Location]. We may keep the information you submitted for up to four years and use it to keep you informed of other opportunities that might be a good fit for you.  If you would like to know more about how we use your personal data, please review our Privacy Notice, where you can also find information on how to update your contact preferences.  In the meantime, check out our company culture!  Thanks again,  The [Company Name] Talent Acquisition Team"
             }
           }
         },
@@ -1055,7 +1055,7 @@
           "buttonLabel": "Submit",
           "respondWithOptions": {
             "values": {
-              "formSubmittedText": "Thank you for your interest in joining the [Company Name] team! We’ll review your information, and if your background looks like a match, we’ll reach out to schedule the next steps.  While we review your application, please know that we will not share your application information with anyone outside the [Company Name] team except where necessary to assist us in assessing your candidacy throughout the recruitment process. That means your data may be assessed in the United States by our team in [City/Location]. We may keep the information you submitted for up to four years and use it to keep you informed of other opportunities that might be a good fit for you.  If you would like to know more about how we use your personal data, please review our Privacy Notice, where you can also find information on how to update your contact preferences.  In the meantime, check out our company culture!  Thanks again,  The [Company Name] Talent Acquisition Team"
+              "formSubmittedText": "Thank you for your interest in joining the [Company Name] team! We\u2019ll review your information, and if your background looks like a match, we\u2019ll reach out to schedule the next steps.  While we review your application, please know that we will not share your application information with anyone outside the [Company Name] team except where necessary to assist us in assessing your candidacy throughout the recruitment process. That means your data may be assessed in the United States by our team in [City/Location]. We may keep the information you submitted for up to four years and use it to keep you informed of other opportunities that might be a good fit for you.  If you would like to know more about how we use your personal data, please review our Privacy Notice, where you can also find information on how to update your contact preferences.  In the meantime, check out our company culture!  Thanks again,  The [Company Name] Talent Acquisition Team"
             }
           }
         },
@@ -1587,7 +1587,7 @@
     {
       "id": "a1995f8a-4a77-401d-a7ef-0a6c08d9f4e3",
       "name": "Evaluation Criteria",
-      "type": "n8n-nodes-base.notionTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         900,
         2160
@@ -1749,7 +1749,7 @@
       ],
       "parameters": {
         "width": 920,
-        "content": "# Summarizes Applicant’s Education, Job History, and Skills"
+        "content": "# Summarizes Applicant\u2019s Education, Job History, and Skills"
       },
       "typeVersion": 1
     },
@@ -1777,7 +1777,7 @@
       ],
       "parameters": {
         "width": 1040,
-        "content": "# Scores Applicant’s resume, adding applicant record to Notion"
+        "content": "# Scores Applicant\u2019s resume, adding applicant record to Notion"
       },
       "typeVersion": 1
     },

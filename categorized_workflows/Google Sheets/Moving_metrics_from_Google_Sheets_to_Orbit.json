@@ -17,7 +17,7 @@
     },
     {
       "name": "Add Members",
-      "type": "n8n-nodes-base.orbit",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1073,
         326
@@ -46,7 +46,7 @@
     },
     {
       "name": "Get all members",
-      "type": "n8n-nodes-base.orbit",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1273,
         526
@@ -105,7 +105,7 @@
     },
     {
       "name": "Add Activities",
-      "type": "n8n-nodes-base.orbit",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1673,
         426

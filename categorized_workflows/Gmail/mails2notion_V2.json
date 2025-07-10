@@ -33,7 +33,7 @@
     {
       "id": "bd60c65f-ba6c-4dcb-8d09-b29f5dd475b7",
       "name": "Calculator",
-      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "type": "n8n-nodes-langchain.toolcalculator",
       "disabled": true,
       "position": [
         2700,
@@ -493,7 +493,7 @@
     },
     {
       "id": "14764527-ca40-4937-baa2-368b716c6f58",
-      "name": "When clicking ‘Test workflow’",
+      "name": "When clicking \u2018Test workflow\u2019",
       "type": "n8n-nodes-base.manualTrigger",
       "disabled": true,
       "position": [
@@ -840,7 +840,7 @@
     {
       "id": "c55a3e9b-5637-4775-a0a6-ea11f1bd26a7",
       "name": "Calculator1",
-      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "type": "n8n-nodes-langchain.toolcalculator",
       "disabled": true,
       "position": [
         2320,
@@ -1139,7 +1139,7 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
+    "When clicking \u2018Test workflow\u2019": {
       "main": [
         [
           {

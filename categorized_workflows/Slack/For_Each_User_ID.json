@@ -377,7 +377,7 @@
     {
       "id": "2b0aa447-164f-4f7c-95b1-ae44c699fc89",
       "name": "Wikipedia",
-      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "type": "n8n-nodes-langchain.toolwikipedia",
       "position": [
         1520,
         740
@@ -465,7 +465,7 @@
         "color": 7,
         "width": 555.022465659362,
         "height": 579.2571386002115,
-        "content": "## 5. Get Emoji Reactions to Track Attendees\n[Read more about using Slack](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.slack)\n\nWhen the event exists, we can instead start adding other team members who've reacted to the message with the ✅ emoji. In this part of the workflow, there's a bit of logic to compare the number of people who've reacted to the attendee list of the actual event. This is necessary to avoid unwanted notifications which could get quite annoying!"
+        "content": "## 5. Get Emoji Reactions to Track Attendees\n[Read more about using Slack](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.slack)\n\nWhen the event exists, we can instead start adding other team members who've reacted to the message with the \u2705 emoji. In this part of the workflow, there's a bit of logic to compare the number of people who've reacted to the attendee list of the actual event. This is necessary to avoid unwanted notifications which could get quite annoying!"
       },
       "typeVersion": 1
     },
@@ -496,7 +496,7 @@
       "parameters": {
         "width": 359.6648027457353,
         "height": 416.9747281125149,
-        "content": "## Try It Out!\n### This workflow does the following\n* Monitors a slack channel for event messages tagged with the Calendar (📅) emoji.\n* Checks if a calender event exists otherwise uses ChatGPT to create the calendar event; AI will add event title, description and location details.\n* If calendar event exists, checks for channel users who have reacted with checkmark (✅) emoji.\n* These users are automatically added as attendees to the event.\n\n### Need Help?\nJoin the [Discord](https://discord.com/invite/XPKeKXeB7d) or ask in the [Forum](https://community.n8n.io/)!\n\nHappy Hacking!"
+        "content": "## Try It Out!\n### This workflow does the following\n* Monitors a slack channel for event messages tagged with the Calendar (\ud83d\udcc5) emoji.\n* Checks if a calender event exists otherwise uses ChatGPT to create the calendar event; AI will add event title, description and location details.\n* If calendar event exists, checks for channel users who have reacted with checkmark (\u2705) emoji.\n* These users are automatically added as attendees to the event.\n\n### Need Help?\nJoin the [Discord](https://discord.com/invite/XPKeKXeB7d) or ask in the [Forum](https://community.n8n.io/)!\n\nHappy Hacking!"
       },
       "typeVersion": 1
     },
@@ -602,7 +602,7 @@
       "parameters": {
         "width": 179.82769272818715,
         "height": 362.21121634583966,
-        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🚨**Required**\n* Set the channel to monitor here. Also, make sure to use the user access token in your credential"
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ud83d\udea8**Required**\n* Set the channel to monitor here. Also, make sure to use the user access token in your credential"
       },
       "typeVersion": 1
     },
@@ -617,7 +617,7 @@
       "parameters": {
         "width": 179.82769272818715,
         "height": 317.6738512911155,
-        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🚨**Required**\n* Set the Google Calendar to use here."
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ud83d\udea8**Required**\n* Set the Google Calendar to use here."
       },
       "typeVersion": 1
     }

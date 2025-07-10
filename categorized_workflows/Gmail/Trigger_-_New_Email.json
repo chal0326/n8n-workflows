@@ -34,7 +34,7 @@
     {
       "id": "b87b2211-03d3-4742-98c9-977ae4a8d581",
       "name": "attach binary data outputs",
-      "type": "n8n-nodes-base.function",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         900,
         300

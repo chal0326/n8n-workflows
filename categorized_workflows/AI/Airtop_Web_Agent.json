@@ -46,7 +46,7 @@
     {
       "id": "5e29189a-2b5a-4193-bff1-f4afe1c4b838",
       "name": "Click",
-      "type": "n8n-nodes-base.airtopTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         0,
         280
@@ -73,7 +73,7 @@
     {
       "id": "85338306-5acd-4e9b-9a02-7fc5e9a03557",
       "name": "Query",
-      "type": "n8n-nodes-base.airtopTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         120,
         280
@@ -99,7 +99,7 @@
     {
       "id": "67cee508-c2c0-423e-b1fb-576de026f3ed",
       "name": "Load URL",
-      "type": "n8n-nodes-base.airtopTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         240,
         280
@@ -125,7 +125,7 @@
     {
       "id": "05262c94-fb9a-4a51-b1c6-8b4981888850",
       "name": "End session",
-      "type": "n8n-nodes-base.airtopTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         360,
         280
@@ -145,7 +145,7 @@
     {
       "id": "e1bab1f8-8127-49a2-b3a3-f672c0687ed6",
       "name": "Type",
-      "type": "n8n-nodes-base.airtopTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         480,
         280

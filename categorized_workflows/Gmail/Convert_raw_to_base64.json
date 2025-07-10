@@ -317,7 +317,7 @@
     {
       "id": "9f5262c5-d319-4a9d-af6e-aa42970d1a6f",
       "name": "Ask OpenAI Assistant",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "type": "n8n-nodes-langchain.openai",
       "position": [
         2220,
         580

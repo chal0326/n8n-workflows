@@ -49,7 +49,7 @@
     {
       "id": "9d79875f-148e-46ef-967a-95c07298456d",
       "name": "Ollama Chat Model1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "type": "n8n-nodes-langchain.lmchatollama",
       "position": [
         1129,
         684

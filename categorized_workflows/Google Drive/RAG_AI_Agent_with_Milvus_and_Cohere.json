@@ -30,7 +30,7 @@
     {
       "id": "a01b9512-ced1-4e28-a2aa-88077ab79d9a",
       "name": "Embeddings Cohere",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "type": "n8n-nodes-langchain.embeddingscohere",
       "position": [
         -140,
         320
@@ -228,7 +228,7 @@
     {
       "id": "ec7b6b92-065c-455c-a3f0-17586d9e48d7",
       "name": "Cohere embeddings",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "type": "n8n-nodes-langchain.embeddingscohere",
       "position": [
         -220,
         900

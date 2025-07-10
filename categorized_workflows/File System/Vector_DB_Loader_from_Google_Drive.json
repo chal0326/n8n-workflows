@@ -44,7 +44,7 @@
     {
       "id": "57ce64af-88d4-4dc4-8c8e-01717c1bd47d",
       "name": "Embeddings OpenAI",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "type": "n8n-nodes-langchain.embeddingsopenai",
       "position": [
         1120,
         1100
@@ -64,7 +64,7 @@
     {
       "id": "e6bed8bc-f629-41fd-aa6e-9158b1cbc323",
       "name": "Postgres PGVector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "type": "n8n-nodes-langchain.vectorstorepgvector",
       "position": [
         1140,
         880
@@ -91,7 +91,7 @@
     },
     {
       "id": "96fbc1f3-920d-44c9-9314-742efa3a698a",
-      "name": "When clicking ‘Test workflow’",
+      "name": "When clicking \u2018Test workflow\u2019",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         -280,
@@ -236,7 +236,7 @@
         "color": 7,
         "width": 380,
         "height": 240,
-        "content": "## Creative Commons License\n*License*: **Creative Commons Attribution-ShareAlike 4.0 International** (CC BY-SA 4.0)\n\n*Author*: **AlexK1919**\nYou are free to use, adapt, and share this workflow—even commercially—under the terms of this license.\n\nFull license details: https://creativecommons.org/licenses/by-sa/4.0/"
+        "content": "## Creative Commons License\n*License*: **Creative Commons Attribution-ShareAlike 4.0 International** (CC BY-SA 4.0)\n\n*Author*: **AlexK1919**\nYou are free to use, adapt, and share this workflow\u2014even commercially\u2014under the terms of this license.\n\nFull license details: https://creativecommons.org/licenses/by-sa/4.0/"
       },
       "typeVersion": 1
     },
@@ -542,7 +542,7 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
+    "When clicking \u2018Test workflow\u2019": {
       "main": [
         [
           {

@@ -12,7 +12,7 @@
     },
     {
       "name": "iCalendar",
-      "type": "n8n-nodes-base.iCal",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         550,
         200
@@ -35,7 +35,7 @@
       "parameters": {
         "text": "Hey Harshil,\n\nWe are excited to invite you to the n8n community meetup!\n\nWith this email you will find the invite attached.\n\nLooking forward to seeing you at the meetup!\n\nCheers,\nHarshil",
         "options": {},
-        "subject": "n8n Community Meetup 🚀",
+        "subject": "n8n Community Meetup \ud83d\ude80",
         "attachments": "data"
       },
       "credentials": {

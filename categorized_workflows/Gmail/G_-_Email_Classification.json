@@ -38,7 +38,7 @@
     {
       "id": "48d0ee27-d4d6-4db4-843c-d9c18b934945",
       "name": "Google Gemini Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "type": "n8n-nodes-langchain.lmchatgooglegemini",
       "position": [
         220,
         320
@@ -58,7 +58,7 @@
     {
       "id": "d7e8bed4-cadc-41e3-b793-cc8affb177cc",
       "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
+      "type": "n8n-nodes-langchain.agent",
       "disabled": true,
       "position": [
         1420,
@@ -76,7 +76,7 @@
     {
       "id": "3b5cabb7-346f-4b69-b3f4-c61e78e2d8c7",
       "name": "Groq Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "type": "n8n-nodes-langchain.lmchatgroq",
       "disabled": true,
       "position": [
         1440,

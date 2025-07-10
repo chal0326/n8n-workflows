@@ -391,7 +391,7 @@
         "requestMethod": "POST",
         "authentication": "basicAuth",
         "jsonParameters": true,
-        "bodyParametersJson": "={\n\"message\":\"Lead créé ! Saisie du Formulaire choix séance. Contact : {{ $('Tally Forms Trigger').item.json[\"body\"][\"data\"][\"fields\"][1][\"value\"] }} et mail : {{ $('CaptainMail').item.json[\"email\"] }} \"\n}",
+        "bodyParametersJson": "={\n\"message\":\"Lead cr\u00e9\u00e9 ! Saisie du Formulaire choix s\u00e9ance. Contact : {{ $('Tally Forms Trigger').item.json[\"body\"][\"data\"][\"fields\"][1][\"value\"] }} et mail : {{ $('CaptainMail').item.json[\"email\"] }} \"\n}",
         "headerParametersJson": "={\"OCS-APIRequest\":\"true\"}"
       },
       "notesInFlow": true,
@@ -433,7 +433,7 @@
     {
       "id": "fbf39f60-e895-4477-9f62-9ec6965a84cc",
       "name": "Brevo Create Contact",
-      "type": "n8n-nodes-base.sendInBlue",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         980,
         800

@@ -4,7 +4,7 @@
   "nodes": [
     {
       "name": "Cron",
-      "type": "n8n-nodes-base.cron",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         350,
         500

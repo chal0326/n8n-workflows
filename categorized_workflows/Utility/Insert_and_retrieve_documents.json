@@ -331,7 +331,7 @@
     {
       "id": "2e27f3d8-e8a2-4647-80dd-f2643b224cb5",
       "name": "Milvus Vector Store in retrieval",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreMilvus",
+      "type": "n8n-nodes-langchain.vectorstoremilvus",
       "position": [
         0,
         560
@@ -358,7 +358,7 @@
     {
       "id": "a3cf7e0e-f681-4880-9ccf-5c42d5457c0f",
       "name": "Milvus Vector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreMilvus",
+      "type": "n8n-nodes-langchain.vectorstoremilvus",
       "position": [
         1120,
         -100

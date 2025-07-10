@@ -119,7 +119,7 @@
     {
       "id": "0217056f-2b71-4308-adf1-19dcd4d2cc11",
       "name": "Pinecone Vector Store1",
-      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "type": "n8n-nodes-langchain.vectorstorepinecone",
       "position": [
         -280,
         860
@@ -342,7 +342,7 @@
     {
       "id": "aae26861-f34d-4b59-bd99-3662fbd6676c",
       "name": "Pinecone Vector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "type": "n8n-nodes-langchain.vectorstorepinecone",
       "position": [
         880,
         220

@@ -10,7 +10,7 @@
     {
       "id": "6e87d612-3006-4683-b978-87718f89257d",
       "name": "Send Discord Message to Channel",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         360,
         280
@@ -42,7 +42,7 @@
     {
       "id": "32a17a73-8953-4474-a49f-9d1cc0cc3eb2",
       "name": "Add Role To Member",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -200,
         560
@@ -74,7 +74,7 @@
     {
       "id": "688ea823-b8ea-4bbf-96cb-a64925fc29a9",
       "name": "Remove Role from member",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -20,
         560
@@ -120,7 +120,7 @@
     {
       "id": "67602807-3126-4564-8fed-912551eb824b",
       "name": "Get channels of server by server ID",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         420,
         20
@@ -147,7 +147,7 @@
     {
       "id": "5f1c3039-7042-48b8-997c-12bcaa6a1256",
       "name": "Get members of server by server ID",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -80,
         20
@@ -175,7 +175,7 @@
     {
       "id": "ece7a065-36bb-4667-aa61-610e54f0b22d",
       "name": "Send DM and Wait for reply",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -280,
         280
@@ -210,7 +210,7 @@
     {
       "id": "c37d0478-5b00-4d21-b0fd-7e2fa34708ec",
       "name": "Send to Channel and Wait for Reply",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         580,
         280
@@ -244,7 +244,7 @@
     {
       "id": "fb8091b5-114b-422e-be5a-6413d9aec599",
       "name": "Send DM to User",
-      "type": "n8n-nodes-base.discordTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -60,
         280

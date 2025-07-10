@@ -12,7 +12,7 @@
     },
     {
       "name": "Start",
-      "type": "n8n-nodes-base.start",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         250,
         300

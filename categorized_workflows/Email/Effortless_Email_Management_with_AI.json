@@ -254,7 +254,7 @@
     },
     {
       "id": "36ce51c6-8ee1-4230-84c0-40e259eafb1a",
-      "name": "When clicking ‘Test workflow’",
+      "name": "When clicking \u2018Test workflow\u2019",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         -1340,
@@ -415,7 +415,7 @@
     {
       "id": "0cf45d10-3cbf-4eb6-ab30-11f264b3aa8d",
       "name": "Token Splitter",
-      "type": "@n8n/n8n-nodes-langchain.textSplitterTokenSplitter",
+      "type": "n8n-nodes-langchain.textsplittertokensplitter",
       "position": [
         -240,
         -820
@@ -521,7 +521,7 @@
     {
       "id": "63097039-58cb-4e0f-9fb6-6bf868275519",
       "name": "DeepSeek Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "type": "n8n-nodes-langchain.lmchatdeepseek",
       "position": [
         -1560,
         40
@@ -872,7 +872,7 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
+    "When clicking \u2018Test workflow\u2019": {
       "main": [
         [
           {

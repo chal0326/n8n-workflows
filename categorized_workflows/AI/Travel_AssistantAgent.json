@@ -63,7 +63,7 @@
     {
       "id": "af440c3f-e81f-4e40-a349-6272c3b23517",
       "name": "MongoDB Atlas Vector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreMongoDBAtlas",
+      "type": "n8n-nodes-langchain.vectorstoremongodbatlas",
       "position": [
         480,
         280
@@ -190,7 +190,7 @@
     {
       "id": "c4a5f12e-de9b-44d0-93b2-a06cb56a1a91",
       "name": "MongoDB Atlas Vector Store1",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreMongoDBAtlas",
+      "type": "n8n-nodes-langchain.vectorstoremongodbatlas",
       "position": [
         740,
         880

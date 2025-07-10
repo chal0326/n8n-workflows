@@ -12,7 +12,7 @@
     },
     {
       "name": "Dropcontact",
-      "type": "n8n-nodes-base.dropcontact",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         650,
         300

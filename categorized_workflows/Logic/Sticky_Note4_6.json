@@ -106,7 +106,7 @@
     {
       "id": "4f141057-8dd6-429a-b48f-fd80b2666882",
       "name": "ERPNext - Reject if Resume not Attached",
-      "type": "n8n-nodes-base.erpNext",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -2380,
         800
@@ -170,7 +170,7 @@
     {
       "id": "1c8e889b-dcd9-4807-8528-a7f0300bf558",
       "name": "ERPNext - Hold Applicant",
-      "type": "n8n-nodes-base.erpNext",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -2180,
         800
@@ -215,7 +215,7 @@
     {
       "id": "6266e3e0-9bd7-4ab6-a488-55f1b524000f",
       "name": "Get Job Opening",
-      "type": "n8n-nodes-base.erpNext",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         -80,
         620

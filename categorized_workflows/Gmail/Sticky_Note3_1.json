@@ -12,7 +12,7 @@
         "color": 5,
         "width": 379,
         "height": 80,
-        "content": "### 👨‍🎤 Setup\n1. Add your Gmail creds"
+        "content": "### \ud83d\udc68\u200d\ud83c\udfa4 Setup\n1. Add your Gmail creds"
       },
       "typeVersion": 1
     },
@@ -48,7 +48,7 @@
         "color": 7,
         "width": 202,
         "height": 100,
-        "content": "👆 Set your schedule. I use this for work emails. For personal emails, I run this daily."
+        "content": "\ud83d\udc46 Set your schedule. I use this for work emails. For personal emails, I run this daily."
       },
       "typeVersion": 1
     },
@@ -122,7 +122,7 @@
     {
       "id": "3d8145dc-577d-4e9b-83a7-fdf06afa1b96",
       "name": "for each message in the thread",
-      "type": "n8n-nodes-base.itemLists",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1480,
         520
@@ -190,7 +190,7 @@
         "color": 7,
         "width": 202,
         "height": 100,
-        "content": "⭐ Keep starred emails in inbox.. Archive everything else!"
+        "content": "\u2b50 Keep starred emails in inbox.. Archive everything else!"
       },
       "typeVersion": 1
     }

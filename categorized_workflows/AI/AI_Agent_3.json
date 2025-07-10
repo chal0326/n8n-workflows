@@ -485,7 +485,7 @@
     {
       "id": "bd3e5ccf-f21e-425f-b863-4f4b86a550db",
       "name": "Redis",
-      "type": "n8n-nodes-base.redisTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1020,
         740
@@ -540,7 +540,7 @@
     {
       "id": "5d9454dc-fcd4-4b72-830f-e54af6a2680f",
       "name": "Wolfram Alpha",
-      "type": "@n8n/n8n-nodes-langchain.toolWolframAlpha",
+      "type": "n8n-nodes-langchain.toolwolframalpha",
       "position": [
         1020,
         940
@@ -1745,7 +1745,7 @@
         "color": 7,
         "width": 1020,
         "height": 1080,
-        "content": "# WATCH THE n8n STARTER GUIDE 👇\n\n[![Click Here!](https://i.imgur.com/GpUl9iS.png)](https://www.youtube.com/watch?v=It3CkokmodE&list=PL1Ylp5hLJfWeL9ZJ0MQ2sK5y2wPYKfZdE&index=1&pp=gAQBiAQBsAQB)\n\n\n## THE NODE REFERENCE LIBRARY 📖\n\n## This **Node Reference Library** workflow is like a visual map showing many common n8n nodes, grouped by what they do (like Triggers, Data Transformation, AI Agents, etc.). Think of it as a quick visual cheat sheet! 🗺️\n\n## Explore the canvas to get familiar with different node types and see what's possible. ✨\n\n## This resource is provided by [@IversusAI](https://www.youtube.com/@IversusAI) on YouTube! 📺\n"
+        "content": "# WATCH THE n8n STARTER GUIDE \ud83d\udc47\n\n[![Click Here!](https://i.imgur.com/GpUl9iS.png)](https://www.youtube.com/watch?v=It3CkokmodE&list=PL1Ylp5hLJfWeL9ZJ0MQ2sK5y2wPYKfZdE&index=1&pp=gAQBiAQBsAQB)\n\n\n## THE NODE REFERENCE LIBRARY \ud83d\udcd6\n\n## This **Node Reference Library** workflow is like a visual map showing many common n8n nodes, grouped by what they do (like Triggers, Data Transformation, AI Agents, etc.). Think of it as a quick visual cheat sheet! \ud83d\uddfa\ufe0f\n\n## Explore the canvas to get familiar with different node types and see what's possible. \u2728\n\n## This resource is provided by [@IversusAI](https://www.youtube.com/@IversusAI) on YouTube! \ud83d\udcfa\n"
       },
       "typeVersion": 1
     }

@@ -198,7 +198,7 @@
     {
       "id": "0103fb97-c691-4bd3-b26d-85aaa9774594",
       "name": "Products in Daatabase",
-      "type": "n8n-nodes-base.mySqlTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1460,
         600

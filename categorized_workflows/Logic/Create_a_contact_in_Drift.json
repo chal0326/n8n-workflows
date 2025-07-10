@@ -14,7 +14,7 @@
     },
     {
       "name": "Drift ",
-      "type": "n8n-nodes-base.drift",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         450,
         300

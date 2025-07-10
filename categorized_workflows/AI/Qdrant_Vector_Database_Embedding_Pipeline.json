@@ -36,7 +36,7 @@
     },
     {
       "id": "4127d85d-45c9-4536-a15d-08af9dfdcfa8",
-      "name": "When clicking ‘Test workflow’",
+      "name": "When clicking \u2018Test workflow\u2019",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         -960,
@@ -81,7 +81,7 @@
     {
       "id": "9aff896d-4edb-494c-b84f-ede4e47db1e3",
       "name": "Character Text Splitter",
-      "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      "type": "n8n-nodes-langchain.textsplittercharactertextsplitter",
       "position": [
         800,
         20
@@ -309,7 +309,7 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
+    "When clicking \u2018Test workflow\u2019": {
       "main": [
         [
           {

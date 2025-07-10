@@ -91,7 +91,7 @@
     {
       "id": "e9639a07-6672-46ee-a86e-025265e45069",
       "name": "Dropbox - List watched folder",
-      "type": "n8n-nodes-base.dropbox",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         500,
         280
@@ -331,7 +331,7 @@
     {
       "id": "bb45006e-f12e-4b9d-99fa-ec5003f1c141",
       "name": "Dropbox get files",
-      "type": "n8n-nodes-base.dropbox",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         500,
         0
@@ -483,7 +483,7 @@
           "__rl": true,
           "mode": "list",
           "value": "NzETudhVA1JruLCl",
-          "cachedResultName": "210 PODCAST > Dropbox txt - Pré rédige épisode avec transcription - 2025-03 v2"
+          "cachedResultName": "210 PODCAST > Dropbox txt - Pr\u00e9 r\u00e9dige \u00e9pisode avec transcription - 2025-03 v2"
         },
         "workflowInputs": {
           "value": {},
@@ -591,12 +591,12 @@
       {
         "id": "id:lXWFwy5R52AAAAAAAAAIeA",
         "rev": "631049fe37ae34f316ea3",
-        "name": "test btXXX - stabilité émotionnelle-final-auphonic-final-auphonic copie.txt",
+        "name": "test btXXX - stabilit\u00e9 \u00e9motionnelle-final-auphonic-final-auphonic copie.txt",
         "type": "file",
-        "pathLower": "/z_apps/auphonic/whisper/test btxxx - stabilité émotionnelle-final-auphonic-final-auphonic copie.txt",
+        "pathLower": "/z_apps/auphonic/whisper/test btxxx - stabilit\u00e9 \u00e9motionnelle-final-auphonic-final-auphonic copie.txt",
         "contentHash": "fda114fad56df672588bc1543c869863c81c7e6b843d05158cdc8d1573515587",
         "contentSize": 26671,
-        "pathDisplay": "/z_Apps/auphonic/whisper/test btXXX - stabilité émotionnelle-final-auphonic-final-auphonic copie.txt",
+        "pathDisplay": "/z_Apps/auphonic/whisper/test btXXX - stabilit\u00e9 \u00e9motionnelle-final-auphonic-final-auphonic copie.txt",
         "isDownloadable": true,
         "lastModifiedClient": "2025-01-22T13:26:49Z",
         "lastModifiedServer": "2025-03-23T16:03:12Z"

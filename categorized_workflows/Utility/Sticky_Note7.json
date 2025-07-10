@@ -48,7 +48,7 @@
     {
       "id": "a43bb1c5-dd90-4331-930c-128ef0ecb38a",
       "name": "LangChain Code",
-      "type": "@n8n/n8n-nodes-langchain.code",
+      "type": "n8n-nodes-langchain.code",
       "position": [
         -380,
         20

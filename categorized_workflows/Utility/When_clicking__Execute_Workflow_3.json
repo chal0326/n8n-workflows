@@ -108,7 +108,7 @@
     {
       "id": "6da9d2ae-83d6-4bde-b013-71d313fcbe9b",
       "name": "Workflow Retriever",
-      "type": "@n8n/n8n-nodes-langchain.retrieverWorkflow",
+      "type": "n8n-nodes-langchain.retrieverworkflow",
       "position": [
         -240,
         760

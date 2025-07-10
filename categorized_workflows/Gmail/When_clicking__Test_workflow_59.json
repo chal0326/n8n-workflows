@@ -6,7 +6,7 @@
   "nodes": [
     {
       "id": "43e68fe1-7f48-4bc9-b19a-66d39bee5bbd",
-      "name": "When clicking ‘Test workflow’",
+      "name": "When clicking \u2018Test workflow\u2019",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         -520,
@@ -18,7 +18,7 @@
     {
       "id": "32aa401a-60c3-4436-94d5-5ba09d3be6ae",
       "name": "OpenRouter Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "type": "n8n-nodes-langchain.lmchatopenrouter",
       "position": [
         80,
         0
@@ -140,7 +140,7 @@
     {
       "id": "32c73c57-61b5-430b-a011-f0b44fa2b226",
       "name": "mail_label_setter",
-      "type": "n8n-nodes-base.gmailTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         360,
         0
@@ -162,7 +162,7 @@
     {
       "id": "7cf38850-939c-4c8e-af62-1f730d5b7e34",
       "name": "mail_archiver",
-      "type": "n8n-nodes-base.gmailTool",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         220,
         0
@@ -222,7 +222,7 @@
     {
       "id": "9236fbc1-ffad-4bf0-b3a1-5d389e5b422c",
       "name": "OpenRouter Chat Model1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "type": "n8n-nodes-langchain.lmchatopenrouter",
       "position": [
         520,
         0
@@ -456,7 +456,7 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
+    "When clicking \u2018Test workflow\u2019": {
       "main": [
         [
           {

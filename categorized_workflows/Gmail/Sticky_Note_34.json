@@ -31,7 +31,7 @@
       "parameters": {
         "width": 421.0932411886662,
         "height": 257.42916378714597,
-        "content": "## ⚠️ Note\n\n1. Complete video guide for this workflow is available [on my YouTube](https://youtu.be/a8Dhj3Zh9vQ). \n2. Remember to add your credentials and configure nodes (covered in the video guide).\n3. If you like this workflow, please subscribe to [my YouTube channel](https://www.youtube.com/@workfloows) and/or [my newsletter](https://workfloows.com/).\n\n**Thank you for your support!**"
+        "content": "## \u26a0\ufe0f Note\n\n1. Complete video guide for this workflow is available [on my YouTube](https://youtu.be/a8Dhj3Zh9vQ). \n2. Remember to add your credentials and configure nodes (covered in the video guide).\n3. If you like this workflow, please subscribe to [my YouTube channel](https://www.youtube.com/@workfloows) and/or [my newsletter](https://workfloows.com/).\n\n**Thank you for your support!**"
       },
       "typeVersion": 1
     },
@@ -46,7 +46,7 @@
       "parameters": {
         "width": 238.4602598584674,
         "height": 348.5873725349161,
-        "content": "### Gmail Trigger\nReceive data from Gmail about new incoming message. \n\n⚠️ Set polling interval according to your needs."
+        "content": "### Gmail Trigger\nReceive data from Gmail about new incoming message. \n\n\u26a0\ufe0f Set polling interval according to your needs."
       },
       "typeVersion": 1
     },
@@ -61,7 +61,7 @@
       "parameters": {
         "width": 241.53974014153226,
         "height": 319.3323098457962,
-        "content": "###\n\n\n\n\n\n\n\n\n\n\n### JSON schema\nEdit JSON schema and label names according to your needs.\n\n⚠️ **Label names in system prompt and JSON schema should be the same.**"
+        "content": "###\n\n\n\n\n\n\n\n\n\n\n### JSON schema\nEdit JSON schema and label names according to your needs.\n\n\u26a0\ufe0f **Label names in system prompt and JSON schema should be the same.**"
       },
       "typeVersion": 1
     },
@@ -121,7 +121,7 @@
       "parameters": {
         "width": 378.57661273793565,
         "height": 348.5873725349161,
-        "content": "### Assign labels\nLet the AI decide which labels suit the best content of the message.\n\n⚠️ **Remember to edit system prompt** - modify label names and instructions according to your needs."
+        "content": "### Assign labels\nLet the AI decide which labels suit the best content of the message.\n\n\u26a0\ufe0f **Remember to edit system prompt** - modify label names and instructions according to your needs."
       },
       "typeVersion": 1
     },
@@ -177,7 +177,7 @@
     {
       "id": "ad577660-d9f4-4031-ad16-7021a02bb18e",
       "name": "Assign labels for message",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "type": "n8n-nodes-langchain.chainllm",
       "position": [
         1020,
         180
@@ -192,7 +192,7 @@
     {
       "id": "1e11d30f-4c73-4fd0-a365-aeb43bee4252",
       "name": "OpenAI Chat",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "type": "n8n-nodes-langchain.lmchatopenai",
       "position": [
         1000,
         400
@@ -216,7 +216,7 @@
     {
       "id": "4a504b64-fb28-44fb-a80a-6f5e5c5a1949",
       "name": "JSON Parser",
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "type": "n8n-nodes-langchain.outputparserstructured",
       "position": [
         1240,
         400
@@ -376,7 +376,7 @@
             }
           ]
         },
-        "html": "<div dir=\"ltr\">Hey! <div><br></div><div>We&#39;d love to cooperate with you - could you please send us your offer? </div><div><br></div><div>Best,</div><div>Oskar</div></div>\n",
+        "html": "<div dir=\"ltr\">Hey!\u00a0<div><br></div><div>We&#39;d love to cooperate\u00a0with you - could you please send us your offer?\u00a0</div><div><br></div><div>Best,</div><div>Oskar</div></div>\n",
         "text": "Hey!\n\nWe'd love to cooperate with you - could you please send us your offer?\n\nBest,\nOskar\n",
         "headers": {
           "to": "To: Workfloows Tutorial <workfloowstutorial@gmail.com>",

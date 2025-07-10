@@ -2,7 +2,7 @@
   "nodes": [
     {
       "name": "FileMaker",
-      "type": "n8n-nodes-base.filemaker",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         450,
         320
@@ -40,7 +40,7 @@
     },
     {
       "name": "FileMaker",
-      "type": "n8n-nodes-base.filemaker",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         450,
         320
@@ -68,7 +68,7 @@
     },
     {
       "name": "FileMaker2",
-      "type": "n8n-nodes-base.filemaker",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         650,
         320
@@ -94,7 +94,7 @@
     },
     {
       "name": "FileMaker3",
-      "type": "n8n-nodes-base.filemaker",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         850,
         320

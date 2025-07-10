@@ -719,7 +719,7 @@
     {
       "id": "0dd69952-402e-4d9e-a44f-7cf96ab4055e",
       "name": "Embeddings Ollama",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "type": "n8n-nodes-langchain.embeddingsollama",
       "position": [
         500,
         2280
@@ -785,7 +785,7 @@
     {
       "id": "52429ac1-d738-49d7-81a8-725df6587312",
       "name": "Embeddings Ollama1",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "type": "n8n-nodes-langchain.embeddingsollama",
       "position": [
         360,
         600

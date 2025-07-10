@@ -14,7 +14,7 @@
     },
     {
       "name": "Send Email",
-      "type": "n8n-nodes-base.emailSend",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1520,
         300

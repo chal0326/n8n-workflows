@@ -370,7 +370,7 @@
     {
       "id": "19ddc949-1ee3-4871-8c5c-415e9d560d26",
       "name": "DateConverter",
-      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "type": "n8n-nodes-langchain.toolcode",
       "position": [
         540,
         260

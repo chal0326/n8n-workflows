@@ -674,7 +674,7 @@
     {
       "id": "eb853885-816d-4df7-b5ac-900fa89d3df9",
       "name": "Sentiment Analysis",
-      "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
+      "type": "n8n-nodes-langchain.sentimentanalysis",
       "position": [
         60,
         140

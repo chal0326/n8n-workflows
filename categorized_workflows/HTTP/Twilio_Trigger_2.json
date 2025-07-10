@@ -821,7 +821,7 @@
     {
       "id": "3469740d-bd2f-4d34-a86b-59b088917d74",
       "name": "Auto-fixing Output Parser",
-      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "type": "n8n-nodes-langchain.outputparserautofixing",
       "position": [
         1820,
         440

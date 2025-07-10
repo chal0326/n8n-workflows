@@ -29,7 +29,7 @@
     {
       "id": "28333c78-aa8f-401a-8033-2007a5e6991c",
       "name": "Extract links",
-      "type": "n8n-nodes-base.htmlExtract",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         680,
         300
@@ -97,7 +97,7 @@
     {
       "id": "68749bff-1499-4ef5-aefd-c4b6233d0fa7",
       "name": "Extract script",
-      "type": "n8n-nodes-base.htmlExtract",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1560,
         300
@@ -147,7 +147,7 @@
         300
       ],
       "parameters": {
-        "functionCode": "const escapeHTML = str => str.replace(/[&<>'\"]/g, \n  tag => ({\n      '&': '&amp;',\n      '<': '&lt;',\n      '>': '&gt;',\n      \"'\": '&#39;',\n      '\"': '&quot;'\n    }[tag]));\n\nlet feedItems = [];\nfor (item of items) {\n  feedItems.push(`<item>\n  <title>${escapeHTML(item.json.data.name)}</title>\n  <enclosure url=\"${item.json.data.associatedMedia.contentUrl}\" length=\"${item.json.data.timeRequired * 20 * 1000}\" type=\"${item.json.data.encodingFormat}\"/>\n  <guid isPermaLink=\"false\">${item.json.data.identifier}</guid>\n  <pubDate>${DateTime.fromISO(item.json.data.datePublished).toRFC2822()}</pubDate>\n  <description>${escapeHTML(item.json.data.description)}</description>\n</item>`);\n}\n\nreturn [{\n  data: `<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\" xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xmlns:content=\"http://purl.org/rss/1.0/modules/content/\">\n  <channel>\n    <title>${escapeHTML(items[0].json.data.partOfSeries.name)}</title>\n    <description>${escapeHTML(items[0].json.data.partOfSeries.about)}</description>\n    <itunes:image href=\"${escapeHTML(items[0].json.data.image)}\" />\n    <language>${items[0].json.data.inLanguage}</language>\n    <itunes:category text=\"Comedy\" />\n    <itunes:explicit>no</itunes:explicit>\n    <link>${items[0].json.data.partOfSeries.url}</link>\n    <copyright>© ${$now.toFormat('yyyy')} ${escapeHTML(items[0].json.data.productionCompany)}</copyright>\n    <itunes:author>${escapeHTML(items[0].json.data.productionCompany)}</itunes:author>\n    ${feedItems.join('\\n')}\n  </channel>\n</rss>\n`\n}];\n"
+        "functionCode": "const escapeHTML = str => str.replace(/[&<>'\"]/g, \n  tag => ({\n      '&': '&amp;',\n      '<': '&lt;',\n      '>': '&gt;',\n      \"'\": '&#39;',\n      '\"': '&quot;'\n    }[tag]));\n\nlet feedItems = [];\nfor (item of items) {\n  feedItems.push(`<item>\n  <title>${escapeHTML(item.json.data.name)}</title>\n  <enclosure url=\"${item.json.data.associatedMedia.contentUrl}\" length=\"${item.json.data.timeRequired * 20 * 1000}\" type=\"${item.json.data.encodingFormat}\"/>\n  <guid isPermaLink=\"false\">${item.json.data.identifier}</guid>\n  <pubDate>${DateTime.fromISO(item.json.data.datePublished).toRFC2822()}</pubDate>\n  <description>${escapeHTML(item.json.data.description)}</description>\n</item>`);\n}\n\nreturn [{\n  data: `<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\" xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xmlns:content=\"http://purl.org/rss/1.0/modules/content/\">\n  <channel>\n    <title>${escapeHTML(items[0].json.data.partOfSeries.name)}</title>\n    <description>${escapeHTML(items[0].json.data.partOfSeries.about)}</description>\n    <itunes:image href=\"${escapeHTML(items[0].json.data.image)}\" />\n    <language>${items[0].json.data.inLanguage}</language>\n    <itunes:category text=\"Comedy\" />\n    <itunes:explicit>no</itunes:explicit>\n    <link>${items[0].json.data.partOfSeries.url}</link>\n    <copyright>\u00a9 ${$now.toFormat('yyyy')} ${escapeHTML(items[0].json.data.productionCompany)}</copyright>\n    <itunes:author>${escapeHTML(items[0].json.data.productionCompany)}</itunes:author>\n    ${feedItems.join('\\n')}\n  </channel>\n</rss>\n`\n}];\n"
       },
       "typeVersion": 1
     },

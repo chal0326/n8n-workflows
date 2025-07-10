@@ -24,7 +24,7 @@
     },
     {
       "name": "Read PDF",
-      "type": "n8n-nodes-base.readPDF",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1090,
         400

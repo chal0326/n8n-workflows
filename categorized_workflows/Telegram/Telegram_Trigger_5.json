@@ -378,7 +378,7 @@
     {
       "id": "fa755815-29c2-419e-8e36-51102ee88681",
       "name": "Memory3",
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "type": "n8n-nodes-langchain.memoryredischat",
       "position": [
         2220,
         2060
@@ -441,7 +441,7 @@
     {
       "id": "a3bb744d-c59f-45a9-8b9d-3c291fa8d860",
       "name": "Reset Agent Memory1",
-      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "type": "n8n-nodes-langchain.memorymanager",
       "position": [
         2240,
         1900
@@ -466,7 +466,7 @@
     {
       "id": "b9d693b7-c139-45d8-b0d8-fd8134c7ba84",
       "name": "Memory4",
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "type": "n8n-nodes-langchain.memoryredischat",
       "position": [
         1120,
         2700

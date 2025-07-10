@@ -257,7 +257,7 @@
     {
       "id": "52decd86-ac6c-4d91-a938-86f93ec5f822",
       "name": "Product Catalogue",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "type": "n8n-nodes-langchain.vectorstoreinmemory",
       "position": [
         2200,
         -60
@@ -302,7 +302,7 @@
     {
       "id": "86bd5334-d735-4650-aeff-06230119d705",
       "name": "Create Product Catalogue",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "type": "n8n-nodes-langchain.vectorstoreinmemory",
       "position": [
         760,
         -200

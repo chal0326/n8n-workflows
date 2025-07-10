@@ -2,7 +2,7 @@
   "nodes": [
     {
       "name": "Emelia",
-      "type": "n8n-nodes-base.emelia",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         530,
         310
@@ -18,7 +18,7 @@
     },
     {
       "name": "Emelia1",
-      "type": "n8n-nodes-base.emelia",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         730,
         310
@@ -38,7 +38,7 @@
     },
     {
       "name": "Emelia2",
-      "type": "n8n-nodes-base.emelia",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         930,
         310

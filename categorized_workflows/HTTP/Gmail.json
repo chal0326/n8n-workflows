@@ -240,7 +240,7 @@
     {
       "id": "8dc9583b-cec3-4ac0-a74a-329f6c3b4801",
       "name": "Summarize Podcast",
-      "type": "n8n-nodes-base.openAi",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         2140,
         1120

@@ -93,7 +93,7 @@
     {
       "id": "d90f0d15-de3b-4997-9a36-f6ee08d5aea2",
       "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         740,
         160
@@ -108,7 +108,7 @@
     {
       "id": "f3b1af79-9946-4588-bae9-839f712a7d12",
       "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         1440,
         160

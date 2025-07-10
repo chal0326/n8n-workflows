@@ -224,7 +224,7 @@
     {
       "id": "ffe8c363-0809-4d21-aa8f-34b0fc2dc57f",
       "name": "Chat Trigger",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "type": "n8n-nodes-langchain.chattrigger",
       "position": [
         2280,
         680

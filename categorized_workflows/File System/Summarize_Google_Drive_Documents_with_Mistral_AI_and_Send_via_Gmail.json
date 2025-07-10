@@ -16,7 +16,7 @@
   "nodes": [
     {
       "id": "680f9002-94fa-48c1-af5f-d2a5305b6291",
-      "name": "When clicking ‘Test workflow’",
+      "name": "When clicking \u2018Test workflow\u2019",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
         0,
@@ -28,7 +28,7 @@
     {
       "id": "3fa4ad1a-ce87-44db-b016-bd172c2318eb",
       "name": "Mistral Cloud Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "type": "n8n-nodes-langchain.lmchatmistralcloud",
       "position": [
         500,
         240
@@ -100,7 +100,7 @@
       "webhookId": "215c6c67-612c-4b8d-9849-0b796570003d",
       "parameters": {
         "sendTo": "swot.ai25@gmail.com",
-        "message": "=<h1 style=\"color: #4CAF50;\">📌 Quick Summary of Your Document! ✨</h1>\n<p>\n<h2>📝 Summary:</h2>\n<p>\n{{ $json['response']['text'].replace(\"\\n\", \"<br>\") }}\n<p>\n\n<h3>📅 Date Processed: </h3>\n{{ new Date().toLocaleString('en-GB', { timeZone: 'Africa/Lagos' }) }}\n\n\n\n\n\n    ",
+        "message": "=<h1 style=\"color: #4CAF50;\">\ud83d\udccc Quick Summary of Your Document! \u2728</h1>\n<p>\n<h2>\ud83d\udcdd Summary:</h2>\n<p>\n{{ $json['response']['text'].replace(\"\\n\", \"<br>\") }}\n<p>\n\n<h3>\ud83d\udcc5 Date Processed: </h3>\n{{ new Date().toLocaleString('en-GB', { timeZone: 'Africa/Lagos' }) }}\n\n\n\n\n\n    ",
         "options": {
           "senderName": "Swot.AI",
           "appendAttribution": false
@@ -135,7 +135,7 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
+    "When clicking \u2018Test workflow\u2019": {
       "main": [
         [
           {

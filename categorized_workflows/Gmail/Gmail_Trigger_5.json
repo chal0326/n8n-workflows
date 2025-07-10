@@ -170,7 +170,7 @@
     {
       "id": "6b514df4-761c-4072-abf8-d572ee4b8030",
       "name": "Window Buffer Memory",
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "type": "n8n-nodes-langchain.memorybufferwindow",
       "position": [
         -60,
         -40

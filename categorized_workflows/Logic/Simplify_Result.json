@@ -55,7 +55,7 @@
     },
     {
       "name": "Every 30 Minutes",
-      "type": "n8n-nodes-base.interval",
+      "type": "n8n-nodes-base.n8n",
       "position": [
         240,
         100
